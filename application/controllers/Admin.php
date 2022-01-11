@@ -8,6 +8,8 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         $this->load->model('AdminModel');
+
+        $this->load->library('form_validation');
     }
 
     public function index()
@@ -20,7 +22,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/login/form_login');
     }
 
-//register
+    //register
     public function register()
     {
 
@@ -55,7 +57,7 @@ class Admin extends CI_Controller
         }
     }
 
-//login
+    //login
     public function login_proses()
     {
 
@@ -72,7 +74,8 @@ class Admin extends CI_Controller
                     $data_login = array(
                         'is_admin' => TRUE,
                         'email'  => $db->email,
-                        'nama'   => $db->nama
+                        'nama'   => $db->nama,
+                        'id'   => $db->id
                     );
 
                     $this->session->set_userdata($data_login);
@@ -102,6 +105,7 @@ class Admin extends CI_Controller
         }
 
         $data['title'] = 'Dashboard';
+        $data['admin'] = $this->AdminModel->data_admin();
 
         $this->load->view('admin/layout/header', $data);
         $this->load->view('admin/layout/sidebar', $data);
@@ -109,16 +113,198 @@ class Admin extends CI_Controller
         $this->load->view('admin/layout/footer', $data);
     }
 
-
     public function logout()
     {
 
         $this->session->unset_userdata('is_admin');
         $this->session->unset_userdata('nama');
         $this->session->unset_userdata('email');
+        $this->session->unset_userdata('id');
 
         session_destroy();
         $this->session->set_flashdata('success', 'Sign Out Berhasil!');
         redirect('Admin/', 'refresh');
+    }
+
+
+    //faq
+    function faq()
+    {
+        if ($this->session->userdata('is_admin') == FALSE) {
+            redirect('Admin/', 'refresh');
+        }
+
+        $data['title'] = 'F.A.Q.';
+        $data['admin'] = $this->AdminModel->data_admin();
+
+        $this->load->view('admin/layout/header', $data);
+        $this->load->view('admin/layout/sidebar', $data);
+        $this->load->view('admin/faq/index', $data);
+        $this->load->view('admin/layout/footer', $data);
+        $this->load->view('admin/faq/script', $data);
+    }
+
+    function faq_data()
+    {
+        $data = $this->AdminModel->faq_list();
+        echo json_encode($data);
+    }
+
+    function save_faq()
+    {
+        $data = $this->AdminModel->save_faq();
+        echo json_encode($data);
+    }
+
+    function update_faq()
+    {
+        $data = $this->AdminModel->update_faq();
+        echo json_encode($data);
+    }
+
+    function delete_faq()
+    {
+        $data = $this->AdminModel->delete_faq();
+        echo json_encode($data);
+    }
+
+
+    //profile
+    function profile()
+    {
+        if ($this->session->userdata('is_admin') == FALSE) {
+            redirect('Admin/', 'refresh');
+        }
+
+        $data['title'] = 'Profile';
+        $data['admin'] = $this->AdminModel->data_admin();
+
+        $this->load->view('admin/layout/header', $data);
+        $this->load->view('admin/layout/sidebar', $data);
+        $this->load->view('admin/profile/index', $data);
+        $this->load->view('admin/layout/footer', $data);
+        $this->load->view('admin/profile/script', $data);
+    }
+
+    function get_data()
+    {
+        $data = $this->AdminModel->getData();
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+    }
+
+    function get_single($id)
+    {
+        $data = $this->AdminModel->getById($id);
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+    }
+
+    function hapus($id)
+    {
+        $data = $this->AdminModel->getById($id);
+        $img_src = FCPATH . 'uploads/admin/' . $data->foto;
+
+        if (unlink($img_src)) {
+            $this->AdminModel->hapus($id);
+        }
+    }
+
+    function _validate()
+    {
+        $this->form_validation->set_error_delimiters('', '');
+        $this->form_validation->set_rules('nama', 'Nama', 'trim|required|min_length[2]|max_length[50]');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|min_length[2]|max_length[50]');
+        if (empty($_FILES['file']['name'])) {
+            $this->form_validation->set_rules('file', 'Foto', 'required');
+        }
+    }
+
+    function _config()
+    {
+        $config['upload_path']      = "./uploads/admin";
+        $config['allowed_types']    = 'gif|jpg|jpeg|png';
+        $config['encrypt_name']     = TRUE;
+
+        $this->load->library('upload', $config);
+    }
+
+    function do_upload()
+    {
+        $this->_validate();
+        $this->_config();
+
+        $nama = $this->input->post('nama');
+        $email = $this->input->post('email');
+
+        if ($this->form_validation->run() == FALSE || $this->upload->do_upload("file") == FALSE) {
+            $errors = array(
+                'file'            => form_error('file'),
+                'nama'         => form_error('nama'),
+                'email'         => form_error('email'),
+                'fail_upload'     => $this->upload->display_errors('', '')
+            );
+            $data = array(
+                'errors' => $errors,
+                'status' => false
+            );
+            $this->output->set_content_type('application/json')->set_output(json_encode($data));
+        } else {
+            $data     = array('upload_data' => $this->upload->data());
+            $image    = $data['upload_data']['file_name'];
+            $result    = $this->AdminModel->simpan_upload($nama, $email, $image);
+            $this->output->set_content_type('application/json')->set_output(json_encode(array('status' => true)));
+        }
+    }
+
+    function edit()
+    {
+        $id = $this->input->post('id');
+        $img_data = $this->AdminModel->getById($id);
+        $img_src = FCPATH . 'uploads/admin/' . $img_data->foto;
+
+        $nama = $this->input->post('nama');
+        $email = $this->input->post('email');
+
+        if ($_FILES['file']['name'] == '') {
+            $this->form_validation->set_error_delimiters('', '');
+            $this->form_validation->set_rules('nama', 'Nama', 'trim|required|min_length[2]|max_length[50]');
+            $this->form_validation->set_rules('email', 'Email', 'trim|required|min_length[2]|max_length[50]');
+
+            if ($this->form_validation->run()) {
+                $this->AdminModel->update($id, $nama, $email, null);
+                $this->output->set_content_type('application/json')->set_output(json_encode(array('status' => true)));
+            } else {
+                $errors['nama'] = form_error('nama');
+                $errors['email'] = form_error('email');
+                $data = array(
+                    'errors' => $errors,
+                    'status' => false
+                );
+                $this->output->set_content_type('application/json')->set_output(json_encode($data));
+            }
+        } else {
+            $this->_validate();
+            $this->_config();
+            if ($this->form_validation->run() == FALSE || $this->upload->do_upload("file") == FALSE) {
+                $errors = array(
+                    'file'            => form_error('file'),
+                    'nama'         => form_error('nama'),
+                    'email'         => form_error('email'),
+                    'fail_upload'     => $this->upload->display_errors('', '')
+                );
+                $data = array(
+                    'errors' => $errors,
+                    'status' => false
+                );
+                $this->output->set_content_type('application/json')->set_output(json_encode($data));
+            } else {
+                $data = array('upload_data' => $this->upload->data());
+                $image = $data['upload_data']['file_name'];
+
+                if (unlink($img_src)) {
+                    $this->AdminModel->update($id, $nama, $email, $image);
+                    $this->output->set_content_type('application/json')->set_output(json_encode(array('status' => true)));
+                }
+            }
+        }
     }
 }
