@@ -1,0 +1,500 @@
+/* @@@@@@@@@@@@@  Banner Section Start Here  @@@@@@@@@@@@@@ */
+.banner {
+    @extend %rel;
+    background: #fafeff;
+    // height: 550px;
+    padding: 100px 0;
+    @extend %hidden;
+    @include breakpoint(lg) {
+        // height: 700px;
+        padding: 230px 0;
+    }
+    .shape-1, .shape-2 {
+        @extend %abs;
+        display: none;
+    }
+    .shape-1 {
+        bottom: 0;
+        right: -50px;
+        @include breakpoint(xl) {
+            display: block;
+            @include breakpoint(max-xxl) {
+                width: 35%;
+            }
+        }
+    }
+    .shape-2 {
+        top: 0;
+        left: 0;
+        @include breakpoint(xl) {
+            display: block;
+            @include breakpoint(max-xxl) {
+                width: 25%;
+            }
+        }
+    }
+    .banner-area {
+        // @extend %abs;
+        // width: 100%;
+        // top: 50%;
+        // left: 0;
+        // transform: translateY(-50%);
+        .banner-content {
+            @include breakpoint(xl) {
+                // max-width: 80%;
+                // @include breakpoint(max-xxl) {
+                //     margin: auto;
+                // }
+            }
+            h2 {
+                font-family: $poppins;
+                text-align: center;
+                @include breakpoint(lg) {
+                    font-size: $fs-h1;
+                    line-height: $lh-h1;
+                }
+                @include breakpoint(xl) {
+                    text-align: left;
+                }
+            }
+            form {
+                border: 5px solid $white-color;
+                margin: auto;
+                align-items: center;
+                margin: 30px 0;
+                box-shadow: 0 0 10px rgba(137, 137, 137, .10);
+                @extend %flex;
+                @extend %rel;
+                @include border-radius(10px);
+                &::after {
+                    @extend %abs;
+                    width: 1px;
+                    height: 80px;
+                    background: #ecf0f3;
+                    top: -5px;
+                    right: 80px;
+                }
+                .codexcoder-selectoption {
+                    @extend %rel;
+                    z-index: 1;
+                    background: $theme-color;
+                    border-top-left-radius: 10px;
+                    @include breakpoint(max-sm) {
+                        width: 100%;
+                        @include border-radius(10px);
+                    }
+                    &::before {
+                        @extend %abs;
+                        left: 20px;
+                        transform: translateY(-50%);
+                        border-left: 6px solid transparent;
+                        border-right: 6px solid transparent;
+                        border-bottom: 6px solid $white-color;
+                        z-index: -1;
+                    }
+                    &::before {
+                        top: 50%;
+                        transform: translateY(-50%) rotate(180deg);
+                    }
+                }
+                select {
+                    width: 200px;
+                    text-align: center;
+                    text-transform: uppercase;
+                    padding: 0 40px;
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: $white-color;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    background: transparent;
+                    @include breakpoint(max-sm) {
+                        width: 100%;
+                    }
+                    option {
+                        background: $theme-color;
+                        border: none;
+                        outline: none;
+                        font-size: 18px;
+                        font-weight: 500;
+                    }
+                }
+                input {
+                    margin-bottom: 0;
+                    padding-left: 20px;
+                    width: calc(100% - 280px);
+                    @include breakpoint(max-sm) {
+                        width: calc(100% - 50px);
+                    }
+                }
+                button {
+                    background: $white-color;
+                    cursor: pointer;
+                    @include breakpoint(sm) {
+                        width: 80px;
+                    }
+                    i {
+                        font-size: 20px;
+                        @include breakpoint(sm) {
+                            font-size: 30px;
+                        }
+                    }
+                    @include breakpoint(max-sm) {
+                        width: 50px;
+                    }
+                }
+                select, input, button {
+                    height: 70px;
+                    border: none;
+                    outline: none;
+                }
+            }
+            ul {
+                @extend %flex;
+                justify-content: center;
+                max-width: 770px;
+                margin: auto;
+                li {
+                    justify-content: center;
+                    width: calc(100% / 1);
+                    padding-left: 30px;
+                    color: $title-color;
+                    @extend %rel;
+                    @include breakpoint(md) {
+                        width: calc(100% / 3);
+                    }
+                    &:before {
+                        @extend %abs;
+                        content: "\f00d";
+                        width: 20px;
+                        height: 20px;
+                        left: 0;
+                        text-align: center;
+                        font-family: IcoFont!important;
+                    }
+                    span {
+                        margin-right: 5px;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+    }
+    &.style-2 {
+        @extend %hidden;
+        // height: 850px;
+        padding: 0;
+        background: $white-color;
+        .banner-area {
+            @extend %flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row-reverse;
+            // position: static;
+            // top: 0;
+            // transform: translateY(0%);
+        }
+        .left-side {
+            width: 100%;
+            height: 400px;
+            // @include border-radius(10px);
+            @extend %rel;
+            @include breakpoint(lg) {
+                width: calc(100% / 2);
+                height: 800px;
+            }
+            @include breakpoint(xxl) {
+                padding-right: 100px;
+                background: $theme-color;
+            }
+            .section-wrapper {
+                height: 100%;
+                .banner-pagination {
+                    @extend %abs;
+                    bottom: 20px;
+                    left: 20px;
+                    z-index: 1;
+                    span {
+                        background: $white-color;
+                        outline: none;
+                        &.swiper-pagination-bullet-active {
+                            background: $white-color;
+                        }
+                    }
+                }
+                .banner-slider {
+                    @extend %hidden;
+                    height: 100%;
+                    @include border-radius(10px);
+                    .banner-thumb {
+                        img {
+                            width: 100%;
+                        }
+                    }
+                    .swiper-slide {
+                        background-size: cover !important; 
+                        background-position: center center !important;
+                    }
+                }
+            }
+        }
+        .right-side {
+            width: 100%;
+            margin: 60px 0;
+            @include breakpoint(lg) {
+                width: calc(100% / 2);
+                margin: 0;
+            }
+            .banner-content {
+                max-width: 600px;
+                margin-left: auto;
+                @include breakpoint(sm) {
+                    @include breakpoint(max-lg) {
+                        margin: auto;
+                    }
+                }
+                @include breakpoint(xl) {
+                    @include breakpoint(max-xxl) {
+                        max-width: 600px;
+                    }
+                }
+                .section-header {
+                    text-align: center;
+                    padding: 0 15px;
+                    margin-bottom: 0;
+                    @include breakpoint(lg) {
+                        text-align: left;
+                    }
+                    .sub-title {
+                        display: inline-block;
+                        font-size: $fs-h6;
+                        font-family: $poppins;
+                        @include breakpoint(sm) {
+                            font-size: $fs-h4;
+                        }
+                    }
+                    h2 {
+                        text-align: center;
+                        color: $title-color;
+                        @include breakpoint(lg) {
+                            text-align: left;
+                        }
+                        @include breakpoint(xl) {
+                            font-size: 60px;
+                            line-height: 1.2;
+                        }
+                    }
+                    .sub-title {
+                        color: $theme-color;
+                        line-height: 1.5;
+                        font-weight: 600;
+                    }
+                    p {
+                        margin-left: 0;
+                        margin-bottom: 30px;
+                        @include breakpoint(xl) {
+                            @include breakpoint(max-xxl) {
+                                // padding-right: 50px;
+                            }
+                        }
+                        @include breakpoint(xxl) {
+                            // max-width: 530px;
+                        }
+                    }
+                    .food-btn {}
+                }
+            }
+        }
+    }
+    &.style-3 {
+        background: #f5f5f1;
+        padding: 0;
+        // height: 840px;
+        @include breakpoint(max-sm) {
+            // height: 300px;
+        }
+        @include breakpoint(lg) {
+            // height: 760px;
+        }
+        @include breakpoint(xl) {
+            // height: 730px;
+        }
+        .swiper-container {
+            @extend %hidden;
+            &.gallery-top {
+                width: 100%;
+                @include breakpoint(sm) {
+                    margin: 20px 0;
+                    width: auto;
+                }
+                .banner-item {
+                    .banner-inner {
+                        @extend %flex;
+                        flex-direction: row-reverse;
+                        align-items: center;
+                        background: $white-color;
+                        &:hover {
+                            .banner-thumb {
+                                img {
+                                    transform: scale(1.1);
+                                }
+                            }
+                            .banner-content {
+                                .banner-content-area {
+                                    h4 {
+                                        a {
+                                            color: $theme-color;
+                                            text-decoration-color: $title-color;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .banner-thumb {
+                            width: 100%;
+                            height: 300px;
+                            @extend %rel;
+                            @extend %hidden;
+                            @include breakpoint(lg) {
+                                width: 60%;
+                                height: 570px;
+                            }
+                            img {
+                                @extend %abs;
+                                width: 100%;
+                                height: 100%;
+                                left: 0;
+                                top: 0;
+                            }
+                        }
+                        .banner-content {
+                            width: 100%;
+                            @include breakpoint(lg) {
+                                width: 40%;
+                            }
+                            .banner-content-area {
+                                display: none;
+                                @include breakpoint(sm) {
+                                    display: block;
+                                }
+                                padding: 30px;
+                                h4 {
+                                    a {
+                                        text-decoration: underline;
+                                        text-decoration-color: $border-color;
+                                    }
+                                }
+                                .meta-post {
+                                    margin-bottom: 15px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.gallery-thumbs {
+                background: $white-color;
+                @include breakpoint(max-sm) {
+                    background: #ffffffd4;
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 90%;
+                }
+                .swiper-slide.swiper-slide-thumb-active {
+                    .banner-bitem {
+                        .banner-binner {
+                            &::after {
+                                transform-origin: right;
+                                transform: scaleX(1);
+                            }
+                        }
+                    }
+                }
+                .banner-bitem {
+                    .banner-binner {
+                        padding: 20px;
+                        cursor: pointer;
+                        @extend %rel;
+                        &::after {
+                            @extend %abs;
+                            width: 100%;
+                            height: 2px;
+                            bottom: 0;
+                            left: 0;
+                            background: $theme-color;
+                            transform-origin: left;
+                            transform: scaleX(0);
+                            transition: all .3s ease-in-out;
+                        }
+                        .banner-bcontent {
+                            h6 {
+                                margin-bottom: 0;
+                                font-weight: 500;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.style-4 {
+        padding: 0;
+        .banner-slider-2 {
+            @extend %hidden;
+            @extend %rel;
+            .banner-pagination-2 {
+                @extend %abs;
+                left: 50%;
+                bottom: 20px;
+                z-index: 1;
+                text-align: center;
+                transform: translateX(-50%);
+            }
+            .swiper-slide.swiper-slide-active {
+                .section-wrapper {
+                    animation: slideInDown .5s linear;
+                }
+            }
+            .swiper-pagination-bullet-active {
+                background: $theme-color;
+                outline: none;
+            }
+        }
+        .banner-slider-part {
+            padding: 85px 0;
+            background-size: cover !important;
+            background-position: top left !important;
+            @include breakpoint(lg) {
+                background-position: center !important;
+                padding: 100px 0;
+            }
+            @include breakpoint(xl) {
+                padding: 217px 0;
+            }
+            .section-wrapper {
+                .banner-content {
+                    .sub-title {
+                        color: $theme-color;
+                        font-weight: 600;
+                        @include transition($transition);
+                        @include breakpoint(sm) {
+                            font-size: $fs-h3;
+                        }
+                    }
+                    h2 {
+                        line-height: $fs-h3;
+                        @include breakpoint(sm) {
+                            font-size: $fs-h1;
+                            line-height: $lh-h1;
+                        }
+                    }
+                    p {
+                        margin: 15px 0 30px;
+                    }
+                }
+            }
+        }
+    }
+}

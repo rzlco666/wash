@@ -1,0 +1,1911 @@
+/* @@@@@@@@@@@@@  Header Section Start Here  @@@@@@@@@@@@@@ */ 
+.section-header {
+    text-align: center;
+    margin-top: -5px;
+    margin-bottom: 30px;
+    @include breakpoint(sm) {
+        margin-bottom: 50px;
+        margin-top: -10px;
+    }
+    h3 {
+        margin-bottom: 10px;
+        line-height: 1.2;
+        @include breakpoint(sm) {
+            margin-bottom: 15px;
+        }
+    }
+    p {
+        @include breakpoint(md) {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+    }
+    &.style-2 {
+        @extend %flex;
+        margin: 0 11px;
+        margin-bottom: 30px;
+        margin-top: -4px;
+        border-bottom: 1px dashed $border-color;
+        border-width: 2px;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 12px;
+        @include breakpoint(sm) {
+            justify-content: space-between;
+
+        }
+        h4 {
+            @include breakpoint(max-sm) {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+        .text-btn {
+            display: inline-block;
+            margin-bottom: 0;
+            @include breakpoint(max-sm) {
+                text-align: center;
+            }
+        }
+    }
+}
+
+
+.scrollToTop {
+    position: fixed;
+    bottom: -30%;
+    right: 5%;
+    z-index: 9;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background: $theme-color;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 24px;
+    animation: lab_top_up 5s linear infinite;
+    @include transition($transition);
+    i {
+        color: $white-color;
+    }
+    &:hover {
+        background: $white-color;
+        transform: translateY(-5px);
+        i {
+            color: $theme-color;
+        }
+    }
+}
+
+
+
+
+/* @@@@@@@@@@@@@  Common CSS Writing Now  @@@@@@@@@@@@@@ */
+.active {
+    .dd-icon-down {
+        &::after {
+            color: $theme-color;
+        }
+    }
+}
+
+
+.dd-icon-down {
+    @extend %rel;
+    &:before,
+    &::after {
+        @extend %abs;
+        background: $title-color;
+        top: 50%;
+        @include transition($transition);
+    }
+    &:after {
+        width : 10px;
+        right: 0;
+        height: 2px;
+        @include transform(translateY(-50%));
+    }
+    &:before {
+        width : 2px;
+        height: 10px;
+        @include transform(translateX(-15px)translateY(-50%));
+        left : calc(100% + 9px);
+    }
+}
+
+
+// dd-icon-right
+.dd-icon-right {
+    @extend %rel;
+    &:before,
+    &::after {
+        @extend %abs;
+        background: $title-color;
+        top: 50%;
+        right: 10px;
+        @include transition($transition);
+    }
+    &:after {
+        width : 10px;
+        height: 2px;
+        @include transform(translateY(-50%));
+    }
+    &:before {
+        width : 2px;
+        height: 10px;
+        @include transform(translateX(-4px)translateY(-50%));
+    }
+}
+
+.padding-tb {
+    padding: 70px 0;
+    @include breakpoint(xl) {
+        padding: 120px 0;
+    }
+}
+
+.bg-body {
+    background: $bg-body;
+}
+
+.rating {
+    i {
+        color: $star;
+    }
+}
+
+.bg-shape-style {
+    background: url(../../assets/images/header/footer/bg-shape.png);
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @extend %abs;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    @include breakpoint(lg) {
+        background-position: center center;
+    }
+}
+.food-btn {
+    display: inline-block;
+    padding: 16px 25px;
+    background: $theme-color;
+    border-radius: 4px;
+    @extend %rel;
+    @extend %hidden;
+    &::after {
+        @extend %abs;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        transform: scaleX(0);
+        transform-origin: 100% 50%;
+        background: $title-color;
+        transition: transform .3s ease-in-out;
+        -webkit-transition: transform .3s ease-in-out;
+    }
+    span {
+        z-index: 1;
+        position: relative;
+        font-size: 14px;
+        font-weight: 700;
+        color: $white-color;
+        text-transform: uppercase;
+    }
+    &:hover {
+        &::after {
+            transform: scaleX(1);
+            transform-origin:   0% 50%;
+        }
+    }
+    &.style-2 {
+        overflow: visible;
+        background: transparent;
+        border: 2px solid $theme-color;
+        padding: 14px 30px;
+        span {
+            color: $theme-color;
+        }
+        &::after {
+            background: $theme-color;
+        }
+        &:hover {
+            span {
+                color: $white-color;
+            }
+            .icon {
+                &::before {
+                    transform: scaleX(1);
+                    transform-origin:   0% 50%;
+                }
+            }
+        }
+    }
+    &.style-3 {
+        background: $theme-color;
+    }
+}
+
+.text-btn {
+    color: $theme-color;
+    &:hover {
+        color: $title-color;
+    }
+    &:visited {
+        color: $theme-color;
+        &:hover {
+            color: $title-color;
+        }
+    }
+    i {
+        margin-left: 5px;
+    }
+}
+
+// .text-center {
+//     .food-btn {
+//         margin-left: -60px;
+//     }
+// }
+
+.meta-tag {
+    @extend %flex;
+    margin-bottom: 7px;
+    .categori {
+        @extend %rel;
+        padding-right: 30px;
+        &::after {
+            @extend %abs;
+            top: 50%;
+            left: 0;
+            width: 30px;
+            height: 1px;
+            background: $theme-color;
+            transform: translateY(-50%);
+        }
+        a {
+            color: $theme-color;
+            padding-left: 45px;
+            &:hover {
+                color: $title-color;
+            }
+        }
+    }
+    .rating {
+        span {
+            color: $title-color;
+        }
+    }
+}
+
+.meta-post {
+    ul {
+        @extend %flex;
+        li {
+            @extend %flex;
+            align-items: center;
+            a {
+                color: $desc-color;
+                &:hover {
+                    color: $theme-color;
+                }
+                &.heart, &.view, &.date, &.author {
+                    padding-right: 20px;
+                }
+            }
+            img {
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+                @include border-radius(100%);
+            }
+            i {
+                color: #555;
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+.contact-from {
+    background: $white-color;
+    // margin-top: 60px;
+    // @include breakpoint(md) {
+    //     margin-top: 100px;
+    // }
+    // @include breakpoint(lg) {
+    //     margin-top: 0;
+    // }
+    form {
+        padding: 40px 25px;
+        input {
+            margin-bottom: 20px;
+            padding: 18px 15px;
+            background: #f6f6f5;
+            width: 100%;
+            outline: none;
+            border: none;
+            &[type="submit"] {
+                margin-top: 20px;
+                font-weight: 700;
+                padding: 17px;
+                border: none;
+                outline: none;
+                text-transform: uppercase;
+                font-size: 14px;
+                @extend %pointer;
+            }
+        }
+    }
+}
+
+// food item
+.food-item {
+    &:hover {
+        .food-thumb {
+            box-shadow: 0px 10px 10px rgba(129, 72, 17, .10);
+        }
+        .food-content {
+            a {
+                color: $theme-color;
+            }
+        }
+    }
+    .food-thumb {
+        width: 120px;
+        height: 120px;
+        line-height: 120px;
+        margin: 5px auto 20px;
+        box-shadow: 0 0px 10px rgba(136, 136, 136, .10);
+        text-align: center;
+        @include border-radius(10px);
+        @include transition($transition);
+    }
+    .food-content {
+        text-align: center;
+        a {
+            color: $title-color;
+            font-weight: 600;
+            text-transform: uppercase;
+            @include transition($transition);
+        }
+    }
+}
+
+// related post
+.single {
+    @extend %hidden;
+    .section-wrapper {
+        .chef-item {
+            box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+            @extend %rel;
+            &::after {
+                @extend %abs;
+                width: 595px;
+                height: 355px;
+                bottom: 0;
+                left: 0;
+                background: url(../../assets/images/chef/single/shape.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                @include breakpoint(max-md) {
+                    display: none;
+                }
+            }
+            .chef-inner {
+                .chef-thumb {
+                    height: 180px;
+                    @extend %hidden;
+                }
+                .chef-content {
+                    @extend %flex;
+                    text-align: left;
+                    justify-content: space-between;
+                    padding: 20px;
+                    padding-top: 130px;
+                    z-index: 1;
+                    @include breakpoint(sm) {
+                        margin-top: -100px;
+                        padding-top: 0;
+                    }
+                    @include breakpoint(md) {
+                        padding: 0;
+                        padding-top: 30px;
+                        margin-top: 0px;
+                    }
+                    .chef-author {
+                        @include breakpoint(sm) {
+                            transform: translateX(0px) translateY(-30px);
+                            position: static;
+                        }
+                        @include breakpoint(md) {
+                            transform: translateX(20px) translateY(-120px);
+                        }
+                    }
+                    .chef-desc {
+                        width: 100%;
+                        @include breakpoint(md) {
+                            width: calc(100% - 250px);
+                        }
+                        .chef-desc-top {
+                            @extend %flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            padding-bottom: 25px;
+                            margin-bottom: 20px;
+                            border-bottom: 1px solid $border-color;
+                            .title {
+                                @include breakpoint(max-sm) {
+                                    width: 100%;
+                                    text-align: center;
+                                }
+                                p {
+                                    margin-bottom: 0;
+                                }
+                            }
+                            .scocial-share {
+                                @extend %flex;
+                                align-items: center;
+                                padding-right: 10px;
+                                margin-bottom: 0;
+                                @include breakpoint(max-sm) {
+                                    width: 100%;
+                                    justify-content: center;
+                                    margin-top: 10px;
+                                }
+                                a {
+                                    margin: 5px;
+                                    @include border-radius(2px);
+                                    &.facebook {
+                                        width: 40px;
+                                        height: 40px;
+                                        line-height: 40px;
+                                        color: $white-color;
+                                        background: $facebook;
+                                        text-align: center;
+                                    }
+                                    &.food-btn {
+                                        padding: 8px 25px;
+                                    }
+                                }
+                            }
+                        }
+                        .chef-desc-middle {
+                            margin-bottom: 20px;
+                            p {
+                                padding-right: 10px;
+                                @include breakpoint(max-sm) {
+                                    text-align: center;
+                                    padding-right: 0;
+                                }
+                            }
+                            ul {
+                                li {
+                                    span {
+                                        color: $title-color;
+                                        display: inline-block;
+                                        width: 90px;
+                                        font-weight: 700;
+                                    }
+                                }
+                            }
+                        }
+                        .chef-footer {
+                            text-align: center;
+                            .chef-con {
+                                border-right: 1px solid $border-color;
+                                width: calc(100% / 2);
+                                &:last-child {
+                                    border: none;
+                                }
+                                @include breakpoint(sm) {
+                                    width: calc(100% / 4);
+                                }
+                                &.chef-menu {
+                                    @include breakpoint(sm) {
+                                        border-left: none;
+                                    }
+                                }
+                                &.chef-followers {
+                                    @include breakpoint(max-sm) {
+                                        border: 1px solid $border-color;
+                                    }
+                                }
+                                &.chef-following {
+                                    @include breakpoint(max-sm) {
+                                        border: 1px solid $border-color;
+                                        border-left: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .related {
+            margin-top: 60px;
+            .tab-bar {
+                @extend %flex;
+                justify-content: center;
+                margin-bottom: 30px;
+                @include breakpoint(sm) {
+                    justify-content: flex-start;
+                    border-bottom: 1px solid $border-color;
+                }
+                .tablinks {
+                    padding: 10px 25px;
+                    background: $border-color;
+                    margin: 5px;
+                    border: 1px solid $border-color;
+                    cursor: pointer;
+                    @extend %rel;
+                    @include breakpoint(md) {
+                        margin: 0 5px;
+                    }
+                    &:first-child {
+                        @include breakpoint(sm) {
+                            margin-left: 0;
+                        }
+                    }
+                    &::after {
+                        @extend %abs;
+                        width: 100%;
+                        height: 2px;
+                        bottom: -2px;
+                        left: 0;
+                        transform-origin: left;
+                        transform: scaleX(0);
+                        background: $theme-color;
+                        transition: all .3s ease-in-out;
+                    }
+                    &.active {
+                        background: $white-color;
+                        &::after {
+                            right: 0;
+                            transform-origin: right;
+                            transform: scaleX(1);
+                        }
+                    }
+                }
+            }
+            .tabcontent {
+                .popular-foods {
+                    .section-wrapper {
+                        .p-food-item {
+                            box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+                            @include breakpoint(xl) {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+                .recent-recipe {
+                    .recipe-item {
+                        box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+                    }
+                }
+                .product {
+                    .section-wrapper {
+                        .product-item {
+                            box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+                            .product-content {
+                                h6 {
+                                    margin-bottom: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .popular-chef-widget {
+            .section-header {
+                margin-bottom: 10px;
+                padding: 22px 0;
+                border-bottom: 1px solid $border-color;
+                h6 {
+                    margin-bottom: 0px;
+                }
+            }
+            .food-category {
+                box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+                margin-bottom: 40px;
+                .section-wrapper {
+                    @extend %flex;
+                    justify-content: center;
+                    padding: 20px 10px;
+                    .food-item {
+                        width: calc(100% / 2);
+                        @include breakpoint(sm) {
+                            width: calc(100% / 3);
+                        }
+                        .food-inner {
+                            margin: 10px;
+                            .food-thumb {
+                                @include breakpoint(sm) {
+                                    width: 100px;
+                                    height: 100px;
+                                    line-height: 100px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .contact-from {
+                box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+            }
+        }
+    }
+}
+
+.food-quyality {
+    box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+    margin: 30px 0;
+    @include breakpoint(xl) {
+        margin-top: 0;
+    }
+    .section-header {
+        p {
+            span {
+                color: $title-color;
+                font-weight: 500;
+            }
+        }
+    }
+    .section-wrapper {
+        padding: 20px 30px;
+        label {
+            @include breakpoint(sm) {
+                @include breakpoint(max-lg) {
+                    width: 100%;
+                }
+            }
+            input {
+                padding: 12px 15px;
+                margin-bottom: 20px;
+            }
+        }
+        .food-btn {
+            width: 100%;
+            text-align: center;
+            &.style-2 {
+                width: auto;
+            }
+        }
+        ul {
+            @extend %flex;
+            justify-content: flex-start;
+            margin-top: 20px;
+            li {
+                margin: 5px;
+                @include breakpoint(sm) {
+                    margin: 0 15px;
+                }
+                &:first-child {
+                    margin-left: 0;
+                }
+                a {
+                    color: $desc-color;
+                    &:hover {
+                        color: $theme-color;
+                    }
+                    i {
+                        margin-right: 10px;
+                        color: $theme-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// video thumb
+.video-thumb {
+    @extend %rel;
+    &:hover {
+        .video-icon {
+            i {
+                color: $youtube;
+            }
+        }
+    }
+    img {
+        width: 100%;
+    }
+    .video-icon {
+        @extend %abs;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        i {
+            font-size: $fs-h3;
+            @include transition($transition);
+            @include breakpoint(sm) {
+                font-size: $fs-h1;
+            }
+        }
+    }
+}
+
+
+// service item
+.service-item {
+    width: calc(100% / 1);
+    margin-bottom: 40px;
+    @include breakpoint(md) {
+        width: calc(100% / 2);
+    }
+    @include breakpoint(lg) {
+        width: calc(100% / 4);
+        margin-bottom: 0;
+    }
+    &:last-child {
+        @include breakpoint(max-sm) {
+            margin-bottom: 0;
+        }
+    }
+    .service-inner {
+        &:hover {
+            .service-thumb {
+                span {
+                    background: $white-color;
+                    border-color: $theme-color;
+                    color: $theme-color;
+                }
+            }
+            .service-content {
+                h6 {
+                    a {
+                        color: $theme-color;
+                    }
+                }
+            }
+        }
+        .service-thumb {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            border-radius: 100%;
+            margin: 0 auto 35px;
+            border: 15px solid $white-color;
+            box-shadow: 0 0 10px rgba(129, 72, 17, .20);
+            @extend %rel;
+            &::after {
+                @extend %abs;
+                display: none;
+                @include breakpoint(xl) {
+                    display: inherit;
+                    height: 28px;
+                    width: 90px;
+                    left: 110%;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: url(../../assets/images/service/shape/01.png);
+                    background-repeat: no-repeat;
+                }
+
+            }
+            img {
+                @include border-radius(100%);
+            }
+            span {
+                @extend %abs;
+                width: 60px;
+                height: 60px;
+                padding: 8px;
+                line-height: 1;
+                top: -15px;
+                right: -15px;
+                border-radius: 100%;
+                color: $white-color;
+                text-transform: uppercase;
+                border: 4px solid $white-color;
+                @include transition($transition);
+                background: $theme-color;
+            }
+        }
+        .service-content {
+            text-align: center;
+            h6 {
+                margin-bottom: 0;
+                a {
+                    color: $title-color;
+                    @include transition($transition);
+                }
+            }
+        }
+    }
+}
+
+// popular food item
+.p-food-item {
+    margin-bottom: 30px;
+    .p-food-inner {
+        background: $white-color;
+        box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+        @extend %hidden;
+        @include border-radius(10px);
+        @include transition($transition);
+        &:hover {
+            .p-food-thumb {
+                img {
+                    transform: scale(1.1);
+                }
+            }
+        }
+        .p-food-thumb {
+            @extend %rel;
+            @extend %hidden;
+            border: 15px solid $white-color;
+            img {
+                width: 100%;
+                @include border-radius(10px);
+            }
+            span {
+                display: inline-block;
+                font-weight: 500;
+                padding: 5px 10px;
+                font-size: 14px;
+                text-align: center;
+                color: $white-color;
+                box-shadow: 0 10px 10px rgba(228, 129, 106, .10);
+                background: $theme-color;
+                top: 15px;
+                left: 15px;
+                @include border-radius(4px);
+                @extend %abs;
+            }
+        }
+        .p-food-content {
+            padding: 40px 20px 0;
+            text-align: center;
+            @extend %rel;
+            .p-food-author {
+                @extend %abs;
+                @include border-radius(100%);
+                // width: 70px;
+                // height: 70px;
+                // line-height: 60px;
+                text-align: center;
+                left: 50%;
+                top: -45px;
+                border: 3px solid $white-color;
+                transform: translateX(-50%);
+                background: linear-gradient(to top, #e27669, #edb46c);
+                img {
+                    @include border-radius(100%);
+                }
+            }
+            h6 {
+                margin-bottom: 5px;
+                a {
+                    &:hover {
+                        color: $theme-color;
+                    }
+                }
+            }
+            .del-time {
+                @extend %flex;
+                justify-content: center;
+                padding: 15px 0;
+                li {
+                    width: 40px;
+                    height: 40px;
+                    text-align: center;
+                    line-height: 40px;
+                    color: $title-color;
+                    padding: 0;
+                    margin: 5px;
+                    background: $ash-color;
+                    @include border-radius(100%);
+                    @extend %rel;
+                    @extend %pointer;
+                    &:hover {
+                        .time-tooltip {
+                            opacity: 1;
+                            visibility: visible;
+                            -webkit-transform: translate(-50%, -10px);
+                            -moz-transform: translate(-50%, -10px);
+                            -ms-transform: translate(-50%, -10px);
+                            transform: translate(-50%, -10px);
+                        }
+                    }
+                    .time-tooltip {
+                        @extend %abs;
+                        bottom: 0;
+                        left: 40%;
+                        width: 250px;
+                        height: auto;
+                        border-radius: 10px;
+                        background-color: #fff;
+                        -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+                        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+                        opacity: 0;
+                        visibility: hidden;
+                        -webkit-transform: translate(-50%, -20px);
+                        -moz-transform: translate(-50%, -20px);
+                        -ms-transform: translate(-50%, -20px);
+                        transform: translate(-50%, -20px);
+                        text-align: center;
+                        padding: 10px;
+                        z-index: 4;
+                        -moz-transition: all 0.3s ease-in-out;
+                        -webkit-transition: all 0.3s ease-in-out;
+                        transition: all 0.3s ease-in-out;
+                        margin-bottom: 42px;
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            width: 19px;
+                            height: 19px;
+                            background: #fff;
+                            -webkit-transform: rotate(45deg) translateX(-50%);
+                            -moz-transform: rotate(45deg) translateX(-50%);
+                            -ms-transform: rotate(45deg) translateX(-50%);
+                            transform: rotate(45deg) translateX(-50%);
+                            bottom: -12px;
+                            left: 50%;
+                            -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+                            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+                            z-index: -1;
+                        }
+                        &::before {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            content: "";
+                            background: #fff;
+                            border-radius: 10px;
+                        }
+                        .time-tooltip-holder {
+                            @extend %rel;
+                            z-index: 1;
+                            .tooltip-label {
+                                display: block;
+                                width: 100%;
+                                font-size: 14px;
+                                line-height: 20px;
+                                color: $title-color;
+                            }
+                            .tooltip-info {
+                                display: block;
+                                font-size: 12px;
+                                line-height: 20px;
+                                color: $desc-color;
+                            }
+                        }
+                    }
+                }
+            }
+            .p-food-group {
+                justify-content: center;
+            }
+            .p-food-footer {
+                @extend %flex;
+                justify-content: space-between;
+                border-top: 1px solid $border-color;
+                @include breakpoint(max-sm) {
+                    padding: 10px 0;
+                }
+                .left, .right {
+                    padding: 10px 0;
+                    width: 100%;
+                }
+                .left {
+                    @include breakpoint(sm) {
+                        width: 40%;
+                        border-right: 1px solid $border-color;
+                    }
+                }
+                .right {
+                    @include breakpoint(max-sm) {
+                        padding-top: 0;
+                    }
+                    @include breakpoint(sm) {
+                        width: 60%;
+                    }
+                    @include breakpoint(md) {
+                        text-align: right;
+                    }
+                    i {
+                        color: #555555;
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+    }
+    &.style-2 {
+        .p-food-inner {
+            @extend %flex;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(161, 161, 161, .10);
+            .p-food-thumb {
+                width: 100%;
+                border: 10px solid $white-color;
+                @include breakpoint(md) {
+                    width: 37%;
+                }
+                @include breakpoint(lg) {
+                    @include breakpoint(max-xl) {
+                        width: 100%;
+                    }
+                }
+            }
+            .p-food-content {
+                text-align: center;
+                padding: 10px 20px 0 10px;
+                width: 100%;
+                @include breakpoint(md) {
+                    text-align: left;
+                }
+                @include breakpoint(md) {
+                    width: 63%;
+                }
+                @include breakpoint(lg) {
+                    @include breakpoint(max-xl) {
+                        width: 100%;
+                    }
+                }
+                .p-food-group, .del-time {
+                    @include breakpoint(md) {
+                        justify-content: flex-start;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// p-food-group
+.p-food-group {
+    @extend %flex;
+    justify-content: flex-start;
+    span {
+        margin-right: 10px;
+    }
+    a {
+        margin-right: 10px;
+        color: $desc-color;
+        display: inline-block;
+        @extend %rel;
+        &:hover {
+            color: $theme-color;
+        }
+        &::after {
+            @extend %abs;
+            content: "," !important;
+            bottom: 0;
+            right: -5px;
+            font-weight: 500;
+        }
+        &:last-child {
+            &::after {
+                display: none;
+            }
+        }
+    }
+}
+
+// chef item
+.chef-item {
+    margin-bottom: 30px;
+    @include breakpoint(xl) {
+        margin-bottom: 0;
+    }
+    .chef-inner {
+        background: $white-color;
+        box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+        @extend %hidden;
+        @include border-radius(10px);
+        @include transition($transition);
+        &:hover {
+            box-shadow: 0 10px 10px rgba(161, 161, 161, .10);
+            .chef-content {
+                h5 {
+                    a {
+                        color: $theme-color;
+                    }
+                }
+            }
+        }
+        .chef-thumb {
+            img {
+                width: 100%;
+            }
+        }
+        .chef-content {
+            text-align: center;
+            padding: 120px 20px 0;
+            @extend %rel;
+            .chef-author {
+                width: 200px;
+                height: 200px;
+                line-height: 200px;
+                border-radius: 100%;
+                left: 50%;
+                top: -100px;
+                transform: translateX(-50%);
+                @extend %abs;
+                @extend %hidden;
+                a {
+                    display: block;
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+            h5 {
+                margin-bottom: 0px;
+                @include breakpoint(sm) {
+                    font-size: 20px;
+                }
+            }
+            .scocial-share {
+                margin-bottom: 25px;
+                .food-btn {
+                    padding: 8px 25px;
+                }
+            }
+            p {
+                margin-bottom: 15px;
+                font-size: 15px;
+            }
+            .chef-footer {
+                @extend %flex;
+                justify-content: space-around;
+                padding-bottom: 5px;
+                border-top: 1px solid $border-color;
+                .chef-con {
+                    width: calc(100% / 3);
+                    padding-top: 15px;
+                    h6 {
+                        margin-bottom: 3px;
+                    }
+                    a {
+                        color: $desc-color;
+                        margin-bottom: 3px;
+                        &:hover {
+                            color: $theme-color;
+                        }
+                    }
+                }
+                .chef-menu {
+                    border-left: 1px solid $border-color;
+                    border-right: 1px solid $border-color;
+                }
+            }
+        }
+    }
+}
+
+// product item
+.product-item {
+    padding: 30px 0;
+    box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+    text-align: center;
+    background: $white-color;
+    @include border-radius(10px);
+    @include breakpoint(max-xl) {
+        margin-bottom: 30px;
+    }
+    &:hover {
+        .product-thumb {
+            .price {
+                background: $white-color;
+                border-color: $theme-color;
+                color: $theme-color;
+            }
+        }
+        .product-content {
+            h6 {
+                a {
+                    color: $theme-color;
+                }
+            }
+        }
+    }
+    .product-thumb {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 30px;
+        box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+        @include border-radius(100%);
+        @extend %rel;
+        img {
+            width: 100%;
+            @include border-radius(100%);
+        }
+        .price {
+            @extend %abs;
+            width: 54px;
+            height: 54px;
+            line-height: 48px;
+            top: 10px;
+            right: 10px;
+            text-align: center;
+            color: $white-color;
+            font-size: $fs-base;
+            font-weight: 600;
+            border: 4px solid $white-color;
+            background: $theme-color;
+            @include border-radius(100%);
+            @include transition($transition);
+        }
+    }
+    .product-content {
+        p {
+            margin-bottom: 5px;
+            color: $theme-color;
+            @include breakpoint(sm) {
+                font-size: $fs-h6;
+            }
+        }
+        h6 {
+            margin-bottom: 5px;
+            font-size: $fs-base;
+        }
+    }
+    &.style-2 {
+        @extend %flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background: $white-color;
+        margin: 5px;
+        @include breakpoint(sm) {
+            text-align: left;
+        }
+        .product-thumb {
+            width: 120px;
+            height: 120px;
+            @include breakpoint(sm) {
+                margin-bottom: 0;
+                margin-left: 0;
+            }
+            .price {
+                top: 0;
+                right: 0;
+                width: 44px;
+                height: 44px;
+                line-height: 38px;
+                font-size: $fs-base;
+                font-weight: 400;
+            }
+        }
+        .product-content {
+            width: 100%;
+            @include breakpoint(sm) {
+                width: calc(100% - 150px);
+                padding: 0 10px 0 0;
+            }
+            .product-title {
+                @extend %flex;
+                justify-content: space-between;
+                margin-bottom: 15px;
+                border-bottom: dashed $border-color;
+                border-width: 1px;
+                @include breakpoint(max-sm) {
+                    justify-content: center;
+                    h6 {
+                        width: 100%;
+                    }
+                }
+                .rating {
+                    margin-bottom: 10px;
+                }
+            }
+            .product-desc {
+                p {
+                    color: $desc-color;
+                    font-size: $fs-base;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+
+// cart-plus-minus start here
+.cart-plus-minus {
+	border: 1px solid $border-color;
+    width: 120px;
+    margin: 0 auto;
+    @extend %rel;
+    @extend %hidden;
+	.dec.qtybutton {
+		border-right: 1px solid $border-color;
+	    height: 40px;
+	    left: 0;
+	    top: 0;
+	}
+	.cart-plus-minus-box {
+	    border: medium none;
+	    color: $title-color;
+	    float: left;
+	    font-size: 14px;
+	    height: 40px;
+	    margin: 0;
+	    padding: 0 9px 0 0;
+	    text-align: center;
+	    width: 120px;
+	    outline: none;
+	}
+	.qtybutton {
+		color: $title-color;
+	    float: inherit;
+	    font-size: 14px;
+	    font-weight: 500;
+	    line-height: 40px;
+	    margin: 0;
+	    text-align: center;
+	    width: 40px;
+	    @extend %abs;
+	    @include transition($transition);
+	    &:hover {
+	    	background: $theme-color;
+	    	color: $white-color;
+	    }
+	}
+	.inc.qtybutton {
+	    border-left: 1px solid $border-color;
+	    height: 40px;
+	    right: 0;
+	    top: 0;
+	}
+}
+
+
+// search area start here
+.search-area {
+    &.open {
+        .search-input {
+            transform: scaleX(1);
+        }
+    }
+    .search-input {
+        margin: auto;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: $white-color;
+        z-index: 1111111;
+        text-align: center;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transform: scaleX(0);
+        @include transition($transition);
+        .search-close {
+            width: 50px;
+            height: 50px;
+            top: 50px;
+            right: 50px;
+            @extend %abs;
+            &:hover {
+                span {
+                    background: $theme-color;
+                }
+            }
+            span {
+                width: 50px;
+                height: 1px;
+                background: $title-color;
+                top: 25px;
+                right: 0px;
+                @extend %abs;
+                @include transition($transition);
+                &:nth-child(1) {
+                    transform: rotate(45deg);
+                }
+                &:nth-child(2) {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+        form {
+            top: 50%;
+            left: 50%;
+            width: 75%;
+            transform: translate(-50%,-50%);
+            @extend %abs;
+            input {
+                width: 100%;
+                color: $desc-color;
+                border-radius: 0;
+                text-align: center;
+                font-size: $fs-h2;
+                border: none;
+                outline: none;
+                border-bottom: 1px solid $border-color;
+                &:hover, &:focus {
+                    border-color: $theme-color;
+                }
+            }
+        }
+    }
+}
+
+// recipe item
+.recipe-item {
+    background: $white-color;
+    margin-bottom: 30px;
+    box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+    @extend %hidden;
+    @include border-radius(10px);
+    &:hover {
+        .recipe-thumb {
+            a {
+                img {
+                    transform: scale(1.1) rotate(-3deg);
+                }
+            }
+        }
+        .recipe-content {
+            h6 {
+                a {
+                    color: $theme-color;
+                }
+            }
+        }
+    }
+    .recipe-thumb {
+        @extend %hidden;
+        a {
+            display: block;
+            img {
+                @include transition($transition);
+                width: 100%;
+            }
+        }
+    }
+    .recipe-content {
+        padding: 30px;
+        h6 {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+
+// pricing item
+.pricing-item {
+    margin-bottom: 30px;
+    .pricing-inner {
+        box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+        @include border-radius(10px);
+        .price-top {
+            text-align: center;
+            .p-title {
+                padding: 33px 0;
+                h4 {
+                    margin-bottom: 0;
+                    @include transition($transition);
+                }
+            }
+            .p-price {
+                padding: 47px 0;
+                background: url(../../assets/images/pricing/bg/01.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                h3, p {
+                    color: $white-color;
+                }
+                p {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .price-body {
+            text-align: center;
+            padding: 45px 0 40px;
+            ul {
+                li {
+                    padding: 10px 0;
+                }
+            }
+        }
+        .price-footer {
+            padding-bottom: 40px;
+            text-align: center;
+            .food-btn {
+                box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+                background: $white-color;
+                @include transition($transition);
+                &:hover {
+                    span {
+                        color: $white-color;
+                    }
+                }
+                span {
+                    color: $theme-color;
+                    @include transition($transition);
+                }
+            }
+        }
+    }
+}
+
+
+// scocial-media
+.scocial-media {
+    margin-bottom: 20px;
+    a {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 2px;
+        color: $white-color;
+        font-size: $fs-h5;
+        margin-bottom: 4px;
+        text-align: center;
+        &:hover {
+            border-radius: 100%;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 10px rgba(136, 136, 136, .20);
+        }
+    }
+}
+
+.bg-table {
+    background: url(../../assets/images/book-table/bg-table.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 40px;
+    z-index: 1;
+    height: 300px;
+    @extend %rel;
+    @include breakpoint(lg) {
+        margin-bottom: 0;
+        height: 500px;
+    }
+}
+
+// pagination start here
+.paginations {
+    margin: 40px 0;
+    @include breakpoint(lg) {
+        margin-bottom: 0;
+    }
+    ul {
+        li {
+            padding: 5px;
+            a {
+                width: 46px;
+                height: 46px;
+                align-items: center;
+                justify-content: center;
+                box-shadow : 0 3px 4px rgba(10, 31, 68, .1);
+                color: $desc-color;
+                z-index: 1;
+                @extend %rel;
+                @extend %flex;
+                @include border-radius(50%);
+                @include transition($transition);
+                &.active,
+                &:hover {
+                    color: $white-color;
+                    background: $theme-color;
+                }
+                &.dot {
+                    box-shadow: none;
+                    &:hover {
+                        background: transparent;
+                        color: $desc-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.facebook {
+    background: $facebook;
+}
+.twitter {
+    background: $twitter;
+}
+.linkedin {
+    background: $linkedin;
+}
+.vimeo {
+    background: $vimeo;
+}
+/* @@@@@@@@@@@@@  Extend Property CSS Writing Now  @@@@@@@@@@@@@@ */
+%flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+%rel {
+    position: relative;
+}
+%abs {
+    position: absolute;
+    content: "";
+}
+%pm {
+    padding: 0;
+    margin: 0;
+}
+%hidden {
+    overflow: hidden;
+}
+%pointer {
+    cursor: pointer;
+}
+
+
+// product item home page 4 home-4
+.pp-item .pp-inner {
+    position: relative;
+    z-index: 1;
+    min-height: 325px;
+    text-align: center;
+    perspective: 1000px;
+    margin-bottom: 30px;
+}
+.pp-item .pp-inner .pp-fornt::after {
+    position: absolute;
+    content: "";
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    top: 10px;
+    left: 10px;
+    border: dashed #ededed;
+    border-width: 1px;
+    border-radius: 10px;
+}
+
+.pp-item .pp-thumb {
+    margin-bottom: 15px;
+}
+.pp-item .pp-fornt,
+.pp-item .pp-back {
+    display: block;
+    -webkit-backface-visibility: unset;
+    backface-visibility: unset;
+    transition: transform 1s, visibility 0s 0.3s;
+    min-height: inherit;
+    border-radius: 10px;
+    background-position: top left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+    box-shadow: 0px 15px 38px rgba(0, 0, 0, 0.1);
+    perspective: inherit;
+    transform-style: preserve-3d;
+}
+
+@supports ((-webkit-backface-visibility: hidden) or (backface-visibility: hidden)) {
+    .pp-item .pp-fornt,
+    .pp-item .pp-back {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transition: transform 0.8s cubic-bezier(0.5, 0.2, 0.2, 0.8);
+    } 
+}
+
+.pp-item .pp-fornt {
+    box-sizing: border-box;
+    padding: 30px;
+    visibility: visible; 
+}
+
+@supports ((-webkit-backface-visibility: hidden) or (backface-visibility: hidden)) {
+    .pp-item .pp-fornt {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        visibility: unset; 
+    } 
+}
+.pp-item .pp-fornt .pp-thumb {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    box-shadow: none;
+    border: dashed $border-color;
+    border-width: 1px;
+    margin: 0 auto 20px;
+    border-radius: 100%;
+}
+.pp-item .pp-fornt .pp-title {
+    @include breakpoint(sm) {
+        font-size: 20px;
+    } 
+}
+
+.pp-item .pp-fornt .pp-desc p {
+    font-size: 15px;
+}
+
+.pp-item .pp-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    background-color: #fff;
+    visibility: hidden; 
+}
+@supports ((-webkit-backface-visibility: hidden) or (backface-visibility: hidden)) {
+    .pp-item .pp-back {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        visibility: unset;
+    } 
+}
+.pp-item .pp-back .pp-title,
+.pp-item .pp-back .pp-back-btn {
+    transform-style: inherit;
+    perspective: inherit;
+    -webkit-backface-visibility: inherit;
+    backface-visibility: inherit; 
+}
+.pp-item .pp-back .pp-title {
+    padding: 0 20px;
+    margin-bottom: 10px;
+    transform: translate3d(0, 0, 70px) scale(0.86); 
+}
+.pp-item .pp-back .pp-back-btn {
+    font-size: 14px;
+    margin: 0 auto;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: $white-color;
+    background: $theme-color;
+    padding: 10px;
+    border-radius: 6px;
+    width: 160px;
+    transform: translate3d(0, 0, 60px) scale(0.86);
+    &:hover {
+        color: $theme-color;
+        background: $white-color;
+    }
+}
+
+.pp-item .pp-fornt {
+    transform: rotateY(0deg); 
+}
+
+.pp-item .pp-back {
+    transform: rotateY(-180deg); 
+}
+.pp-item .pp-back::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.50);
+}
+.pp-item:hover .pp-fornt {
+    visibility: hidden;
+    transform: rotateY(180deg); 
+}
+
+@supports ((-webkit-backface-visibility: hidden) or (backface-visibility: hidden)) {
+    .pp-item:hover .pp-fornt {
+        visibility: unset; 
+    } 
+}
+
+.pp-item:hover .pp-back {
+    visibility: visible;
+    transform: rotateY(0); 
+}
+@supports ((-webkit-backface-visibility: hidden) or (backface-visibility: hidden)) {
+    .pp-item:hover .pp-back {
+        visibility: unset; 
+    } 
+}
+
+// preloader css
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $theme-color;
+    z-index: 2222;
+}
+.load {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    /*change these sizes to fit into your project*/
+    width:100px;
+    height:100px;
+    z-index: 1;
+}
+.load hr{
+    border:0;
+    margin:0;
+    width:40%;
+    height:40%;
+    position:absolute;
+    border-radius:50%;
+    animation:spin 2s ease infinite
+}
+
+.load :first-child{background:#fff;animation-delay:-1.5s}
+.load :nth-child(2){background:#fff;animation-delay:-1s}
+.load :nth-child(3){background:#fff;animation-delay:-0.5s}
+.load :last-child{background:#fff}
+
+@keyframes spin {
+    0%,100%{transform:translate(0)}
+    25%{transform:translate(160%)}
+    50%{transform:translate(160%, 160%)}
+    75%{transform:translate(0, 160%)}
+}
+
+
+// .scrollbar::-webkit-scrollbar-track {
+//     --webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+//     background-color: #fff;
+// }
+// .scrollbar::-webkit-scrollbar {
+//     width: 6px;
+//     background-color: #fff;
+// }
+// .scrollbar::-webkit-scrollbar-thumb {
+//     background-color: $theme-color;
+// }
+
+// @include breakpoint(xl) {
+//     ::-webkit-scrollbar {
+//         width: 10px;
+//     }
+//     ::-webkit-scrollbar-track {
+//         background: $theme-color; 
+//         box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+//     }
+//     ::-webkit-scrollbar-thumb {
+//         background: $white-color; 
+//     }
+//     ::-webkit-scrollbar-thumb:hover {
+//         background: $btn-color; 
+//     }
+// }
+
+
+// responsive
+@media (max-width: 450px) {
+    .food-apps .apps-content .section-header, .p-food-item.style-2 .p-food-inner .p-food-content {
+        text-align: center !important;
+    }
+    .food-apps .apps-content .section-header .food-btn-group {
+        justify-content: center;
+    }
+    .food-apps .apps-content .section-header .food-btn-group a {
+        margin-right: 0 !important;
+    }
+    .blog-section.home-3 .section-wrapper .post-item .post-inner .post-content .food-btn.style-2, .recepi-single.home-3 .section-wrapper .post-item .post-inner .post-content .food-btn.style-2 {
+        margin-bottom: 0 !important;
+    }
+    .shop-cart .section-wrapper .cart-bottom .shiping-box .calculate-shiping button {
+        width: 100% !important;
+    }
+}

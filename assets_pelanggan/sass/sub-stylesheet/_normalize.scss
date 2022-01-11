@@ -1,0 +1,207 @@
+/*!
+Template Name: Mezban
+Template URI: http://FoxCoders.com
+Author: Underscores.me
+Author URI: http://FoxCoders.com
+Description: Description
+Version: 1.0.0
+Text Domain: Mezban
+Tags: restaurant, pizza, burger, business, house, online, delevery, html, coffee, cafe, bar
+
+*/
+
+/*---------------------------------------------
+Table of CONTENT
+-----------------------------------------------
+
+01. Normalize CSS
+02. Global CSS
+03. Header 
+  * Style-1
+  * Style-2
+  * Style-3
+  * Mobile Menu
+04. Banner 
+  * Style-1
+  * Style-2
+  * Style-3
+05. Page Header
+  * Style-1
+  * Style-2
+06. Food Category
+07. Food Services
+08. Popular Foods
+  * Style-1
+  * Style-2
+09. Food Apps
+10. Popular Chef
+  * Style-1
+  * Style-2
+11. Contact Us
+12. Testimonial
+  * Style-1
+  * Style-2
+13. About Section
+14. Product
+  * Style-1
+  * Style-2
+  * Style-3
+  * Style-4
+15. Booking Table
+16. Sponsor
+17. Newsletter
+18. Recipe Categori
+19. Gallery
+20. Video
+21. Coming Soon
+22. Shop Page
+  * Shop Single
+  * Shop Single 2
+  * cart Page
+23. Gmaps
+24. Popular Blog
+  * blog Single
+  * recipe Single
+25. 404 page
+
+-----------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	color: $desc-color;
+	font-family: $poppins;
+	font-size: $fs-base;
+	line-height: 1.5;
+	background: $white-color;
+	padding-top: 98px;
+	@include breakpoint(xl) {
+		padding-top: 0;
+	}
+}
+
+h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, a h1, a h2, a h3, a h4, a h5, a h6   {
+	clear: both;
+	font-weight: 600;
+	line-height: 1.4;
+	font-family: $poppins;
+	color: $title-color;
+}
+h1 {
+	font-size: $fs-h1;
+	@include breakpoint(sm) {
+		font-size: $fs-h1;
+		line-height: $lh-h1;
+	}
+}
+
+h2 {
+	font-size: $fs-h4;
+	@include breakpoint(sm) {
+		font-size: $fs-h2;
+	}
+}
+
+h3 {
+	font-size: $fs-h4;
+	@include breakpoint(sm) {
+		font-size: $fs-h3;
+		line-height: $lh-h3;
+	}
+}
+
+h4 {
+	font-size: 22px;
+	@include breakpoint(sm) {
+		font-size:$fs-h4;
+		line-height: $lh-h4;
+	}
+}
+
+h5 {
+	 font-size: 20px;
+	 @include breakpoint(sm) {
+		font-size: $fs-h5;
+		line-height: $lh-h5;
+	}
+}
+h6 {
+	font-size: $fs-h6;
+	@include breakpoint(sm) {
+		font-size: $fs-h6;
+		line-height: $lh-h6;
+	}
+}
+p {
+	margin-bottom: 15px;
+	font-weight: 400;
+	font-size: $fs-base;
+	line-height: 24px;
+}
+
+a {
+	color: $desc-color;
+	display: inline-block;
+	@include transition($transition);
+}
+
+a:hover, a:focus, a:active {
+	color: $title-color;
+	text-decoration: none;
+	outline: none;
+}
+
+a:focus {
+	outline: thin dotted;
+	outline: none;
+}
+a:hover, a:active {
+	outline: 0;
+}
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+li > ul,
+li > ol {
+	margin-bottom: 0;
+	margin-left: 15px;
+}
+li {
+	padding: 5px 0;
+	list-style: none;
+}
+
+img {
+	height: auto;
+	max-width: 100%;
+	@include transition($transition);
+}
+
+select {
+	border: 1px solid $border-color;
+	outline: none;
+}
+select option {
+	outline: none;
+	box-shadow: none;
+	border: none;
+}
+textarea {
+	width: 100%;
+}
+aside {
+	margin-top: 30px;
+	@include breakpoint(lg) {
+		margin-top: 0;
+	}
+}

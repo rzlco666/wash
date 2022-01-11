@@ -1,0 +1,2285 @@
+/* @@@@@@@@@@@@@  Food Category Section Start Here  @@@@@@@@@@@@@@ */
+.food-category {
+    &.padding-tb {
+        @include breakpoint(xl) {
+            padding: 130px 0;
+        }
+    }
+    .food-box {
+        padding: 60px 30px;
+        background: $white-color;
+        box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+        @include border-radius(10px);
+        @include breakpoint(sm) {
+            padding: 60px 40px;
+        }
+        @include breakpoint(xl) {
+            padding: 110px 70px;
+        }
+        .section-wrapper {
+            @extend %rel;
+            .food-slider {
+                @extend %hidden; 
+            }
+            .food-slider-prev , .food-slider-next {
+                @extend %abs;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                color: $title-color;
+                top: 36%;
+                border: none;
+                outline: none;
+                transform: translateY(-50%);
+                cursor: pointer;
+                box-shadow: 0 0px 10px rgba(136, 136, 136, .10);
+                @include transition($transition);
+                @include border-radius(3px);
+                &:hover, .active {
+                    background: $theme-color;
+                    color: $white-color;
+                    box-shadow: none;
+                }
+            }
+            .food-slider-next {
+                left: -30px;
+                @include breakpoint(md) {
+                    left: -40px;
+                }
+                @include breakpoint(xl) {
+                    left: -70px;
+                }
+            }
+            .food-slider-prev {
+                right: -30px;
+                @include breakpoint(md) {
+                    right: -40px;
+                }
+                @include breakpoint(xl) {
+                    right: -70px;
+                }
+            }
+        }
+    }
+}
+
+/* @@@@@@@@@@@@@  Food Services Section Start Here  @@@@@@@@@@@@@@ */
+.food-services {
+    .section-wrapper {
+        @extend %flex;
+        justify-content: space-around;
+        .service-item {
+            &:nth-child(2) {
+                .service-inner {
+                    .service-thumb {
+                        &::after {
+                            background: url(../../assets/images/service/shape/02.png);
+                        }
+                    }
+                }
+            }
+            &:nth-child(3) {
+                .service-inner {
+                    .service-thumb {
+                        &::after {
+                            background: url(../../assets/images/service/shape/03.png);
+                        }
+                    }
+                }
+            }
+            &:last-child {
+                @include breakpoint(max-sm) {
+                    margin-bottom: 0;
+                }
+                .service-inner {
+                    .service-thumb {
+                        &::after {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* @@@@@@@@@@@@@  Popular Foods Section Start Here  @@@@@@@@@@@@@@ */
+.popular-foods {
+    @include breakpoint(lg) {
+        padding-bottom: 90px;
+    }
+    .section-wrapper {
+        
+    }
+    &.style-2 {
+        .p-food-item {
+            box-shadow: 0 0 10px rgba(137, 137, 137, .10);
+        }
+    }
+}
+
+/* @@@@@@@@@@@@@  Food Apps Section Start Here  @@@@@@@@@@@@@@ */
+.food-apps {
+    @extend %rel;
+    background: #fb524f;
+    .apps-thumb {
+        text-align: center;
+        @include breakpoint(xl) {
+            padding-top: 60px;
+        }
+    }
+    .apps-content {
+        // @include breakpoint(max-lg) {
+        //     padding-top: 40px;
+        // }
+        .section-header {
+            text-align: left;
+            margin-bottom: 0;
+            p {
+                max-width: 510px;
+                margin-left: 0;
+            }
+            h3, p {
+                color: $white-color;
+            }
+            h3 {
+                @include breakpoint(max-sm) {
+                    font-size: $fs-h5;
+                }
+            }
+            .food-btn-group {
+                @extend %flex;
+                align-items: center;
+                margin-top: 40px;
+                a {
+                    @extend %flex;
+                    @include border-radius(10px);
+                    padding: 10px 20px;
+                    margin-right: 30px;
+                    margin-bottom: 20px;
+                    background: $white-color;
+                    // @include breakpoint(xl) {
+                    //     margin-bottom: 0;
+                    // }
+                    &:hover {
+                        box-shadow: 0 10px 10px rgba(136, 136, 136, .10);
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                        .app-download {
+                            span {
+                                color: #ff9472;
+                            }
+                        }
+                    }
+                    img {
+                        margin-right: 10px;
+                    }
+                    .app-download {
+                        p {
+                            margin-bottom: 0;
+                            color: $desc-color;
+                        }
+                        span {
+                            display: block;
+                            font-weight: 700;
+                            color: #f3729a;
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+            }
+            .field-holder {
+                margin-top: 15px;
+                max-width: 475px;
+                position: relative;
+                display: inline-block;
+                vertical-align: top;
+                @include breakpoint(sm) {
+                    width: 475px;
+                }
+                .field-input {
+                    color: $desc-color;
+                    font-size: 15px;
+                    height: 54px;
+                    padding: 15px;
+                    padding-left: 20px;
+                    // padding-right: 135px;
+                    width: 100%;
+                    border: none;
+                    outline: none;
+                    font-weight: 400;
+                    height: 66px;
+                    @include border-radius(10px);
+                    @include breakpoint(sm) {
+                        padding-right: 135px;
+                    }
+                }
+                .field-label-btn {
+                    @extend %pointer;
+                    padding: 17px 30px;
+                    color: $theme-color;
+                    background: $white-color;
+                    border: none;
+                    right: 5px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    outline: none;
+                    margin-top: 20px;
+                    @include border-radius(10px);
+                    @include breakpoint(sm) {
+                        position: absolute;
+                        transform: translateY(-50%);
+                        top: 50%;
+                        margin-top: 0;
+                        color: $white-color;
+                        background: $theme-color;
+                        @include border-radius(0px);
+                        border-top-right-radius: 10px;
+                        border-bottom-right-radius: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* @@@@@@@@@@@@@  Popular Chef Section Start Here  @@@@@@@@@@@@@@ */
+.popular-chef {
+    &.style-2 {
+        .section-wrapper {
+            margin-bottom: -30px;
+        }
+        .chef-item {
+            margin-bottom: 30px;
+            box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+        }
+    }
+    &.single {
+        .section-wrapper {
+            .related {
+                .tabcontent {
+                    .popular-foods {
+                        padding-bottom: 0;
+                    }
+                    .recent-recipe {
+                        .section-wrapper {
+                            margin-bottom: -30px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* @@@@@@@@@@@@@  Contact Us Section Start Here  @@@@@@@@@@@@@@ */
+.contact-us {
+    @extend %hidden;
+    @extend %rel;
+    padding: 80px 0;
+    background: $theme-color;
+    .contact-from {
+        @include border-radius(10px);
+        h5 {
+            padding: 20px 25px;
+            color: $theme-color;
+            margin-bottom: 0;
+        }
+        form {
+            border-top: 1px solid $border-color;
+            @include breakpoint(max-md) {
+                padding: 30px 20px;
+            }
+            input {
+                background: $white-color;
+                box-shadow: 0 0 10px rgba(129, 72, 17, .10);
+                @include border-radius(10px);
+                margin-bottom: 22px;
+                &[type="submit"] {
+                    max-width: 200px;
+                    color: $white-color;
+                    background: $theme-color;
+                    box-shadow: none;
+                    // @include breakpoint(max-xxl) {
+                        margin: 0;
+                    // }
+                }
+            }
+        }
+    }
+    .contact-home-chef {
+        @include breakpoint(max-lg) {
+            padding-top: 40px;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+            @include breakpoint(md) {
+                text-align: left;
+            }
+            p {
+                margin-left: 0;
+            }
+            h3, p {
+                color: $white-color;
+            }
+        }
+        .section-wrapper {
+            @extend %flex;
+            .contact-count-item {
+                width: calc(100% / 1);
+                @include breakpoint(sm) {
+                    width: calc(100% / 3);
+                }
+                .contact-count-inner {
+                    background: $white-color;
+                    text-align: center;
+                    margin: 5px;
+                    padding: 15px;
+                    @include border-radius(4px);
+                    @include breakpoint(sm) {
+                        margin-bottom: 0;
+                    }
+                    .contact-count-thumb {
+                        width: 100%;
+                        height: 55px;
+                        margin-bottom: 15px;
+                    }
+                    .contact-count-content {
+                        h5 {
+                            margin-bottom: 5px;
+                        }
+                        p {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .contact-thumb {
+        img {
+            @include breakpoint(xl) {
+                position: absolute;
+                top: -80px;
+            }
+        }
+    }
+}
+
+
+
+
+/* @@@@@@@@@@@@@  Testimonial Section Start Here  @@@@@@@@@@@@@@ */
+.testimonial {
+    .section-wrapper {
+        max-width: 970px;
+        margin: 0 auto;
+        background: $white-color;
+        text-align: center;
+        padding: 110px 15px 15px;
+        box-shadow: 0 10px 10px rgba(161, 161, 161, .10);
+        @extend %rel;
+        .quete-thumb {
+            @extend %abs;
+            width: 100%;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+        .swiper-slide.swiper-slide-thumb-active {
+            opacity: .2;
+        }
+        .carousel {
+            .carousel-inner {
+                .carousel-item {
+                    .testi-item {
+                        padding: 0px;
+                        padding-bottom: 80px;
+                        background: $white-color;
+                        @include breakpoint(sm) {
+                            margin: 10px;
+                            padding: 15px;
+                        }
+                        @include breakpoint (md) {
+                            padding: 30px 100px 100px;
+                        }
+                        .quite-icon {
+                            height: 90px;
+                            width: 90px;
+                            line-height: 90px;
+                            margin-bottom: 20px;
+                            text-align: center;
+                            background: $theme-color;
+                            border-radius: 100%;
+                            display: inline-block;
+                            font-size: $fs-h5;
+                            i {
+                                color: $white-color;
+                            }
+                        }
+                        p {
+                            color: $title-color;
+                            margin-bottom: 25px;
+                            @include breakpoint(sm) {
+                                line-height: 30px;
+                            }
+                        }
+                        h6 {
+                            margin-bottom: 10px;
+                            span {
+                                font-weight: normal;
+                                color: $desc-color;
+                                display: block;
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .carousel-indicators {
+            @extend %abs;
+            @extend %flex;
+            left: auto;
+            bottom: -15px;
+            width: 100%;
+            margin: 0;
+            z-index: 1;
+            .item {
+                margin: 0 10px;
+                cursor: pointer;
+                @include breakpoint (max-md) {
+                    height: 80px;
+                    width: 80px;
+                }
+                @include breakpoint (max-sm) {
+                    height: 60px;
+                    width: 60px;
+                }
+                &.active {
+                    background: transparent;
+                    img {
+                        filter: grayscale(100%);
+                    }
+                }
+            }
+        }
+    }
+    &.style-2 {
+        .section-wrapper {
+            padding: 40px 15px;
+            box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+            @include breakpoint(xl) {
+                padding: 15px;
+            }
+            .carousel {
+                @include breakpoint (xl) {
+                    &.vert .carousel-item-next.carousel-item-left,
+                    &.vert .carousel-item-prev.carousel-item-right {
+                        -webkit-transform: translate3d(0, 0, 0);
+                        transform: translate3d(0, 0, 0);
+                    }
+                    
+                    &.vert .carousel-item-next,
+                    &.vert .active.carousel-item-right {
+                        -webkit-transform: translate3d(0, 100%, 0);
+                        transform: translate3d(0, 100%, 0);
+                    }
+                    
+                    &.vert .carousel-item-prev,
+                    &.vert .active.carousel-item-left {
+                        -webkit-transform: translate3d(0,-100%, 0);
+                        transform: translate3d(0,-100%, 0);
+                    }
+                }
+                .carousel-inner {
+                    .carousel-item {
+                        .testi-item {
+                            @include breakpoint (xl) {
+                                padding: 60px 100px;
+                            }
+                        }
+                    }
+                }
+            }
+            .carousel-indicators {
+                @extend %flex;
+                bottom: -15px;
+                @include breakpoint (xl) {
+                    width: auto;
+                    top: 50%;
+                    left: auto;
+                    bottom: auto;
+                    right: -7%;
+                    justify-content: center;
+                    display: block !important;
+                    transform: translateY(-50%);
+                }
+            }
+            .item {
+                margin: 10px;
+                img {
+                    // @include breakpoint(sm) {
+                        border-radius: 100%;
+                    // }
+                }
+            }
+        }
+    }
+    &.home-4 {
+        padding-top: 80px;
+        .section-wrapper {
+            max-width: 100%;
+            padding: 0;
+            box-shadow: none;
+            .swiper-slide.swiper-slide-thumb-active {
+                opacity: 1;
+            }
+            .section-header {
+                text-align: left;
+                span {
+                    color: $theme-color;
+                    font-weight: 600;
+                    @include breakpoint(sm) {
+                        font-size: $fs-h4;
+                    }
+                }
+                h3 {}
+            }
+            .testi-wrapper {
+                .testi-slider {
+                    @extend %rel;
+                    background: url(../../assets/images/testimonial/home-4/bg.jpg);
+                    padding: 30px;
+                    background-position: center;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    @include breakpoint(lg) {
+                        padding: 90px 60px;
+                    }
+                    .testi-top {
+                        max-width: 700px;
+                        margin-left: 0;
+                        text-align: left;
+                        .testi-item {
+                            @extend %hidden;
+                            .testi-content {
+                                max-width: 560px;
+                                p {
+                                    color: $white-color;
+                                    font-weight: 500;
+                                    @include breakpoint(sm) {
+                                        font-size: $fs-h6;
+                                        line-height: 30px;
+                                    }
+                                }
+                                .tes-icon-left, .tes-icon-right {
+                                    display: block;
+                                }
+                                .tes-icon-left {
+                                    margin-bottom: 10px;
+                                }
+                                .tes-icon-right {
+                                    margin-left: auto;
+                                }
+                            }
+                        }
+                    }
+                    .testi-thumbs {
+                        @include breakpoint(max-lg) {
+                            margin-left: 0;
+                        }
+                        @include breakpoint(lg) {
+                            position: absolute;
+                            width: 250px;
+                            height: 250px;
+                            top: -120px;
+                            right: 40px;
+                        }
+                        @include breakpoint(xl) {
+                            width: 420px;
+                            height: 420px;
+                        }
+                        .testi-thumb {
+                            &::before {
+                                @include breakpoint(lg) {
+                                    position: absolute;
+                                    content: "";
+                                    width: 100%;
+                                    height: 100%;
+                                    box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+                                    top: 20px;
+                                    left: 20px;
+                                    background: $white-color;
+                                }
+                            }
+                            .thumb {
+                                @include breakpoint(max-lg) {
+                                    width: 120px;
+                                    height: 120px;
+                                    overflow: hidden;
+                                    @include border-radius(100%);
+                                }
+                                @include breakpoint(lg) {
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 100%;
+                                    box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+                                    top: -20px;
+                                    left: -20px;
+                                }
+                                img {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+/* @@@@@@@@@@@@@  About Section Start Here  @@@@@@@@@@@@@@ */
+.about {
+    @extend %rel;
+    background-image: url(../../assets/css/bg-image/about-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    &::before {
+        @extend %abs;
+        @include breakpoint(xl) {
+            width: 407px;
+            height: 90px;
+            right: 0;
+            top: 0;
+            background: $theme-color;
+        }
+        @include breakpoint(xxl) {
+            width: 670px;
+        }
+        @include breakpoint(xxxl) {
+            width: 705px;
+        }
+    }
+    .about-content {
+        @include breakpoint(max-lg) {
+            margin-top: 30px;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 0px;
+            @include breakpoint(lg) {
+                text-align: left;
+            }
+            span {
+                font-family: $poppins;
+                color: $theme-color;
+                display: inline-block;
+                font-size: $fs-h5;
+                line-height: 1;
+                font-weight: 600;
+                @include breakpoint(sm) {
+                    font-size: $fs-h4;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+        .section-wrapper {
+            text-align: center;
+            @include breakpoint(lg) {
+                text-align: left;
+            }
+            .food-btn {
+                margin-top: 20px;
+            }
+        }
+    }
+    &.about-page {
+        &::before {
+            display: none;
+        }
+    }
+    &.home-4 {
+        background: $white-color;
+        &::before {
+            display: none;
+        }
+        .section-header {
+            span {
+                color: $theme-color;
+                font-weight: 600;
+                @include breakpoint(sm) {
+                    font-size: $fs-h4;
+                }
+            }
+        }
+        .section-wrapper {
+            .about-thumb {
+                @extend %rel;
+                &::after {
+                    @extend %abs;
+                    width: 100%;
+                    height: 100%;
+                    bottom: -10px;
+                    right: -10px;
+                    border: dashed $border-color;
+                    border-width: 1px;
+                }
+                img {
+                    width: 100%;
+                    @extend %rel;
+                    z-index: 1;
+                }
+            }
+            .about-content-part {
+                .ab-left-part {
+                    .ab-location {
+                        max-width: 440px;
+                        margin: 0 auto;
+                        background: $white-color;
+                        padding: 25px;
+                        z-index: 1;
+                        box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+                        @extend %rel;
+                        @include border-radius(6px);
+                        @include breakpoint(sm) {
+                            margin-top: -100px;
+                            padding: 45px;
+                        }
+                        .ab-loc-item {
+                            &:last-child {
+                                .ab-loc-inner {
+                                    padding-bottom: 0;
+                                    margin-bottom: 0;
+                                    border-bottom: none;
+                                }
+                            }
+                            .ab-loc-inner {
+                                @extend %flex;
+                                padding: 20px 0;
+                                margin-bottom: 15px;
+                                border-bottom: 1px dashed $border-color;
+                                border-width: 1px;
+                                justify-content: space-between;
+
+                                .ab-loc-thumb {
+                                    width: 100%;
+                                    margin-bottom: 15px;
+                                    @include breakpoint(sm) {
+                                        width: 50px;
+                                        margin-bottom: 0;
+                                    }
+                                    img {}
+                                }
+                                .ab-loc-content {
+                                    width: 100%;
+                                    @include breakpoint(sm) {
+                                        width: calc(100% - 70px);
+                                    }
+                                    h6 {}
+                                    p {
+                                        margin-bottom: 0;
+                                    }
+                                    a {
+                                        word-break: break-all;
+                                        &:hover {
+                                            color: $theme-color;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .ab-right-part {
+                    padding: 40px 0;
+                    p {
+                        font-size: 15px;
+                        line-height: 24px;
+                        margin-bottom: 30px;
+                    }
+                    .food-btn {
+                        background: $white-color;
+                        box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+                        &:hover {
+                            span {
+                                color: $white-color;
+                            }
+                        }
+                        span {
+                            color: $theme-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* @@@@@@@@@@@@@  Service Section Start Here  @@@@@@@@@@@@@@ */
+.service-section {
+    background: url(../../assets/css/bg-image/service-4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    .section-header {
+        span {
+            color: $theme-color;
+            font-weight: 600;
+            @include breakpoint(sm) {
+                font-size: $fs-h4;
+            }
+        }
+        h3 {
+            color: $white-color;
+        }
+        p {
+            color: $white-color;
+        }
+    }
+    .section-wrapper {
+        @extend %flex;
+        justify-content: center;
+        .service-item {
+            width: calc(100% / 1);
+            margin-bottom: 0;
+            @include breakpoint(lg) {
+                width: calc(100% / 2);
+            }
+            .service-inner {
+                @extend %flex;
+                justify-content: center;
+                align-items: center;
+                background: $white-color;
+                &:hover {
+                    .service-thumb {
+                        img {
+                            transform: scale(1.04);
+                        }
+                    }
+                    .service-content {
+                        &::after {
+                            border-color: $theme-color;
+                        }
+                        a {
+                            h6 {
+                                color: $theme-color;
+                            }
+                        }
+                    }
+                }
+                .service-thumb {
+                    width: 100%;
+                    height: 100%;
+                    box-shadow: none;
+                    border: none;
+                    margin-bottom: 0;
+                    @include border-radius(0);
+                    @extend %hidden;
+                    @include breakpoint(sm) {
+                        width: 50%;
+                    }
+                    @include breakpoint(lg) {
+                        @include breakpoint(max-xl) {
+                            width: 100%;
+                        }
+                    }
+                    &::after {
+                        display: none;
+                    }
+                    img {
+                        @include transition($transition);
+                        @include border-radius(0);
+                        width: 100%;
+                    }
+                }
+                .service-content {
+                    width: 100%;
+                    text-align: left;
+                    padding: 41px 29px;
+                    @extend %rel;
+                    @include breakpoint(sm) {
+                        width: 50%;
+                    }
+                    @include breakpoint(lg) {
+                        @include breakpoint(max-xl) {
+                            width: 100%;
+                        }
+                    }
+                    &::after {
+                        @extend %abs;
+                        width: calc(100% - 20px);
+                        height: calc(100% - 20px);
+                        top: 10px;
+                        left: 10px;
+                        border: dashed $border-color;
+                        border-width: 1px;
+                        @include transition($transition);
+                    }
+                    *{
+                        @extend %rel;
+                        z-index: 1;
+                    }
+                    .service-icon {
+                        margin-bottom: 30px;
+                    }
+                    a {
+                        h6 {
+                            @include transition($transition);
+                            @include breakpoint(sm) {
+                                font-size: 20px;
+                            }
+                        }
+                    }
+                    p {
+                        margin: 20px 0;
+                        font-size: 15px;
+                    }
+                    .text-btn {
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        color: $title-color;
+                        &:hover {
+                            color: $theme-color;
+                            i {
+                                margin-left: 5px;
+                                opacity: 1;
+                            }
+                        }
+                        i {
+                            font-weight: 700;
+                            font-size: 16px;
+                            margin-left: -15px;
+                            opacity: 0;
+                            @include transition($transition);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+/* @@@@@@@@@@@@@  Product Section Start Here  @@@@@@@@@@@@@@ */
+.product {
+    .section-wrapper {
+        .food-btn {
+            margin-top: 30px;
+            @include breakpoint(md) {
+                margin-top: 60px;
+            }
+        }
+    }
+    &.style-2 {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        .section-wrapper {
+            .product-item {
+                margin: 5px;
+            }
+            .product-item.style-2 .product-thumb {
+                @include breakpoint(max-sm) {
+                    margin-top: 15px;
+                }
+            }
+            .tab-bar {
+                margin-bottom: 30px;
+                @extend %flex;
+                justify-content: center;
+                .tablinks {
+                    padding: 12px 23px;
+                    background: $white-color;
+                    margin-right: 10px;
+                    box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+                    align-items: center;
+                    cursor: pointer;
+                    @extend %flex;
+                    @include breakpoint(max-lg) {
+                        margin: 10px;
+                    }
+                    &.active {
+                        border-top: 2px solid $theme-color;
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                    span {
+                        font-weight: 700;
+                        color: $title-color;
+                        display: inline-block;
+                        margin-left: 20px;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+        .food-btn {
+            margin-top: 30px;
+            background: $white-color;
+            @include breakpoint(md) {
+                margin-top: 60px;
+            }
+        }
+    }
+    &.style-3 {
+        .section-wrapper {
+            .col-12 {
+                &:last-child {
+                    .product-item {
+                        @include breakpoint(max-md) {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+            .product-item {
+                background: $white-color;
+            }
+        }
+    }
+    &.style-4 {
+        .section-wrapper {
+            .col-12 {
+                &:last-child {
+                    .product-item {
+                        @include breakpoint(max-md) {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+            .product-item {
+                background: $white-color;
+                .product-thumb {
+                    box-shadow: none;
+                    img {
+                        width: auto;
+                        @include border-radius(0);
+                    }
+                    .price {
+                        top: 0;
+                        right: 0;
+                    }
+                }
+            }
+        }
+    }
+    &.home-4 {
+        .section-header {
+            span {
+                font-weight: 600;
+                color: $theme-color;
+                @include breakpoint(sm) {
+                    font-size: $fs-h4;
+                }
+            }
+            h3 {}
+            p {}
+        }
+        .section-wrapper {
+            margin-bottom: -30px;
+        }
+    }
+}
+
+
+
+/* @@@@@@@@@@@@@  Booking Table Section Start Here  @@@@@@@@@@@@@@ */
+.booking-table {
+    background: #fffaf4;
+    @extend %rel;
+    @extend %hidden;
+    .shape-1, .shape-2 {
+        @extend %abs;
+    }
+    .shape-1 {
+        bottom: 0;
+        right: 0;
+        display: none;
+        transform: rotate(180deg);
+        @include breakpoint(xxl) {
+            display: block;
+        }
+    }
+    .shape-2 {
+        top: 0;
+        left: 0;
+        display: none;
+        @include breakpoint(xl) {
+            display: block;
+        }
+    }
+    .section-wrapper {
+        background: $white-color;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+        @extend %rel;
+        @include border-radius(10px);
+        @include breakpoint(sm) {
+            padding: 20px 30px 20px 20px;
+        }
+        form {
+            @extend %flex;
+            @extend %rel;
+            justify-content: space-between;
+            z-index: 1;
+            input, .res-tab {
+                width: 100%;
+                padding: 13px 15px;
+                @include breakpoint(sm) {
+                    width: calc(100% / 2 - 15px);
+                }
+            }
+            textarea {
+                width: 100%;
+                padding: 15px;
+            }
+            input, textarea {
+                margin-bottom: 20px;
+                outline: none;
+                border: 1px solid $border-color;
+                @include border-radius(10px);
+            }
+            input[type="date"] {
+                color: $desc-color;
+            }
+            .res-tab {
+                border: 1px solid $border-color;
+                @include border-radius(10px);
+                height: 50px;
+                margin-bottom: 15px;
+                select {
+                    width: 100%;
+                    border: none;
+                    color: $desc-color;
+                }
+            }
+            .food-btn {
+                @extend %pointer;
+                outline: none;
+                @include breakpoint(xl) {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}
+
+
+/* @@@@@@@@@@@@@  Pricing Table Section Start Here  @@@@@@@@@@@@@@ */
+.pricing-section {
+    .section-header {
+        span {
+            color: $theme-color;
+            font-weight: 600;
+            @include breakpoint(sm) {
+                font-size: $fs-h4;
+            }
+        }
+        h3 {}
+        p {}
+    }
+    .section-wrapper {
+        margin-bottom: -30px;
+        .col-12 {
+            &:nth-child(2) {
+                .pricing-item {
+                    .pricing-inner {
+                        .price-top {
+                            .p-price {
+                                background: url(../../assets/images/pricing/bg/02.jpg);
+                            }
+                        }
+                    }
+                }
+            }
+            &:nth-child(3) {
+                .pricing-item {
+                    .pricing-inner {
+                        .price-top {
+                            .p-price {
+                                background: url(../../assets/images/pricing/bg/03.jpg);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .pricing-item {
+            &:hover {
+                .pricing-inner {
+                    .price-top {
+                        .p-title {
+                            h4 {
+                                color: $theme-color;
+                            }
+                        }
+                    }
+                    .price-footer {
+                        .food-btn {
+                            background: $theme-color;
+                            span {
+                                color: $white-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* @@@@@@@@@@@@@  Sponsor Section Start Here  @@@@@@@@@@@@@@ */
+.sponsor-section {
+    .section-wrapper {
+        padding: 80px 0;
+        .sponsor-slider {
+            @extend %hidden;
+            .sponsor-thumb {
+                @extend %flex;
+                justify-content: center;
+                a {
+                    img {
+                        -webkit-filter: grayscale(0%);
+                        filter: grayscale(0%);
+                        @include transition($transition);
+                    }
+                }
+                &:hover {
+                    a {
+                        img {
+                            -webkit-filter: grayscale(100%);
+                            filter: grayscale(100%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+/* @@@@@@@@@@@@@  Newsletter Section Start Here  @@@@@@@@@@@@@@ */
+.news-letter {
+    padding: 60px 0;
+    background: $title-color;
+    .section-wrapper {
+        @extend %flex;
+        justify-content: space-between;
+        align-items: center;
+        .news-title {
+            width: 100%;
+            margin-bottom: 30px;
+            text-align: center;
+            @include breakpoint(xl) {
+                width: 50%;
+                margin-bottom: 0;
+                text-align: left;
+            }
+            h3 {
+                color: $white-color;
+                margin: 0;
+                font-weight: 600;
+            }
+        }
+        .news-form {
+            width: 100%;
+            text-align: center;
+            @include breakpoint(xl) {
+                width: calc(100% - 50%);
+                text-align: left;
+            }
+            form {
+                @extend %rel;
+                @include border-radius(3px);
+                background: $white-color;
+                @extend %hidden;
+                label {
+                    width: 100%;
+                    margin-bottom: 0;
+                    @extend %rel;
+                    &::after {
+                        @extend %abs;
+                        content: "\efb4";
+                        width: 30px;
+                        height: 30px;
+                        top: 18px;
+                        left: 10px;
+                        text-align: center;
+                        font-size: $fs-h5;
+                        color: $theme-color;
+                        font-family: IcoFont!important;
+                        @include breakpoint(sm) {
+                            top: 50%;
+                            transform: translateY(-50%);
+                        }
+                    }
+                    input {
+                        margin-bottom: 0;
+                        border: none;
+                        outline: none;
+                        &[type="email"] {
+                            padding: 20px;
+                            padding-left: 50px;
+                            @include breakpoint(sm) {
+                                padding-right: 170px;
+                            }
+                        }
+                    }
+                }
+                input {
+                    width: 100%;
+                    &[type="submit"] {
+                        font-size: $fs-base;
+                        font-weight: 700;
+                        height: 54px;
+                        border: none;
+                        outline: none;
+                        color: $white-color;
+                        background: $theme-color;
+                        @include border-radius(3px);
+                        cursor: pointer;
+                        @include breakpoint(sm) {
+                            position: absolute;
+                            top: 50%;
+                            right: 5px;
+                            transform: translateY(-50%);
+                            margin-top: 0;
+                            width: 162px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* @@@@@@@@@@@@@  Recipe Categori Start Here  @@@@@@@@@@@@@@ */
+.recipe-categori {
+    .section-wrapper {
+        .recipe-item {
+            text-align: center;
+            padding: 35px 25px 25px;
+            &:hover {
+                .recipe-content {
+                    a {
+                        color: $theme-color;
+                    }
+                }
+            }
+            .recipe-thumb {
+                height: 52px;
+            }
+            .recipe-content {
+                margin-top: 20px;
+                padding: 0;
+                a {
+                    text-transform: uppercase;
+                    color: $title-color;
+                    display: block;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+    &.home-3 {
+        .section-wrapper {
+            margin-bottom: -26px;
+        }
+    }
+}
+
+
+/* @@@@@@@@@@@@@  Gallery Section Start Here  @@@@@@@@@@@@@@ */
+.gallery-section {
+    .gallery-area {
+        background: $white-color;
+        padding: 20px 20px 25px;
+        .section-header {
+            margin: 10px 11px 28px;
+            align-items: center;
+            padding-bottom: 12px;
+            .text-btn {
+                display: inline-block;
+                margin-bottom: 0;
+            }
+        }
+        .section-wrapper {
+            .gallery-item {
+                width: calc(100% / 1);
+                @include breakpoint(sm) {
+                    width: calc(100% / 2);
+                }
+                @include breakpoint(md) {
+                    width: calc(100% / 3);
+                }
+                @include breakpoint(xl) {
+                    width: calc(100% / 4);
+                }
+                .gallery-thumb {
+                    @extend %rel;
+                    margin: 11px;
+                    &::after {
+                        @extend %abs;
+                        @include transition($transition);
+                        width: calc(100% - 20px);
+                        height: calc(100% - 20px);
+                        top: 10px;
+                        left: 10px;
+                        background: $theme-color;
+                        opacity: .70;
+                        transform: scale(0);
+                    }
+                    &:hover {
+                        &::after {
+                            transform: scale(1);
+                        }
+                        .gallery-icon {
+                            transform: translate(-50%, -50%) scale(1);
+                        }
+                    }
+                    img {width: 100%;}
+                    .gallery-icon {
+                        @extend %abs;
+                        width: 50px;
+                        height: 50px;
+                        line-height: 50px;
+                        font-size: $fs-h5;
+                        color: $title-color;
+                        background: $white-color;
+                        top: 50%;
+                        left: 50%;
+                        z-index: 1;
+                        text-align: center;
+                        transform: translate(-50%, -50%) scale(0);
+                        @include border-radius(100%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.recent-recipe {
+    &.home-3 {
+        .section-wrapper {
+            margin-bottom: -26px;
+        }
+    }
+}
+
+
+/* @@@@@@@@@@@@@  Video Section Start Here  @@@@@@@@@@@@@@ */
+.video-section {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    .section-header {
+        justify-content: flex-start;
+        img {
+            margin: 7px 10px 10px 0;
+        }
+        h4 {
+            color: $white-color;
+            margin-bottom: 0;
+            @include breakpoint(max-sm) {
+                width: auto;
+            }
+        }
+    }
+    .section-wrapper {
+        box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+        @extend %hidden;
+        @include breakpoint(xl) {
+            @include border-radius(10px);
+        }
+        .video-tabcontent {
+            height: 300px;
+            @extend %hidden;
+            @include breakpoint(md) {
+                height: 558px;
+            }
+            .tabcontent {
+                .video-thumb {
+                    img {}
+                    .video-icon {}
+                }
+            }
+        }
+        .video-tabbar {
+            .tabbar-title {
+                @extend %rel;
+                @extend %flex;
+                align-items: center;
+                padding: 20px;
+                background: $theme-color;
+                img {
+                    margin-right: 10px;
+                    width: 36px;
+                    height: 36px;
+                }
+                h6 {
+                    color: $white-color;
+                    font-size: $fs-base;
+                    margin-bottom: 0;
+                    width: calc(100% - 50px);
+                }
+                .watch-time {
+                    @extend %abs;
+                    bottom: 0;
+                    right: 0;
+                    width: 60px;
+                    height: 20px;
+                    background: $title-color;
+                    color: $white-color;
+                }
+            }
+            .tabbar-body {
+                padding: 20px 10px 20px 20px;
+                background: #111111;
+                height: 470px;
+                overflow: hidden;
+                overflow-y: scroll;
+                .tab-bar {
+                    .tablinks {
+                        @extend %flex;
+                        padding: 10px 0;
+                        .video-thumb {
+                            @extend %rel;
+                            cursor: pointer;
+                            width: 120px;
+                            img {
+                                width: 100%;
+                                height: 100%;
+                            }
+                            .watch-time {
+                                @extend %abs;
+                                bottom: 0;
+                                right: 0;
+                                width: 60px;
+                                height: 20px;
+                                background: $theme-color;
+                                color: $white-color;
+                            }
+                        }
+                        .video-content {
+                            width: calc(100% - 120px);
+                            padding-left: 20px;
+                            margin-top: 0;
+                            .title {
+                                font-weight: 500;
+                                @include breakpoint(xxxl) {
+                                    font-size: 14px;
+                                }
+                            }
+                            .date {
+                                font-weight: 300;
+                                display: block;
+                            }
+                            .title , .date {
+                                color: $white-color;
+                                @include breakpoint(max-sm) {
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* @@@@@@@@@@@@@  Coming Soon Section Start Here  @@@@@@@@@@@@@@ */
+.coming-soon {
+    background: #f7f1e9;
+	padding: 100px 0;
+    .coming-thumb {
+        margin-bottom: 40px;
+        @include breakpoint(lg) {
+            margin-bottom: 0;
+        }
+    }
+    .coming-area {
+        .section-header {
+            margin-bottom: 0;
+            @include breakpoint(md) {
+                text-align: left;
+            }
+            h2 {
+                @include breakpoint(xl) {
+                    font-size: 60px;
+                    line-height: $lh-h1;
+                }
+            }
+            p {
+                max-width: 450px;
+                @include breakpoint(md) {
+                    margin-left: 0;
+                }
+            }
+        }
+        .section-wrapper {
+            .countdown {
+                margin: 50px 0 0;
+                @include breakpoint(max-md) {
+                    justify-content: center;
+                }
+                li {
+                    padding: 0;
+                    text-align: center;
+                    @include breakpoint(max-sm) {
+                        width: 50%;
+                    }
+                    &:last-child {
+                        h3 {
+                            &::after {
+                                display: none;
+                            }
+                        }
+                    }
+                    &:nth-child(2) {
+                        h3 {
+                            color: #d26dfb;
+                            @include breakpoint(max-sm) {
+                                &::after {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                    &:nth-child(3) {
+                        h3 {
+                            color: #00c08c;
+                        }
+                    }
+                    &:nth-child(4) {
+                        h3 {
+                            color: #009cff;
+                        }
+                    }
+                    h3 {
+                        padding: 0 25px;
+                        margin-bottom: 0;
+                        color: #ff739c;
+                        @extend %rel;
+                        &::after {
+                            @extend %abs;
+                            // width: 10px;
+                            // height: 20px;
+                            right: 0;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            content: ":";
+                            color: $title-color;
+                        }
+                    }
+                    p {
+                        margin-top: 20px;
+                        color: $title-color;
+                    }
+                }
+            }
+            .news-letter {
+                padding: 0;
+                margin-top: 20px;
+                .section-wrapper {
+                    background: $white-color;
+                    .news-form {
+                        width: 100%;
+                        p {
+                            margin-bottom: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+/* @@@@@@@@@@@@@  Shop single page Section Start Here  @@@@@@@@@@@@@@ */
+.shop-page {
+    &.single {
+        .section-wrapper {
+            article {
+                @include breakpoint(max-sm) {
+                    margin-bottom: 30px;
+                }
+            }
+            .shop-single {
+                .gallery-top {
+                    margin-bottom: 10px;
+                    .shop-item {
+                        .shop-thumb {
+                            img {
+                                width: 100%;
+                                @include border-radius(10px);
+                            }
+                        }
+                    }
+                }
+                .gallery-thumbs {
+                    .shop-item {
+                        cursor: pointer;
+                        .shop-thumb {
+                            @include border-radius(4px);
+                            @extend %hidden;
+                            img {
+                                width: 100%;
+                            }
+                        }
+                    }
+                    .swiper-slide.swiper-slide-visible.swiper-slide-thumb-active {
+                        -webkit-filter: grayscale(100%);
+                        filter: grayscale(100%);
+                    }
+                }
+                .shop-single-content {
+                    @include breakpoint(max-md) {
+                        margin-top: 30px;
+                    }
+                    .title {
+                        padding-bottom: 17px;
+                        border-bottom: 1px solid $border-color;
+                        h5 {
+                            margin-bottom: 7px;
+                            &:hover {
+                                a {
+                                    color: $theme-color;
+                                }
+                            }
+                        }
+                        .p-food-group {
+                            margin: 10px 0;
+                        }
+                        p {
+                            margin-bottom: 5px;
+                            span {
+                                color: $title-color;
+                            }
+                        }
+                    }
+                    .desc {
+                        margin-top: 25px;
+                        ul {
+                            li {
+                                @extend %rel;
+                                padding-left: 25px;
+                                &::before {
+                                    @extend %abs;
+                                    content: "\f00e";
+                                    font-family: IcoFont !important;
+                                    width: 20px;
+                                    height: 20px;
+                                    line-height: 20px;
+                                    top: 8px;
+                                    left: 0;
+                                    text-align: center;
+                                    color: $theme-color;
+                                }
+                            }
+                        }
+                        .quyality {
+                            margin-top: 15px;
+                            p {
+                                span {
+                                    color: $title-color;
+                                    font-weight: 700;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.review {
+    .section-wrapper {
+        .related {
+            margin-top: 0;
+            .tabcontent {
+                .col-12 {
+                    &:nth-last-child(1), &:nth-last-child(2) {
+                        .p-food-item, .product-item {
+                            &::after {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+                .popular-foods {
+                    padding-bottom: 0;
+                }
+                .product-item {
+                    @extend %rel;
+                    &::after {
+                        @extend %abs;
+                        @include border-radius(100%);
+                        width: 30px;
+                        height: 30px;
+                        line-height: 30px;
+                        top: 50%;
+                        right: -30px;
+                        transform: translateY(-50%);
+                        border: 1px solid $border-color;
+                        content: "\efc2";
+                        font-family: IcoFont!important;
+                        color: $border-color;
+                        text-align: center;
+                        display: none;
+                        @include breakpoint(xl) {
+                            display: block;
+                        }
+                    }
+                }
+                .p-food-item {
+                    @extend %rel;
+                    &::after {
+                        @extend %abs;
+                        @include border-radius(100%);
+                        width: 30px;
+                        height: 30px;
+                        line-height: 30px;
+                        top: 50%;
+                        right: -30px;
+                        transform: translateY(-50%);
+                        border: 1px solid $border-color;
+                        content: "\efc2";
+                        font-family: IcoFont!important;
+                        color: $border-color;
+                        text-align: center;
+                        display: none;
+                        @include breakpoint(xl) {
+                            display: block;
+                        }
+                    }
+                    .p-food-inner {
+                        .p-food-content {
+                            padding: 40px 15px 0;
+                            .p-food-footer {
+                                @include breakpoint(sm) {
+                                    .left , .right {
+                                        width: 50%;
+                                    }
+                                }
+                                .left {
+                                    .rating i {
+                                        font-size: 14px;
+                                    }
+                                }
+                                .right {
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+                        .food-quyality {
+                            padding: 20px;
+                            box-shadow: none;
+                            margin: 0;
+                            .section-header {
+                                padding-bottom: 20px;
+                                margin-bottom: 20px;
+                                border-bottom: 1px solid $border-color;
+                            }
+                            .section-wrapper {
+                                padding: 0;
+                            }
+                        }
+                    }
+                }
+                .Description {
+                    .addimage {
+                        @extend %flex;
+                        margin: 30px auto;
+                        justify-content: center;
+                    }
+                }
+                .spe-shop {
+                    h4 {
+                        font-weight: 500;
+                    }
+                    .tec-spe {
+                        margin-top: 30px;
+                        ul {
+                            border: 1px solid $border-color;
+                            border-radius: 12px;
+                            li {
+                                @extend %flex;
+                                align-items: center;
+                                padding: 15px 40px;
+                                border-bottom: 1px solid $border-color;
+                                @include breakpoint(max-sm) {
+                                    text-align: center;
+                                }
+                                &:last-child {
+                                    border-bottom: none;
+                                }
+                                &::after {
+                                    display: none;
+                                }
+                                .left {
+                                    width: 100%;
+                                    @include breakpoint(sm) {
+                                        width: 50%;
+                                        @include breakpoint(lg) {
+                                            width: 30%;
+                                        }
+                                    }
+                                }
+                                .right {
+                                    width: 100%;
+                                    @include breakpoint(sm) {
+                                        width: 50%;
+                                        @include breakpoint(lg) {
+                                            width: 70%;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .review {
+                    max-width: 800px;
+                    .content {
+                        li {
+                            @extend %flex;
+                            margin-bottom: 30px;
+                            justify-content: space-between;
+                            border-bottom: 1px solid $border-color;
+                            &:last-child {
+                                border-bottom: none;
+                            }
+                            .post-thumb {
+                                width: 90px;
+                                height: 90px;
+                                @include border-radius(100%);
+                                img {
+                                    @include border-radius(100%);
+                                }
+                            }
+                            .post-content {
+                                width: calc(100% - 120px);
+                                .entry-meta {
+                                    @extend %flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                    .posted-on {
+                                        a {
+                                            font-size: $fs-h6;
+                                            font-weight: 700;
+                                            color: $title-color;
+                                            &:hover {
+                                                color: $theme-color;
+                                            }
+                                        }
+                                        p {
+                                            margin-bottom: 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .client-review {
+                        margin-top: 40px;
+                        .review-form {
+                            .review-title {
+                                margin-bottom: 40px;
+                                border-bottom: 1px solid $border-color;
+                            }
+                            form {
+                                input {
+                                    width: 100%;
+                                }
+                                input, textarea {
+                                    margin-bottom: 30px;
+                                    border-radius: 3px;
+                                    padding: 7px 15px;
+                                    outline: none;
+                                    border: 1px solid $border-color;
+                                }
+                                .ratings {
+                                    @extend %flex;
+                                    align-items: center;
+                                    margin-bottom: 20px;
+                                    .rating-title {
+                                        padding-right: 10px;
+                                    }
+                                }
+                                .food-btn {
+                                    outline: none;
+                                    @extend %pointer;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* @@@@@@@@@@@@@  restaurant Section Start Here  @@@@@@@@@@@@@@ */
+.restaurant-section {
+    background: #fafeff;
+    .section-header {
+        h3 {}
+        p {}
+    }
+    .section-wrapper {
+        .top-restaurant {
+            @extend %flex;
+            justify-content: center;
+            .restaurant-item {
+                width: calc(100% / 2);
+                @include breakpoint(md) {
+                    width: calc(100% / 3);
+                }
+                @include breakpoint(xl) {
+                    width: calc(100% / 5);
+                }
+                .restaurant-inner {
+                    margin: 10px;
+                    .restaurant-thumb {
+                        @include border-radius(10px);
+                        @extend %hidden;
+                        @include transition($transition);
+                        background: $white-color;
+                        text-align: center;
+                        box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+                        &:hover {
+                            transform: translateY(-5px);
+                            a {
+                                img {
+
+                                }
+                            }
+                        }
+                        a {
+                            img {}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+/* @@@@@@@@@@@@@  404 page Section Start Here  @@@@@@@@@@@@@@ */
+.fore-zero {
+    background-image: url(../../assets/images/404/bg-image.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top right;
+    .section-wrapper {
+        .zero-item {
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+            .zero-thumb {
+                margin-bottom: 40px;
+            }
+            .zero-content {
+                h3 {
+                    line-height: 1.4;
+                    margin-bottom: 45px;
+                }
+                .food-btn {}
+            }
+        }
+    }
+}
+
+
+
+
+/* @@@@@@@@@@@@@  contact-information Section Start Here  @@@@@@@@@@@@@@ */
+.contact-information {
+	.section-wrapper {
+        @extend %hidden;
+        @extend %rel;
+		background-color: $white-color;
+        box-shadow: 0 0 10px rgba(136, 136, 136, .10);
+        padding: 60px 30px 0;
+		@include breakpoint (xl) {
+            margin-bottom: -40px;
+			z-index: 1;
+        }
+        .col-12 {
+            &:first-child {
+                margin-bottom: 40px;
+                @include breakpoint(lg) {
+                    margin-bottom: 0px;
+                    background: url(../../assets/images/contac/bg.png) no-repeat;
+                    background-position: bottom left;
+                }
+            }
+        }
+		h5 {
+			margin-bottom: 35px;
+			line-height: 30px;
+		}
+		form {
+			input,
+			textarea {
+				border-color: #ebebeb;
+				padding: 10px;
+			}
+			input {
+				height: 50px;
+                margin-bottom: 30px;
+                border: 1px solid $border-color;
+                outline: none;
+                width: 100%;
+                @include border-radius(3px);
+				@include breakpoint (sm) {
+					width: calc(100% / 2 - 15px);
+				}
+			}
+			textarea {
+                min-height: 200px;
+                padding: 15px;
+				margin-bottom: 35px;
+                outline: none;
+                @include border-radius(3px);
+			}
+			.food-btn {
+                outline: none;
+                margin-bottom: 60px;
+                @extend %pointer;
+            }
+		}
+		.post-item {
+            @extend %flex;
+            justify-content: space-between;
+			margin-bottom: 25px;
+            &:last-child { margin-bottom: 0; }
+            .post-thumb {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 15px;
+                @include breakpoint(sm) {
+                    margin: 0;
+                }
+            }
+            .post-content {
+                width: 100%;
+                @include breakpoint(sm) {
+                    width: calc(100% - 60px);
+
+                }
+                h6 {
+                    line-height: 18px;
+                    text-transform: uppercase;
+                    margin-bottom: 5px;
+                }
+                h6, p {
+                    font-size: $fs-base;
+                }
+                p {
+                    line-height: $lh-h6;
+                    margin: 0;
+                }
+            }
+		}
+    }
+    &.home-4 {
+        background: url(../../assets/images/contac/bg/01.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        .section-header {
+            span {
+                color: $theme-color;
+                font-weight: 600;
+                @include breakpoint(sm) {
+                    font-size: $fs-h4;
+                }
+            }
+            h3, p {
+                color: $white-color;
+            }
+        }
+        .section-wrapper {
+            padding: 0;
+            transform: translate(0);
+            box-shadow: none;
+            background: transparent;
+            margin-bottom: -15px;
+            .col-12 {
+                &:first-child {
+                    background: none;
+                    margin-bottom: 0;
+                }
+            }
+            input {
+                width: 100%;
+                padding: 15px;
+                border: none;
+                outline: none;
+                height: 56px;
+                margin-bottom: 15px;
+                background: $white-color;
+                @include border-radius(4px);
+            }
+            .con-name {
+                input {}
+            }
+            .con-email {}
+            .con-phone {}
+            .con-btn {
+                input {
+                    cursor: pointer;
+                    background: $theme-color;
+                }
+                .food-btn {
+                    color: $white-color;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+/* @@@@@@@@@@@@@  Gmaps Section Start Here  @@@@@@@@@@@@@@ */
+.gmaps-section {
+    .map-area {
+        height: 600px;
+        iframe {
+            width: 100%;
+            height: 600px;
+        }
+    }
+}

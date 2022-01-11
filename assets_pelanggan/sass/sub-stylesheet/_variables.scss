@@ -1,0 +1,71 @@
+$bootstrap-sass-asset-helper: false !default;
+
+// --------------------------------------------------
+// Variables
+// --------------------------------------------------
+
+
+// Colors
+$title-color: #362725;  //#372f25;
+$desc-color: #696969;
+$theme-color: #fb524f;
+$primary-color: #924600;
+$border-color: #e6e6e6;
+$white-color: #fff;
+$ash-color: #f5f5f1;
+$btn-color: linear-gradient(to right, #e2769d, #bb6df7);
+$btn-hover-color: linear-gradient(to left, #e2769d, #bb6df7);
+$bg-body: #f5f5f1;
+
+// social-media color
+$facebook: #3b5998;
+$twitter: #55acee;
+$linkedin: #007bb5;
+$skype: #2fb7df;
+$youtube: #cd201f;
+$google: #dd4b39;
+$camera: #e4405f;
+$instagram: #e4405f;
+$tumblr: #34465d;
+$behance: #1769ff;
+$dribbble: #f872a3;
+$star: #e9ba17;
+$green: #0be881;
+$green-h: #0fbcf9;
+$red: #f53b57;
+$yellow: #dec32b;
+$nell: #212fb4;
+$navy: #d8e0f3;
+$plaseholder: #a0a6bc;
+$pinterest : #bd081c;
+$basketball : #e94c89;
+$vimeo : #3b5998;
+//== Typography
+
+// font-family
+// $roboto:  'Roboto', sans-serif;
+// $lobster:  'Abril Fatface', cursive;
+$poppins: 'Poppins', sans-serif;
+
+// font-size
+$fs-base:   15px !default;
+$fs-h1:		60px;
+$fs-h2: 	48px;	
+$fs-h3: 	36px;		
+$fs-h4: 	30px;		
+$fs-h5: 	24px;		
+$fs-h6: 	18px;		
+
+// heading line height
+$lh-h1:		66px;
+$lh-h2:		30px;
+$lh-h3:		24px;
+$lh-h4:		30px;
+$lh-h5:		24px;
+$lh-h6:		24px;
+
+// Description line height
+$lh-p:		24px;
+
+//  transition
+$transition: all 0.3s ease;
