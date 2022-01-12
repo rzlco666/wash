@@ -33,6 +33,37 @@ class AdminModel extends CI_Model
         return $admin->result();
     }
 
+    //pelanggan
+    function pelanggan_list()
+    {
+        $hasil = $this->db->get('pelanggan');
+        return $hasil->result();
+    }
+
+    function banned_pelanggan()
+    {
+        $id = $this->input->post('id');
+        $status = 0;
+
+        $this->db->set('status', $status);
+        $this->db->where('id', $id);
+
+        $result = $this->db->update('pelanggan');
+        return $result;
+    }
+
+    function aktif_pelanggan()
+    {
+        $id = $this->input->post('id');
+        $status = 1;
+
+        $this->db->set('status', $status);
+        $this->db->where('id', $id);
+
+        $result = $this->db->update('pelanggan');
+        return $result;
+    }
+
 
     //faq
     function faq_list()
@@ -86,17 +117,6 @@ class AdminModel extends CI_Model
 
 
     //profile
-    function simpan_upload($nama, $email, $image)
-    {
-        $data = array(
-            'nama' => $nama,
-            'email' => $email,
-            'foto' => $image
-        );
-        $result = $this->db->insert('admin', $data);
-        return $result;
-    }
-
     function getData()
     {
         $this->db->where('id', $this->session->userdata('id'));
@@ -130,9 +150,17 @@ class AdminModel extends CI_Model
         return $result;
     }
 
-    function hapus($id)
+    //password
+
+    function updatePassword($id, $password)
     {
+        $data = array(
+            'password' => get_hash($password),
+        );
+
         $this->db->where('id', $id);
-        return $this->db->delete('admin');
+        $result = $this->db->update('admin', $data);
+        return $result;
     }
+
 }

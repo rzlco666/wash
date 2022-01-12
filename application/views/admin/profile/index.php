@@ -40,25 +40,19 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h6 class="card-title">Password</h6>
-                                        <form>
+                                        <?php foreach ($admin as $admin) : ?>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label>Old Password</label>
-                                                        <input type="password" class="form-control">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>New Password</label>
-                                                        <input type="password" class="form-control">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>New Password Repeat</label>
-                                                        <input type="password" class="form-control">
+                                                        <label>Old Password (Encrypted)</label>
+                                                        <input type="password" value="<?= $admin->password; ?>" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button class="btn btn-primary">Save</button>
-                                        </form>
+                                            <button type="button" data-toggle="modal" data-target="#myModalPassword" class="btn btn-primary btn-uppercase">
+                                                <i class="ti-settings mr-2"></i> Edit Password
+                                            </button>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>
@@ -101,9 +95,35 @@
                         <div class="form-group" id="fail_upload_msg"></div>
                     </div>
                     <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button class="btn btn-primary" id="btn_upload" type="submit">Upload</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="myModalPassword" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-sm" role="document">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Password</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="<?= base_url('Admin/edit_password'); ?>" method="POST">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="submit">Update</button>
+                        </div>
+                    </form>
             </div>
         </div>
     </div>

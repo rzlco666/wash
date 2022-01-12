@@ -127,6 +127,49 @@ class Admin extends CI_Controller
     }
 
 
+    //pelanggan
+    function pelanggan()
+    {
+        if ($this->session->userdata('is_admin') == FALSE) {
+            redirect('Admin/', 'refresh');
+        }
+
+        $data['title'] = 'Data Pelanggan';
+        $data['admin'] = $this->AdminModel->data_admin();
+
+        $this->load->view('admin/layout/header', $data);
+        $this->load->view('admin/layout/sidebar', $data);
+        $this->load->view('admin/pelanggan/index', $data);
+        $this->load->view('admin/layout/footer', $data);
+        $this->load->view('admin/pelanggan/script', $data);
+    }
+
+    function pelanggan_data()
+    {
+        $data = $this->AdminModel->pelanggan_list();
+        echo json_encode($data);
+    }
+
+    /* function save_pelanggan()
+    {
+        $data = $this->AdminModel->save_pelanggan();
+        echo json_encode($data);
+    } */
+
+    function banned_pelanggan()
+    {
+        $data = $this->AdminModel->banned_pelanggan();
+        echo json_encode($data);
+    }
+
+    function aktif_pelanggan()
+    {
+        $data = $this->AdminModel->aktif_pelanggan();
+        echo json_encode($data);
+    }
+    
+
+    
     //faq
     function faq()
     {
@@ -198,16 +241,6 @@ class Admin extends CI_Controller
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
-    function hapus($id)
-    {
-        $data = $this->AdminModel->getById($id);
-        $img_src = FCPATH . 'uploads/admin/' . $data->foto;
-
-        if (unlink($img_src)) {
-            $this->AdminModel->hapus($id);
-        }
-    }
-
     function _validate()
     {
         $this->form_validation->set_error_delimiters('', '');
@@ -247,11 +280,6 @@ class Admin extends CI_Controller
                 'status' => false
             );
             $this->output->set_content_type('application/json')->set_output(json_encode($data));
-        } else {
-            $data     = array('upload_data' => $this->upload->data());
-            $image    = $data['upload_data']['file_name'];
-            $result    = $this->AdminModel->simpan_upload($nama, $email, $image);
-            $this->output->set_content_type('application/json')->set_output(json_encode(array('status' => true)));
         }
     }
 
@@ -307,4 +335,25 @@ class Admin extends CI_Controller
             }
         }
     }
+
+    //password
+
+
+    function edit_password()
+    {
+        $id = $this->session->userdata('id');
+
+        $password = $this->input->post('password');
+
+        $this->form_validation->set_error_delimiters('', '');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[2]');
+
+        if ($this->form_validation->run()) {
+            $this->AdminModel->updatePassword($id, $password);
+            redirect('Admin/profile', 'refresh');
+        }else{
+            redirect('Admin/profile', 'refresh');
+        }
+    }
+
 }

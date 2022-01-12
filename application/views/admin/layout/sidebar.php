@@ -21,6 +21,16 @@
                             </a>
                         </li>
                         <li>
+                            <a <?php if ($title == 'Data Pelanggan') {
+                                    echo 'class="active"';
+                                } ?> href="<?= base_url('Admin/pelanggan'); ?>">
+                                <span class="nav-link-icon">
+                                    <i data-feather="users"></i>
+                                </span>
+                                <span>Data Pelanggan</span>
+                            </a>
+                        </li>
+                        <li>
                             <a <?php if ($title == 'F.A.Q.') {
                                     echo 'class="active"';
                                 } ?> href="<?= base_url('Admin/faq'); ?>">
