@@ -43,6 +43,7 @@
 		<script src="<?= base_url('assets_pelanggan/'); ?>js/bootstrap.min.js"></script>
 		<script src="<?= base_url('assets_pelanggan/'); ?>js/isotope.pkgd.min.js"></script>
 		<script src="<?= base_url('assets_pelanggan/'); ?>js/wow.min.js"></script>
+		<script src="<?= base_url('assets_pelanggan/'); ?>js/tab.js"></script>
 		<script src="<?= base_url('assets_pelanggan/'); ?>js/swiper.min.js"></script>
 		<script src="<?= base_url('assets_pelanggan/'); ?>js/lightcase.js"></script>
 		<script src="<?= base_url('assets_pelanggan/'); ?>js/jquery.counterup.min.js"></script>

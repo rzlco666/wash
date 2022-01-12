@@ -13,7 +13,7 @@ class Pelanggan extends CI_Controller
     public function index()
     {
 
-        $data['title'] = 'Dashboard';
+        $data['title'] = 'Landing';
 
         $this->load->view('pelanggan/layout/header', $data);
         $this->load->view('pelanggan/layout/sidebar', $data);
@@ -74,15 +74,21 @@ class Pelanggan extends CI_Controller
 
                 $db = $this->PelangganModel->cek_mail()->row();
                 if (hash_verified($this->input->post('password'), $db->password)) {
+                    if ($db->status == 1) {
 
-                    $data_login = array(
-                        'is_login' => TRUE,
-                        'email'  => $db->email,
-                        'nama'   => $db->nama
-                    );
+                        $data_login = array(
+                            'is_login' => TRUE,
+                            'email'  => $db->email,
+                            'nama'   => $db->nama,
+                            'id'   => $db->id,
+                        );
 
-                    $this->session->set_userdata($data_login);
-                    redirect('Pelanggan/index', 'refresh');
+                        $this->session->set_userdata($data_login);
+                        redirect('Pelanggan/index', 'refresh');
+                    } else {
+                        $this->session->set_flashdata('error', 'Login gagal: akun diblokir!');
+                        redirect('Pelanggan/login', 'refresh');
+                    }
                 } else {
 
                     $this->session->set_flashdata('error', 'Login gagal: password salah!');
@@ -112,7 +118,7 @@ class Pelanggan extends CI_Controller
         $this->load->view('pelanggan/layout/header', $data);
         $this->load->view('pelanggan/layout/sidebar', $data);
         $this->load->view('pelanggan/login/form_login', $data);
-        $this->load->view('pelanggan/layout/footer', $data);      
+        $this->load->view('pelanggan/layout/footer', $data);
     }
 
 
@@ -122,9 +128,96 @@ class Pelanggan extends CI_Controller
         $this->session->unset_userdata('is_login');
         $this->session->unset_userdata('nama');
         $this->session->unset_userdata('email');
+        $this->session->unset_userdata('id');
 
         session_destroy();
         $this->session->set_flashdata('success', 'Sign Out Berhasil!');
         redirect('Pelanggan/login', 'refresh');
     }
+
+    //faq
+    public function faq()
+    {
+        $data['title'] = 'F.A.Q.';
+        $data['faq'] = $this->PelangganModel->data_faq();
+
+        $this->load->view('pelanggan/layout/header', $data);
+        $this->load->view('pelanggan/layout/sidebar', $data);
+        $this->load->view('pelanggan/faq/index', $data);
+        $this->load->view('pelanggan/layout/footer', $data);
+        $this->load->view('pelanggan/faq/script', $data);
+    }
+
+    //profile
+    public function profile()
+    {
+        $data['title'] = 'Profile';
+        $data['pelanggan'] = $this->PelangganModel->data_pelanggan();
+
+        $this->load->view('pelanggan/layout/header', $data);
+        $this->load->view('pelanggan/layout/sidebar', $data);
+        $this->load->view('pelanggan/profile/index', $data);
+        $this->load->view('pelanggan/layout/footer', $data);
+        $this->load->view('pelanggan/profile/script', $data);
+    }
+
+    public function update_profile()
+    {
+        $id = $this->session->userdata('id');
+        $nama = $this->input->post('nama');
+        $email = $this->input->post('email');
+
+        $data = array(
+            'nama' => $nama,
+            'email' => $email,
+        );
+
+        if (!empty($_FILES['image']['name'])) {
+            $image = $this->_do_upload();
+
+            $upload = $this->PelangganModel->get_by_id_profile();
+            if (file_exists('uploads/pelanggan/' . $upload->image) && $upload->image) {
+                if ($upload->image != 'avatar.jpg') {
+                    unlink('uploads/pelanggan/' . $upload->image);
+                }
+            }
+
+            $data['image'] = $image;
+        }
+
+        $this->PelangganModel->update_profile($data, $id);
+        $this->session->set_flashdata('success', 'Edit Profile Berhasil!');
+        redirect('Pelanggan/profile', 'refresh');
+    }
+
+    private function _do_upload()
+    {
+        $image_name = time() . '-' . $_FILES["image"]['name'];
+
+        $config['upload_path']         = 'uploads/pelanggan/';
+        $config['allowed_types']     = 'gif|jpg|png|jpeg';
+        $config['file_name']         = $image_name;
+
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('image')) {
+            $this->session->set_flashdata('success', $this->upload->display_errors('', ''));
+            redirect('Pelanggan/profile', 'refresh');
+        }
+        return $this->upload->data('file_name');
+    }
+
+    public function update_password()
+    {
+        $id = $this->session->userdata('id');
+        $password = $this->input->post('password');
+
+        $data = array(
+            'password' => get_hash($password),
+        );
+
+        $this->PelangganModel->update_profile($data, $id);
+        $this->session->set_flashdata('success', 'Edit Password Berhasil!');
+        redirect('Pelanggan/profile', 'refresh');
+    }
+
 }
