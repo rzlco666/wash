@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin &mdash; <?= $title; ?></title>
+    <title>Pemilik &mdash; <?= $title; ?></title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="<?= base_url('assets_admin/'); ?>media/image/favicon.png" />
@@ -27,9 +27,6 @@
 
     <!-- DataTable -->
     <link rel="stylesheet" href="<?= base_url('assets_admin/'); ?>vendors/dataTable/datatables.min.css" type="text/css">
-
-    <!-- Lightbox -->
-    <link rel="stylesheet" href="<?= base_url('assets_admin/'); ?>vendors/lightbox/magnific-popup.css" type="text/css">
 
     <!-- App css -->
     <link rel="stylesheet" href="<?= base_url('assets_admin/'); ?>css/app.min.css" type="text/css">
@@ -180,45 +177,45 @@
                             </li>
 
                             <li class="nav-item dropdown">
-                                <?php foreach ($admin as $admin) : ?>
+                                <?php foreach ($pemilik as $pemilik) : ?>
                                     <a href="#" class="nav-link dropdown-toggle" title="User menu" data-toggle="dropdown">
                                         <figure class="avatar avatar-sm">
                                             <?php
-                                            if ($admin->foto == 'avatar.jpg') {
+                                            if ($pemilik->foto == 'avatar.jpg') {
                                             ?>
-                                                <img src="<?= base_url('uploads/admin/def/'); ?><?= $admin->foto; ?>" class="rounded-circle" alt="avatar">
+                                                <img src="<?= base_url('uploads/pemilik/def/'); ?><?= $pemilik->foto; ?>" class="rounded-circle" alt="avatar">
                                             <?php
                                             } else {
                                             ?>
-                                                <img src="<?= base_url('uploads/admin/'); ?><?= $admin->foto; ?>" class="rounded-circle" alt="avatar">
+                                                <img src="<?= base_url('uploads/pemilik/'); ?><?= $pemilik->foto; ?>" class="rounded-circle" alt="avatar">
                                             <?php
                                             }
                                             ?>
                                         </figure>
-                                        <span class="ml-2 d-sm-inline d-none"><?= $admin->nama; ?></span>
+                                        <span class="ml-2 d-sm-inline d-none"><?= $pemilik->nama; ?></span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-big">
                                         <div class="text-center py-4">
                                             <figure class="avatar avatar-lg mb-3 border-0">
                                                 <?php
-                                                if ($admin->foto == 'avatar.jpg') {
+                                                if ($pemilik->foto == 'avatar.jpg') {
                                                 ?>
-                                                    <img src="<?= base_url('uploads/admin/def/'); ?><?= $admin->foto; ?>" class="rounded-circle" alt="image">
+                                                    <img src="<?= base_url('uploads/pemilik/def/'); ?><?= $pemilik->foto; ?>" class="rounded-circle" alt="image">
                                                 <?php
                                                 } else {
                                                 ?>
-                                                    <img src="<?= base_url('uploads/admin/'); ?><?= $admin->foto; ?>" class="rounded-circle" alt="image">
+                                                    <img src="<?= base_url('uploads/pemilik/'); ?><?= $pemilik->foto; ?>" class="rounded-circle" alt="image">
                                                 <?php
                                                 }
                                                 ?>
                                             </figure>
-                                            <h5 class="text-center"><?= $admin->nama; ?></h5>
-                                            <div class="mb-3 small text-center text-muted">@<?= (str_replace(' ', '', strtolower($admin->nama))); ?></div>
-                                            <a href="<?= base_url('Admin/profile'); ?>" class="btn btn-outline-light btn-rounded">Manage Your Account</a>
+                                            <h5 class="text-center"><?= $pemilik->nama; ?></h5>
+                                            <div class="mb-3 small text-center text-muted">@<?= (str_replace(' ', '', strtolower($pemilik->nama))); ?></div>
+                                            <a href="<?= base_url('Pemilik/profile'); ?>" class="btn btn-outline-light btn-rounded">Manage Your Account</a>
                                         </div>
                                         <div class="list-group">
-                                            <a href="<?= base_url('Admin/profile'); ?>" class="list-group-item">View Profile</a>
-                                            <a href="<?= base_url('Admin/logout'); ?>" class="list-group-item text-danger">Log Out!</a>
+                                            <a href="<?= base_url('Pemilik/profile'); ?>" class="list-group-item">View Profile</a>
+                                            <a href="<?= base_url('Pemilik/logout'); ?>" class="list-group-item text-danger">Log Out!</a>
                                         </div>
                                     </div>
                                 <?php endforeach; ?>

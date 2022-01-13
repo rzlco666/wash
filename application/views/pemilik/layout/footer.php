@@ -29,9 +29,6 @@
 <!-- DataTable -->
 <script src="<?= base_url('assets_admin/'); ?>vendors/dataTable/datatables.min.js"></script>
 
-<!-- Lightbox -->
-<script src="<?= base_url('assets_admin/'); ?>vendors/lightbox/jquery.magnific-popup.min.js"></script>
-
 <!-- Dashboard scripts -->
 <script src="<?= base_url('assets_admin/'); ?>js/examples/pages/dashboard.js"></script>
 

@@ -13,7 +13,7 @@
                         <li>
                             <a <?php if ($title == 'Dashboard') {
                                     echo 'class="active"';
-                                } ?> href="<?= base_url('Admin/'); ?>">
+                                } ?> href="<?= base_url('Pemilik/'); ?>">
                                 <span class="nav-link-icon">
                                     <i data-feather="pie-chart"></i>
                                 </span>
@@ -21,19 +21,9 @@
                             </a>
                         </li>
                         <li>
-                            <a <?php if ($title == 'Data Pemilik') {
-                                    echo 'class="active"';
-                                } ?> href="<?= base_url('Admin/pemilik'); ?>">
-                                <span class="nav-link-icon">
-                                    <i data-feather="briefcase"></i>
-                                </span>
-                                <span>Data Pemilik</span>
-                            </a>
-                        </li>
-                        <li>
                             <a <?php if ($title == 'Data Pelanggan') {
                                     echo 'class="active"';
-                                } ?> href="<?= base_url('Admin/pelanggan'); ?>">
+                                } ?> href="<?= base_url('Pemilik/pelanggan'); ?>">
                                 <span class="nav-link-icon">
                                     <i data-feather="users"></i>
                                 </span>
@@ -43,7 +33,7 @@
                         <li>
                             <a <?php if ($title == 'F.A.Q.') {
                                     echo 'class="active"';
-                                } ?> href="<?= base_url('Admin/faq'); ?>">
+                                } ?> href="<?= base_url('Pemilik/faq'); ?>">
                                 <span class="nav-link-icon">
                                     <i data-feather="help-circle"></i>
                                 </span>
@@ -53,7 +43,7 @@
                         <li>
                             <a <?php if ($title == 'Profile') {
                                     echo 'class="active"';
-                                } ?> href="<?= base_url('Admin/profile'); ?>">
+                                } ?> href="<?= base_url('Pemilik/profile'); ?>">
                                 <span class="nav-link-icon">
                                     <i data-feather="user"></i>
                                 </span>

@@ -38,7 +38,7 @@ class Admin extends CI_Controller
 
         $this->form_validation->set_rules('nama', 'Nama', 'trim|required|min_length[3]|max_length[22]');
         $this->form_validation->set_rules('email', 'E-mail', 'trim|required|min_length[3]|max_length[45]|is_unique[admin.email]');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]|max_length[12]');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]');
 
         if ($this->form_validation->run() == TRUE) {
 
@@ -62,7 +62,7 @@ class Admin extends CI_Controller
     {
 
         $this->form_validation->set_rules('email', 'E-mail', 'trim|required|min_length[3]|max_length[45]');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]|max_length[12]');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]');
 
         if ($this->form_validation->run() == TRUE) {
 
@@ -150,12 +150,6 @@ class Admin extends CI_Controller
         echo json_encode($data);
     }
 
-    /* function save_pelanggan()
-    {
-        $data = $this->AdminModel->save_pelanggan();
-        echo json_encode($data);
-    } */
-
     function banned_pelanggan()
     {
         $data = $this->AdminModel->banned_pelanggan();
@@ -165,6 +159,41 @@ class Admin extends CI_Controller
     function aktif_pelanggan()
     {
         $data = $this->AdminModel->aktif_pelanggan();
+        echo json_encode($data);
+    }
+
+    //pemilik
+    function pemilik()
+    {
+        if ($this->session->userdata('is_admin') == FALSE) {
+            redirect('Admin/', 'refresh');
+        }
+
+        $data['title'] = 'Data Pemilik';
+        $data['admin'] = $this->AdminModel->data_admin();
+
+        $this->load->view('admin/layout/header', $data);
+        $this->load->view('admin/layout/sidebar', $data);
+        $this->load->view('admin/pemilik/index', $data);
+        $this->load->view('admin/layout/footer', $data);
+        $this->load->view('admin/pemilik/script', $data);
+    }
+
+    function pemilik_data()
+    {
+        $data = $this->AdminModel->pemilik_list();
+        echo json_encode($data);
+    }
+
+    function banned_pemilik()
+    {
+        $data = $this->AdminModel->banned_pemilik();
+        echo json_encode($data);
+    }
+
+    function aktif_pemilik()
+    {
+        $data = $this->AdminModel->aktif_pemilik();
         echo json_encode($data);
     }
     
@@ -346,7 +375,7 @@ class Admin extends CI_Controller
         $password = $this->input->post('password');
 
         $this->form_validation->set_error_delimiters('', '');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[2]');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]');
 
         if ($this->form_validation->run()) {
             $this->AdminModel->updatePassword($id, $password);

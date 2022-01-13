@@ -64,6 +64,37 @@ class AdminModel extends CI_Model
         return $result;
     }
 
+    //pemilik
+    function pemilik_list()
+    {
+        $hasil = $this->db->get('pemilik');
+        return $hasil->result();
+    }
+
+    function banned_pemilik()
+    {
+        $id = $this->input->post('id');
+        $status = 0;
+
+        $this->db->set('status', $status);
+        $this->db->where('id', $id);
+
+        $result = $this->db->update('pemilik');
+        return $result;
+    }
+
+    function aktif_pemilik()
+    {
+        $id = $this->input->post('id');
+        $status = 1;
+
+        $this->db->set('status', $status);
+        $this->db->where('id', $id);
+
+        $result = $this->db->update('pemilik');
+        return $result;
+    }
+
 
     //faq
     function faq_list()

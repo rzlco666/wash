@@ -42,7 +42,7 @@ class Pelanggan extends CI_Controller
 
         $this->form_validation->set_rules('nama', 'Nama', 'trim|required|min_length[3]|max_length[22]');
         $this->form_validation->set_rules('email', 'E-mail', 'trim|required|min_length[3]|max_length[45]|is_unique[pelanggan.email]');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]|max_length[12]');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]');
 
         if ($this->form_validation->run() == TRUE) {
 
@@ -66,7 +66,7 @@ class Pelanggan extends CI_Controller
     {
 
         $this->form_validation->set_rules('email', 'E-mail', 'trim|required|min_length[3]|max_length[45]');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]|max_length[12]');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]');
 
         if ($this->form_validation->run() == TRUE) {
 
@@ -211,13 +211,21 @@ class Pelanggan extends CI_Controller
         $id = $this->session->userdata('id');
         $password = $this->input->post('password');
 
+        $this->form_validation->set_error_delimiters('', '');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]');
+
         $data = array(
             'password' => get_hash($password),
         );
 
-        $this->PelangganModel->update_profile($data, $id);
-        $this->session->set_flashdata('success', 'Edit Password Berhasil!');
-        redirect('Pelanggan/profile', 'refresh');
+        if ($this->form_validation->run()) {
+            $this->PelangganModel->update_profile($data, $id);
+            $this->session->set_flashdata('success', 'Edit Password Berhasil!');
+            redirect('Pelanggan/profile', 'refresh');
+        }else{
+            $this->session->set_flashdata('error', 'Edit Password Gagal!');
+            redirect('Pelanggan/profile', 'refresh');
+        }
     }
 
 }
