@@ -21,7 +21,7 @@
     .myaccordion .btn {
         width: 100%;
         font-weight: bold;
-        color: #fb524f;
+        color: #2c82c9;
         padding: 0;
     }
 

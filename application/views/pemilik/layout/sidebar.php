@@ -20,7 +20,7 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a <?php if ($title == 'Data Pelanggan') {
                                     echo 'class="active"';
                                 } ?> href="<?= base_url('Pemilik/pelanggan'); ?>">
@@ -39,7 +39,7 @@
                                 </span>
                                 <span>F.A.Q.</span>
                             </a>
-                        </li>
+                        </li> -->
                         <li>
                             <a <?php if ($title == 'Profile') {
                                     echo 'class="active"';
