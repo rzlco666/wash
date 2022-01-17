@@ -196,9 +196,9 @@ class Admin extends CI_Controller
         $data = $this->AdminModel->aktif_pemilik();
         echo json_encode($data);
     }
-    
 
-    
+
+
     //faq
     function faq()
     {
@@ -357,9 +357,15 @@ class Admin extends CI_Controller
                 $data = array('upload_data' => $this->upload->data());
                 $image = $data['upload_data']['file_name'];
 
-                if (unlink($img_src)) {
+                if ($img_data->foto == 'avatar.jpg') {
                     $this->AdminModel->update($id, $nama, $email, $image);
                     $this->output->set_content_type('application/json')->set_output(json_encode(array('status' => true)));
+                } else {
+
+                    if (unlink($img_src)) {
+                        $this->AdminModel->update($id, $nama, $email, $image);
+                        $this->output->set_content_type('application/json')->set_output(json_encode(array('status' => true)));
+                    }
                 }
             }
         }
@@ -380,9 +386,8 @@ class Admin extends CI_Controller
         if ($this->form_validation->run()) {
             $this->AdminModel->updatePassword($id, $password);
             redirect('Admin/profile', 'refresh');
-        }else{
+        } else {
             redirect('Admin/profile', 'refresh');
         }
     }
-
 }

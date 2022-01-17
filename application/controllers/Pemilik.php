@@ -301,9 +301,15 @@ class Pemilik extends CI_Controller
                 $data = array('upload_data' => $this->upload->data());
                 $image = $data['upload_data']['file_name'];
 
-                if (unlink($img_src)) {
+                if ($img_data->foto == 'avatar.jpg') {
                     $this->PemilikModel->update($id, $nama, $email, $hp, $nama_usaha, $alamat_usaha, $image);
                     $this->output->set_content_type('application/json')->set_output(json_encode(array('status' => true)));
+                } else {
+
+                    if (unlink($img_src)) {
+                        $this->PemilikModel->update($id, $nama, $email, $hp, $nama_usaha, $alamat_usaha, $image);
+                        $this->output->set_content_type('application/json')->set_output(json_encode(array('status' => true)));
+                    }
                 }
             }
         }
