@@ -317,7 +317,6 @@ class Pemilik extends CI_Controller
 
     //password
 
-
     function edit_password()
     {
         $id = $this->session->userdata('id');
@@ -334,4 +333,142 @@ class Pemilik extends CI_Controller
             redirect('Pemilik/profile', 'refresh');
         }
     }
+
+    //data tempat cuci
+    function tempat_cuci()
+    {
+        if ($this->session->userdata('is_pemilik') == FALSE) {
+            redirect('Pemilik/', 'refresh');
+        }
+
+        $data['title'] = 'Tempat Cuci';
+        $data['tempat_cuci'] = $this->PemilikModel->data_tempat_cuci();
+        $data['cuci'] = $this->PemilikModel->data_tempat_cuci();
+        $data['pemilik'] = $this->PemilikModel->data_pemilik();
+
+        $this->load->view('pemilik/layout/header', $data);
+        $this->load->view('pemilik/layout/sidebar', $data);
+        $this->load->view('pemilik/tempat_cuci/index', $data);
+        $this->load->view('pemilik/layout/footer', $data);
+        $this->load->view('pemilik/tempat_cuci/script', $data);
+    }
+
+    public function update_tempat_cuci()
+    {
+        $id_pemilik = $this->session->userdata('id');
+        $nama = $this->input->post('nama');
+        $alamat = $this->input->post('alamat');
+        $hp = $this->input->post('hp');
+        $email = $this->input->post('email');
+        $maps = $this->input->post('maps');
+        $deskripsi = $this->input->post('deskripsi');
+        $kategori = $this->input->post('kategori');
+        $harga_mobil = $this->input->post('harga_mobil');
+        $harga_motor = $this->input->post('harga_motor');
+
+        $data = array(
+            'nama' => $nama,
+            'alamat' => $alamat,
+            'hp' => $hp,
+            'email' => $email,
+            'maps' => $maps,
+            'deskripsi' => $deskripsi,
+            'kategori' => $kategori,
+            'harga_mobil' => $harga_mobil,
+            'harga_motor' => $harga_motor,
+        );
+
+        //foto1
+        if (!empty($_FILES['foto1']['name'])) {
+            $foto1 = $this->_do_upload_foto1();
+
+            $upload = $this->PemilikModel->get_by_tempat_cuci();
+            if (file_exists('uploads/tempat_cuci/foto1/' . $upload->foto1) && $upload->foto1) {
+                if ($upload->foto1 != 'avatar.jpg') {
+                    unlink('uploads/tempat_cuci/foto1/' . $upload->foto1);
+                }
+            }
+
+            $data['foto1'] = $foto1;
+        }
+        //foto2
+        if (!empty($_FILES['foto2']['name'])) {
+            $foto2 = $this->_do_upload_foto2();
+
+            $upload = $this->PemilikModel->get_by_tempat_cuci();
+            if (file_exists('uploads/tempat_cuci/foto2/' . $upload->foto2) && $upload->foto2) {
+                if ($upload->foto2 != 'avatar.jpg') {
+                    unlink('uploads/tempat_cuci/foto2/' . $upload->foto2);
+                }
+            }
+
+            $data['foto2'] = $foto2;
+        }
+        //foto3
+        if (!empty($_FILES['foto3']['name'])) {
+            $foto3 = $this->_do_upload_foto3();
+
+            $upload = $this->PemilikModel->get_by_tempat_cuci();
+            if (file_exists('uploads/tempat_cuci/foto3/' . $upload->foto3) && $upload->foto3) {
+                if ($upload->foto3 != 'avatar.jpg') {
+                    unlink('uploads/tempat_cuci/foto3/' . $upload->foto3);
+                }
+            }
+
+            $data['foto3'] = $foto3;
+        }
+
+        $this->PemilikModel->update_tempat_cuci($data, $id_pemilik);
+        $this->session->set_flashdata('success', 'Edit Profile Berhasil!');
+        redirect('Pemilik/tempat_cuci', 'refresh');
+    }
+
+    private function _do_upload_foto1()
+    {
+        $image_name = time() . '-' . $_FILES["foto1"]['name'];
+
+        $config['upload_path']         = 'uploads/tempat_cuci/foto1/';
+        $config['allowed_types']     = 'gif|jpg|png|jpeg';
+        $config['file_name']         = $image_name;
+
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('foto1')) {
+            $this->session->set_flashdata('success', $this->upload->display_errors('', ''));
+            redirect('Pemilik/tempat_cuci', 'refresh');
+        }
+        return $this->upload->data('file_name');
+    }
+
+    private function _do_upload_foto2()
+    {
+        $image_name = time() . '-' . $_FILES["foto2"]['name'];
+
+        $config['upload_path']         = 'uploads/tempat_cuci/foto2/';
+        $config['allowed_types']     = 'gif|jpg|png|jpeg';
+        $config['file_name']         = $image_name;
+
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('foto2')) {
+            $this->session->set_flashdata('success', $this->upload->display_errors('', ''));
+            redirect('Pemilik/tempat_cuci', 'refresh');
+        }
+        return $this->upload->data('file_name');
+    }
+
+    private function _do_upload_foto3()
+    {
+        $image_name = time() . '-' . $_FILES["foto3"]['name'];
+
+        $config['upload_path']         = 'uploads/tempat_cuci/foto3/';
+        $config['allowed_types']     = 'gif|jpg|png|jpeg';
+        $config['file_name']         = $image_name;
+
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('foto3')) {
+            $this->session->set_flashdata('success', $this->upload->display_errors('', ''));
+            redirect('Pemilik/tempat_cuci', 'refresh');
+        }
+        return $this->upload->data('file_name');
+    }
+
 }

@@ -14,10 +14,24 @@ class Pelanggan extends CI_Controller
     {
 
         $data['title'] = 'Landing';
+        $data['tempat_cuci'] = $this->PelangganModel->get_by_tempat_cuci6();
 
         $this->load->view('pelanggan/layout/header', $data);
         $this->load->view('pelanggan/layout/sidebar', $data);
         $this->load->view('pelanggan/index', $data);
+        $this->load->view('pelanggan/layout/footer', $data);
+    }
+
+    //tempat cuci
+    public function tempat($id)
+    {
+
+        $data['title'] = 'Tempat Cuci';
+        $data['tempat_cuci'] = $this->PelangganModel->get_id_tempat_cuci($id);
+
+        $this->load->view('pelanggan/layout/header', $data);
+        $this->load->view('pelanggan/layout/sidebar', $data);
+        $this->load->view('pelanggan/tempat_cuci', $data);
         $this->load->view('pelanggan/layout/footer', $data);
     }
 
@@ -222,10 +236,9 @@ class Pelanggan extends CI_Controller
             $this->PelangganModel->update_profile($data, $id);
             $this->session->set_flashdata('success', 'Edit Password Berhasil!');
             redirect('Pelanggan/profile', 'refresh');
-        }else{
+        } else {
             $this->session->set_flashdata('error', 'Edit Password Gagal!');
             redirect('Pelanggan/profile', 'refresh');
         }
     }
-
 }

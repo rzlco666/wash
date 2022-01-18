@@ -35,58 +35,73 @@
 			</section>
 			<!-- Banner Section Ending Here -->
 
-
-			<!-- Food Catagory Section Start here -->
-			<section class="food-category padding-tb">
+			<!-- Popular Food Section Start Here -->
+			<section class="popular-foods padding-tb" style="background-color: #fafeff;">
 				<div class="container">
-					<div class="food-box">
-						<div class="section-header">
-							<h3>Jelajahi Tempat Pencucian</h3>
-							<p>Cari tempat cuci mobil maupun motor terlangkap seusai dengan kebutuhan.</p>
-						</div>
-						<div class="section-wrapper">
-							<div class="food-slider">
-								<div class="swiper-wrapper">
-									<div class="swiper-slide">
-										<div class="food-item">
-											<div class="food-thumb">
-												<a href="#"><img src="<?= base_url('assets_pelanggan/'); ?>images/food/01.png" alt="food"></a>
+					<div class="section-header">
+						<h3>Jelajahi Tempat Pencucian</h3>
+						<p>Cari tempat cuci mobil maupun motor terlangkap seusai dengan kebutuhan.</p>
+					</div>
+					<div class="section-wrapper">
+						<div class="row">
+							<?php foreach ($tempat_cuci as $tempat_cuci) : ?>
+								<div class="col-xl-4 col-md-6 col-12">
+									<div class="p-food-item">
+										<div class="p-food-inner">
+											<div class="p-food-thumb">
+												<a href="<?= base_url('Pelanggan/tempat/').$tempat_cuci->id; ?>"><img style="width: 340px; height: 250px;object-fit: cover;" src="<?= base_url('uploads/tempat_cuci/foto2/'); ?><?= $tempat_cuci->foto2; ?>" alt="p-food"></a>
+												<span><?= rupiah($tempat_cuci->harga_motor); ?> - <?= rupiah2($tempat_cuci->harga_mobil); ?></span>
 											</div>
-											<div class="food-content">
-												<a href="#">Breakfast</a>
+											<div class="p-food-content">
+												<div class="p-food-author">
+													<a href="<?= base_url('Pelanggan/tempat/').$tempat_cuci->id; ?>"><img style="width: 60px; height: 60px;object-fit: cover;" src="<?= base_url('uploads/tempat_cuci/foto1/'); ?><?= $tempat_cuci->foto1; ?>" alt="food-author"></a>
+												</div>
+												<h6><a href="<?= base_url('Pelanggan/tempat/').$tempat_cuci->id; ?>"><?= $tempat_cuci->nama; ?></a></h6>
+												<div class="p-food-group">
+													<span><?= $tempat_cuci->deskripsi; ?></span>
+												</div>
+												<ul class="del-time">
+													<li>
+														<i class="icofont-cycling-alt"></i>
+														<div class="time-tooltip">
+															<div class="time-tooltip-holder">
+																<span class="tooltip-label">Delivery time</span>
+																<span class="tooltip-info">Your order will be delivered in 20 minutes.</span>
+															</div>
+														</div>
+													</li>
+													<li>
+														<i class="icofont-stopwatch"></i>
+														<div class="time-tooltip">
+															<div class="time-tooltip-holder">
+																<span class="tooltip-label">Pickup time</span>
+																<span class="tooltip-info">You can pickup order in 20 minutes.</span>
+															</div>
+														</div>
+													</li>
+												</ul>
+												<div class="p-food-footer">
+													<div class="left">
+														<div class="rating">
+															<i class="icofont-star"></i>
+															<i class="icofont-star"></i>
+															<i class="icofont-star"></i>
+															<i class="icofont-star"></i>
+															<i class="icofont-star"></i>
+														</div>
+													</div>
+													<div class="right"><i class="icofont-home"></i><?= $tempat_cuci->alamat; ?></div>
+												</div>
 											</div>
 										</div>
 									</div>
-									<div class="swiper-slide">
-										<div class="food-item">
-											<div class="food-thumb">
-												<a href="#"><img src="<?= base_url('assets_pelanggan/'); ?>images/food/02.png" alt="food"></a>
-											</div>
-											<div class="food-content">
-												<a href="#">Lunch</a>
-											</div>
-										</div>
-									</div>
-									<div class="swiper-slide">
-										<div class="food-item">
-											<div class="food-thumb">
-												<a href="#"><img src="<?= base_url('assets_pelanggan/'); ?>images/food/03.png" alt="food"></a>
-											</div>
-											<div class="food-content">
-												<a href="#">Dinner</a>
-											</div>
-										</div>
-									</div>
+								<?php endforeach; ?>
 								</div>
-							</div>
-							<div class="food-slider-next"><i class="icofont-double-left"></i></div>
-							<div class="food-slider-prev"><i class="icofont-double-right"></i>
-							</div>
 						</div>
 					</div>
 				</div>
 			</section>
-			<!-- Food Catagory Section Ending here -->
+			<!-- Popular Food Section Ending Here -->
 
 			<!-- Food Services Section Start here -->
 			<section class="food-services padding-tb">
@@ -144,75 +159,6 @@
 				</div>
 			</section>
 			<!-- Food Services Section Ending here -->
-
-			<!-- Popular Food Section Start Here -->
-			<section class="popular-foods padding-tb" style="background-color: #fafeff;">
-				<div class="container">
-					<div class="section-header">
-						<h3>Tempat Pencucian Terpopuler</h3>
-						<p>Paling banyak dikunjungi dan harga sesuai kebutuhan.</p>
-					</div>
-					<div class="section-wrapper">
-						<div class="row">
-							<div class="col-xl-4 col-md-6 col-12">
-								<div class="p-food-item">
-									<div class="p-food-inner">
-										<div class="p-food-thumb">
-											<img src="<?= base_url('assets_pelanggan/'); ?>images/popular-food/01.jpg" alt="p-food">
-											<span>$20 - $30</span>
-										</div>
-										<div class="p-food-content">
-											<div class="p-food-author">
-												<a href="#"><img src="<?= base_url('assets_pelanggan/'); ?>images/chef/author/01.jpg" alt="food-author"></a>
-											</div>
-											<h6><a href="#">Dragon Express</a></h6>
-											<div class="p-food-group">
-												<span>Type of food :</span>
-												<a href="#">Beef Roast</a>
-												<a href="#">Pizza</a>
-												<a href="#">Stakes</a>
-											</div>
-											<ul class="del-time">
-												<li>
-													<i class="icofont-cycling-alt"></i>
-													<div class="time-tooltip">
-														<div class="time-tooltip-holder">
-															<span class="tooltip-label">Delivery time</span>
-															<span class="tooltip-info">Your order will be delivered in 20 minutes.</span>
-														</div>
-													</div>
-												</li>
-												<li>
-													<i class="icofont-stopwatch"></i>
-													<div class="time-tooltip">
-														<div class="time-tooltip-holder">
-															<span class="tooltip-label">Pickup time</span>
-															<span class="tooltip-info">You can pickup order in 20 minutes.</span>
-														</div>
-													</div>
-												</li>
-											</ul>
-											<div class="p-food-footer">
-												<div class="left">
-													<div class="rating">
-														<i class="icofont-star"></i>
-														<i class="icofont-star"></i>
-														<i class="icofont-star"></i>
-														<i class="icofont-star"></i>
-														<i class="icofont-star"></i>
-													</div>
-												</div>
-												<div class="right"><i class="icofont-home"></i>6th Avenue New York</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- Popular Food Section Ending Here -->
 
 			<!-- Food Apps Section Start here -->
 			<!-- <section class="food-apps">

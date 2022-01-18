@@ -24,6 +24,14 @@ class PemilikModel extends CI_Model
         return $pemilik->result();
     }
 
+    public function data_tempat_cuci()
+    {
+        $this->db->where('id_pemilik', $this->session->userdata('id'));
+        $pemilik = $this->db->get('tempat_cuci');
+
+        return $pemilik->result();
+    }
+
     //profile
     function getData()
     {
@@ -76,5 +84,21 @@ class PemilikModel extends CI_Model
         $result = $this->db->update('pemilik', $data);
         return $result;
     }
-    
+
+    //tempat cuci
+    public function update_tempat_cuci($data, $id_pemilik)
+    {
+        $this->db->where('id_pemilik', $id_pemilik);
+        $this->db->update('tempat_cuci', $data);
+
+        return $this->db->affected_rows();
+    }
+
+    public function get_by_tempat_cuci()
+    {
+        $this->db->from('tempat_cuci');
+        $this->db->where('id_pemilik', $this->session->userdata('id'));
+        $query = $this->db->get();
+        return $query->row();
+    }
 }

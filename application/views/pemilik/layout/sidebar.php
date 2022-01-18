@@ -41,6 +41,16 @@
                             </a>
                         </li> -->
                         <li>
+                            <a <?php if ($title == 'Tempat Cuci') {
+                                    echo 'class="active"';
+                                } ?> href="<?= base_url('Pemilik/tempat_cuci'); ?>">
+                                <span class="nav-link-icon">
+                                    <i data-feather="briefcase"></i>
+                                </span>
+                                <span>Data Tempat Cuci</span>
+                            </a>
+                        </li>
+                        <li>
                             <a <?php if ($title == 'Profile') {
                                     echo 'class="active"';
                                 } ?> href="<?= base_url('Pemilik/profile'); ?>">

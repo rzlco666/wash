@@ -19,14 +19,17 @@
     <!-- DataTable -->
     <link rel="stylesheet" href="<?= base_url('assets_admin/'); ?>vendors/dataTable/datatables.min.css" type="text/css">
 
+    <!-- Lightbox -->
+    <link rel="stylesheet" href="<?= base_url('assets_admin/'); ?>vendors/lightbox/magnific-popup.css" type="text/css">
+
     <!-- Prism -->
     <link rel="stylesheet" href="<?= base_url('assets_admin/'); ?>vendors/prism/prism.css" type="text/css">
 
     <!-- Daterangepicker -->
     <link rel="stylesheet" href="<?= base_url('assets_admin/'); ?>vendors/datepicker/daterangepicker.css" type="text/css">
-
-    <!-- DataTable -->
-    <link rel="stylesheet" href="<?= base_url('assets_admin/'); ?>vendors/dataTable/datatables.min.css" type="text/css">
+    
+    <!-- Select2 -->
+    <link rel="stylesheet" href="<?= base_url('assets_admin/'); ?>vendors/select2/css/select2.min.css" type="text/css">
 
     <!-- App css -->
     <link rel="stylesheet" href="<?= base_url('assets_admin/'); ?>css/app.min.css" type="text/css">

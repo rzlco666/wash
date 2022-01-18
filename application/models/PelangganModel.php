@@ -58,4 +58,25 @@ class PelangganModel extends CI_Model
 
         return $this->db->affected_rows();
     }
+
+    //tempat cuci
+
+    public function get_id_tempat_cuci($id)
+    {
+        $this->db->from('tempat_cuci');
+        $this->db->where('status', 1);
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function get_by_tempat_cuci6()
+    {
+        $this->db->from('tempat_cuci');
+        $this->db->where('status', 1);
+        $this->db->limit(6);
+        $this->db->order_by('date_created', 'DESC'); 
+        $query = $this->db->get();
+        return $query->result();
+    }
 }
