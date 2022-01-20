@@ -58,7 +58,7 @@
 												</div>
 												<h6><a href="<?= base_url('Pelanggan/tempat/').$tempat_cuci->id; ?>"><?= $tempat_cuci->nama; ?></a></h6>
 												<div class="p-food-group">
-													<span><?= $tempat_cuci->deskripsi; ?></span>
+													<span><?= implode(' ', array_slice(explode(' ', $tempat_cuci->deskripsi), 0, 5)); ?> ...</span>
 												</div>
 												<ul class="del-time">
 													<li>

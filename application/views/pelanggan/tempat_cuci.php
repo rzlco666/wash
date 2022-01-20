@@ -51,7 +51,21 @@
                                     <div class="post-content">
                                         <div class="meta-tag">
                                             <div class="categori">
-                                                <a href="#">Chicken</a>
+                                                <a href="#">
+                                                    <?php
+                                                    switch ($tempat_cuci->kategori) {
+                                                        case 1:
+                                                            echo "Mobil";
+                                                            break;
+                                                        case 2:
+                                                            echo "Motor";
+                                                            break;
+                                                        case 3:
+                                                            echo "Mobil dan Motor";
+                                                            break;
+                                                    }
+                                                    ?>
+                                                </a>
                                             </div>
                                             <div class="rating">
                                                 <i class="icofont-star"></i>
@@ -67,19 +81,26 @@
                                             <ul>
                                                 <li>
                                                     <i class="icofont-ui-user"></i>
-                                                    <a href="#" class="admin">Serves : 02</a>
+                                                    <a href="#" class="admin">Owner : <?= $tempat_cuci->nama_pemilik; ?></a>
                                                 </li>
                                                 <li>
                                                     <i class="icofont-clock-time"></i>
-                                                    <a href="#" class="date">Prep Time : 30 min</a>
-                                                </li>
-                                                <li>
-                                                    <i class="icofont-clock-time"></i>
-                                                    <a href="#" class="date">Cook Time : 30 min </a>
+                                                    <a href="#" class="date">Bergabung : <?= format_indo2($tempat_cuci->date_created); ?></a>
                                                 </li>
                                                 <li>
                                                     <i class="icofont-signal"></i>
-                                                    <a href="#" class="skill">Skill lavel : Easy</a>
+                                                    <a href="#" class="skill">Status :
+                                                        <?php
+                                                        switch ($tempat_cuci->status) {
+                                                            case 0:
+                                                                echo "Nonaktif";
+                                                                break;
+                                                            case 1:
+                                                                echo "Aktif";
+                                                                break;
+                                                        }
+                                                        ?>
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -89,59 +110,72 @@
                                         <div class="make-product">
                                             <div class="left">
                                                 <div class="title">
-                                                    <h6>Ingredients</h6>
+                                                    <h6>Kontak</h6>
                                                 </div>
                                                 <ul>
-                                                    <li class="active">60 ml extra virgin olive oil</li>
-                                                    <li class="active">230 g bacon, diced into pieces</li>
-                                                    <li class="deactive">120 ml dry white wine</li>
-                                                    <li class="active">03 large eggs</li>
-                                                    <li class="deactive">280 ml grated parmesan cheese</li>
-                                                    <li class="deactive">02 Spoon Salt</li>
+                                                    <li>
+                                                        <span class="left">
+                                                            <i class="icofont-double-right"></i>Telp :
+                                                        </span>
+                                                        <span class="right"><?= $tempat_cuci->hp; ?></span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="left">
+                                                            <i class="icofont-double-right"></i>Email :
+                                                        </span>
+                                                        <span class="right"><?= $tempat_cuci->email; ?></span>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <div class="right">
                                                 <div class="title">
-                                                    <h6>Ingredients</h6>
+                                                    <h6>Harga</h6>
                                                 </div>
                                                 <ul>
-                                                    <li>
-                                                        <span class="left">
-                                                            <i class="icofont-double-right"></i>Protine
-                                                        </span>
-                                                        <span class="right">6.60g</span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="left">
-                                                            <i class="icofont-double-right"></i>Deitary Fiber
-                                                        </span>
-                                                        <span class="right">50g</span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="left">
-                                                            <i class="icofont-double-right"></i>Fat Total
-                                                        </span>
-                                                        <span class="right">60g</span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="left">
-                                                            <i class="icofont-double-right"></i>Energy
-                                                        </span>
-                                                        <span class="right">900mg</span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="left">
-                                                            <i class="icofont-double-right"></i>Fat Saturated
-                                                        </span>
-                                                        <span class="right">39.5g</span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="left">
-                                                            <i class="icofont-double-right"></i>Carbohydrate
-                                                        </span>
-                                                        <span class="right">80g</span>
-                                                    </li>
+                                                    <?php
+                                                    switch ($tempat_cuci->kategori) {
+                                                        case 1:
+                                                            echo "<li>
+                                                            <span class='left'>
+                                                                <i class='icofont-double-right'></i>Mobil
+                                                            </span>
+                                                            <span class='right'>" . rupiah($tempat_cuci->harga_mobil) . "</span>
+                                                        </li>";
+                                                            break;
+                                                        case 2:
+                                                            echo "<li>
+                                                            <span class='left'>
+                                                                <i class='icofont-double-right'></i>Motor
+                                                            </span>
+                                                            <span class='right'>" . rupiah($tempat_cuci->harga_motor) . "</span>
+                                                        </li>";
+                                                            break;
+                                                        case 3:
+                                                            echo "
+                                                            <li>
+                                                            <span class='left'>
+                                                                <i class='icofont-double-right'></i>Mobil
+                                                            </span>
+                                                            <span class='right'>" . rupiah($tempat_cuci->harga_mobil) . "</span>
+                                                        </li>
+                                                            <li>
+                                                            <span class='left'>
+                                                                <i class='icofont-double-right'></i>Motor
+                                                            </span>
+                                                            <span class='right'>" . rupiah($tempat_cuci->harga_motor) . "</span>
+                                                        </li>";
+                                                            break;
+                                                    }
+                                                    ?>
                                                 </ul>
+                                            </div>
+                                        </div>
+                                        <div class="scan-area">
+                                            <div class="title">
+                                                <h6>Alamat <?= $tempat_cuci->nama; ?></h6>
+                                            </div>
+                                            <div class="scrn-thumb">
+                                                <?= $tempat_cuci->alamat; ?>
                                             </div>
                                         </div>
                                         <div class="scan-area">
@@ -167,22 +201,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="authors">
-                                <div class="author-thumb">
-                                    <a href="#"><img src="<?= base_url('assets_pelanggan/'); ?>images/chef/author/01.png" alt="author"></a>
-                                </div>
-                                <div class="author-content">
-                                    <h6>FoxCoders</h6>
-                                    <p>Data release Friday large ponted to better than expcted pickup in the euroz yieldsrose tolate Thursd and the euro edged up slghtly toY after the Grman recent political uncertainty in Germany has so far</p>
-                                    <div class="scocial-media">
-                                        <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
-                                        <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
-                                        <a href="#" class="linkedin"><i class="icofont-linkedin"></i></a>
-                                        <a href="#" class="vimeo"><i class="icofont-vimeo"></i></a>
                                     </div>
                                 </div>
                             </div>

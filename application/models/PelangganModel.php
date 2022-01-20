@@ -63,9 +63,11 @@ class PelangganModel extends CI_Model
 
     public function get_id_tempat_cuci($id)
     {
+        $this->db->select('tempat_cuci.id, id_pemilik, tempat_cuci.nama, pemilik.nama nama_pemilik,alamat, tempat_cuci.hp, tempat_cuci.email, maps, deskripsi, kategori, harga_mobil, harga_motor, foto1, foto2, foto3, tempat_cuci.status, tempat_cuci.date_created');
         $this->db->from('tempat_cuci');
-        $this->db->where('status', 1);
-        $this->db->where('id', $id);
+        $this->db->where('tempat_cuci.status', 1);
+        $this->db->where('tempat_cuci.id', $id);
+        $this->db->join('pemilik', 'pemilik.id = tempat_cuci.id_pemilik');
         $query = $this->db->get();
         return $query->result();
     }
