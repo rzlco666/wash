@@ -2108,17 +2108,17 @@ aside {
           .page-header .page-title .breadcrumb li a:hover {
             color: #2c82c9; }
   .page-header.style-2 {
-    background: url(../../assets_pelanggan/images/page-header/bg.jpg) no-repeat;
+    background: url(../../assets_pelanggan/css/bg-image/category-bg3.jpg) no-repeat;
     background-position: bottom center;
     background-size: cover; }
     .page-header.style-2 .page-title h3 {
-      color: #fff; }
+      color: rgb(0, 0, 0); }
     .page-header.style-2 .page-title .breadcrumb li {
       color: #2c82c9; }
       .page-header.style-2 .page-title .breadcrumb li::after {
-        background: #fff; }
+        background: rgb(0, 0, 0); }
       .page-header.style-2 .page-title .breadcrumb li a {
-        color: #fff; }
+        color: rgb(0, 0, 0); }
         .page-header.style-2 .page-title .breadcrumb li a:hover {
           color: #2c82c9; }
 

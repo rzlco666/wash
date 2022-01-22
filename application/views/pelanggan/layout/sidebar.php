@@ -48,26 +48,9 @@
                                             echo 'active';
                                         } ?>" href="<?= base_url('Pelanggan/index'); ?>">Home</a></li>
                         <li>
-                            <a href="#0">Pages</a>
+                            <a href="#0">Tempat Cuci</a>
                             <ul>
-                                <li>
-                                    <a href="#0">Category</a>
-                                    <ul>
-                                        <li><a href="food-menu.html">Food Category</a></li>
-                                        <li><a href="menu-card.html">Category style 1</a></li>
-                                        <li><a href="menu-card-2.html">Category style 2</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#0">Chef</a>
-                                    <ul>
-                                        <li><a href="homechef.html">Home Chef</a></li>
-                                        <li><a href="homechef-single.html">Home Chef Single</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="recepi-single.html">Single Recipe</a></li>
-                                <li><a href="404.html">404 Page</a></li>
-                                <li><a href="coming-soon.html">Coming Soon Page</a></li>
+                                <li><a href="<?= base_url('Pelanggan/tempat_cuci'); ?>">Tempat Cuci</a></li>
                             </ul>
                         </li>
                         <li>
@@ -115,37 +98,20 @@
                                             echo 'active';
                                         } ?>" href="<?= base_url('Pelanggan/index'); ?>">Home</a></li>
                         <li>
-                            <a href="#0">Pages</a>
+                            <a href="#0">Tempat Cuci</a>
                             <ul>
-                                <li>
-                                    <a href="#0">Category</a>
-                                    <ul>
-                                        <li><a href="food-menu.html">Food Category</a></li>
-                                        <li><a href="menu-card.html">Category style 1</a></li>
-                                        <li><a href="menu-card-2.html">Category style 2</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#0">Chef</a>
-                                    <ul>
-                                        <li><a href="homechef.html">Home Chef</a></li>
-                                        <li><a href="homechef-single.html">Home Chef Single</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="recepi-single.html">Single Recipe</a></li>
-                                <li><a href="404.html">404 Page</a></li>
-                                <li><a href="coming-soon.html">Coming Soon Page</a></li>
+                                <li><a href="<?= base_url('Pelanggan/tempat_cuci'); ?>">Tempat Cuci</a></li>
                             </ul>
                         </li>
                         <li>
-                                <a class="<?php if ($title == 'F.A.Q.') {
-                                                echo 'active';
-                                            } ?>" href="#0">Contact</a>
-                                <ul>
-                                    <li><a class="<?php if ($title == 'F.A.Q.') {
-                                                        echo 'active';
-                                                    } ?>" href="<?= base_url('Pelanggan/faq'); ?>">F.A.Q.</a></li>
-                                </ul>
+                            <a class="<?php if ($title == 'F.A.Q.') {
+                                            echo 'active';
+                                        } ?>" href="#0">Contact</a>
+                            <ul>
+                                <li><a class="<?php if ($title == 'F.A.Q.') {
+                                                    echo 'active';
+                                                } ?>" href="<?= base_url('Pelanggan/faq'); ?>">F.A.Q.</a></li>
+                            </ul>
                         </li>
                         <li>
                             <?php if ($this->session->userdata('is_login') == FALSE) : ?>

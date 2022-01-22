@@ -35,6 +35,18 @@ class Pelanggan extends CI_Controller
         $this->load->view('pelanggan/layout/footer', $data);
     }
 
+    public function tempat_cuci()
+    {
+
+        $data['title'] = 'Tempat Cuci';
+        $data['tempat_cuci'] = $this->PelangganModel->get_tempat_cuci();
+
+        $this->load->view('pelanggan/layout/header', $data);
+        $this->load->view('pelanggan/layout/sidebar', $data);
+        $this->load->view('pelanggan/tempat_cuci_all', $data);
+        $this->load->view('pelanggan/layout/footer', $data);
+    }
+
     //register
     public function register()
     {

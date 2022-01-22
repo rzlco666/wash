@@ -49,14 +49,14 @@
 									<div class="p-food-item">
 										<div class="p-food-inner">
 											<div class="p-food-thumb">
-												<a href="<?= base_url('Pelanggan/tempat/').$tempat_cuci->id; ?>"><img style="width: 340px; height: 250px;object-fit: cover;" src="<?= base_url('uploads/tempat_cuci/foto2/'); ?><?= $tempat_cuci->foto2; ?>" alt="p-food"></a>
+												<a href="<?= base_url('Pelanggan/tempat/') . $tempat_cuci->id; ?>"><img style="width: 340px; height: 250px;object-fit: cover;" src="<?= base_url('uploads/tempat_cuci/foto2/'); ?><?= $tempat_cuci->foto2; ?>" alt="p-food"></a>
 												<span><?= rupiah($tempat_cuci->harga_motor); ?> - <?= rupiah2($tempat_cuci->harga_mobil); ?></span>
 											</div>
 											<div class="p-food-content">
 												<div class="p-food-author">
-													<a href="<?= base_url('Pelanggan/tempat/').$tempat_cuci->id; ?>"><img style="width: 60px; height: 60px;object-fit: cover;" src="<?= base_url('uploads/tempat_cuci/foto1/'); ?><?= $tempat_cuci->foto1; ?>" alt="food-author"></a>
+													<a href="<?= base_url('Pelanggan/tempat/') . $tempat_cuci->id; ?>"><img style="width: 60px; height: 60px;object-fit: cover;" src="<?= base_url('uploads/tempat_cuci/foto1/'); ?><?= $tempat_cuci->foto1; ?>" alt="food-author"></a>
 												</div>
-												<h6><a href="<?= base_url('Pelanggan/tempat/').$tempat_cuci->id; ?>"><?= $tempat_cuci->nama; ?></a></h6>
+												<h6><a href="<?= base_url('Pelanggan/tempat/') . $tempat_cuci->id; ?>"><?= $tempat_cuci->nama; ?></a></h6>
 												<div class="p-food-group">
 													<span><?= implode(' ', array_slice(explode(' ', $tempat_cuci->deskripsi), 0, 5)); ?> ...</span>
 												</div>
@@ -95,8 +95,8 @@
 											</div>
 										</div>
 									</div>
-								<?php endforeach; ?>
 								</div>
+							<?php endforeach; ?>
 						</div>
 					</div>
 				</div>
