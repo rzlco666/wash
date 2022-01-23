@@ -28,6 +28,7 @@ class Pelanggan extends CI_Controller
 
         $data['title'] = 'Tempat Cuci';
         $data['tempat_cuci'] = $this->PelangganModel->get_id_tempat_cuci($id);
+        $data['rekomendasi'] = $this->PelangganModel->get_rekomendasi_tempat_cuci($id);
 
         $this->load->view('pelanggan/layout/header', $data);
         $this->load->view('pelanggan/layout/sidebar', $data);

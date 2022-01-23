@@ -190,11 +190,53 @@
                                                 break;
                                         }
                                         ?>
-                                        <p>Quantity</p>
-                                        <label>
-                                            <input type="number" placeholder="2">
-                                        </label>
-                                        <a href="index.html" class="food-btn style-2"><span>Pesan</span></a>
+                                        <?php
+                                        if ($tempat_cuci->kategori == 1) :
+                                        ?>
+                                            <p>Kendaraan :</p>
+                                            <label>
+                                                <select style="width: 220px;" name="kendaraan" class="select2">
+                                                    <option selected disabled>Pilih Kendaraan</option>
+                                                    <option value="1" name="kendaraan">Mobil</option>
+                                                </select>
+                                            </label>
+                                            <p>Tanggal :</p>
+                                            <label>
+                                                <input type="text" id="datepicker">
+                                            </label>
+                                        <?php
+                                        elseif ($tempat_cuci->kategori == 2) :
+                                        ?>
+                                            <p>Kendaraan :</p>
+                                            <label>
+                                                <select style="width: 220px;" name="kendaraan" class="select2">
+                                                    <option selected disabled>Pilih Kendaraan</option>
+                                                    <option value="2" name="kendaraan">Motor</option>
+                                                </select>
+                                            </label>
+                                            <p>Tanggal :</p>
+                                            <label>
+                                                <input type="text" id="datepicker">
+                                            </label>
+                                        <?php
+                                        elseif ($tempat_cuci->kategori == 3) :
+                                        ?>
+                                            <p>Kendaraan :</p>
+                                            <label>
+                                                <select style="width: 220px;" name="kendaraan" class="select2">
+                                                    <option selected disabled>Pilih Kendaraan</option>
+                                                    <option value="1" name="kendaraan">Mobil</option>
+                                                    <option value="2" name="kendaraan">Motor</option>
+                                                </select>
+                                            </label>
+                                            <p>Tanggal :</p>
+                                            <label>
+                                                <input type="text" id="datepicker">
+                                            </label>
+                                        <?php
+                                        endif;
+                                        ?>
+                                        <a href="index.html" style="margin-top: 3vh;" class="food-btn style-2"><span>Pesan</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -385,187 +427,61 @@
                         <div class="popular-foods">
                             <div class="section-wrapper">
                                 <div class="row justify-content-center align-items-center">
-                                    <div class="col-xl-3 col-md-6 col-12">
-                                        <div class="p-food-item">
-                                            <div class="p-food-inner">
-                                                <div class="p-food-thumb">
-                                                    <img src="<?= base_url('assets_pelanggan/'); ?>images/popular-food/01.jpg" alt="p-food">
-                                                    <span>$30</span>
-                                                </div>
-                                                <div class="p-food-content">
-                                                    <div class="p-food-author">
-                                                        <a href="#"><img src="<?= base_url('assets_pelanggan/'); ?>images/chef/author/01.jpg" alt="food-author"></a>
+                                    <?php foreach ($rekomendasi as $rekomendasi) : ?>
+                                        <div class="col-xl-3 col-md-6 col-12">
+                                            <div class="p-food-item">
+                                                <div class="p-food-inner">
+                                                    <div class="p-food-thumb">
+                                                        <a href="<?= base_url('Pelanggan/tempat/') . $rekomendasi->id; ?>">
+                                                            <img style="width: 340px; height: 250px;object-fit: cover;" src="<?= base_url('uploads/tempat_cuci/foto2/'); ?><?= $rekomendasi->foto2; ?>" alt="p-food">
+                                                        </a>
+                                                        <span><?= rupiah($rekomendasi->harga_motor); ?> - <?= rupiah2($rekomendasi->harga_mobil); ?></span>
                                                     </div>
-                                                    <h6><a href="#">Dragon Express</a></h6>
-                                                    <div class="p-food-group">
-                                                        <a href="#">Beef Roast</a>
-                                                        <a href="#">Pizza</a>
-                                                        <a href="#">Stakes</a>
-                                                    </div>
-                                                    <ul class="del-time">
-                                                        <li>
-                                                            <i class="icofont-cycling-alt"></i>
-                                                            <div class="time-tooltip">
-                                                                <div class="time-tooltip-holder">
-                                                                    <span class="tooltip-label">Delivery time
-                                                                        <span class="tooltip-info">Your order will be delivered in 20 minutes.</span>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <i class="icofont-stopwatch"></i>
-                                                            <div class="time-tooltip">
-                                                                <div class="time-tooltip-holder">
-                                                                    <span class="tooltip-label">Pickup time</span>
-                                                                    <span class="tooltip-info">You can pickup order in 20 minutes.
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="p-food-footer">
-                                                        <div class="left">
-                                                            <div class="rating">
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                            </div>
+                                                    <div class="p-food-content">
+                                                        <div class="p-food-author">
+                                                            <a href="<?= base_url('Pelanggan/tempat/') . $rekomendasi->id; ?>"><img style="width: 60px; height: 60px;object-fit: cover;" src="<?= base_url('uploads/tempat_cuci/foto1/'); ?><?= $rekomendasi->foto1; ?>" alt="food-author"></a>
                                                         </div>
-                                                        <div class="right"><i class="icofont-home"></i>6th New York</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-md-6 col-12">
-                                        <div class="p-food-item">
-                                            <div class="p-food-inner">
-                                                <div class="p-food-thumb">
-                                                    <img src="<?= base_url('assets_pelanggan/'); ?>images/popular-food/02.jpg" alt="p-food">
-                                                    <span>$30</span>
-                                                </div>
-                                                <div class="p-food-content">
-                                                    <div class="p-food-author">
-                                                        <a href="#"><img src="<?= base_url('assets_pelanggan/'); ?>images/chef/author/02.jpg" alt="food-author"></a>
-                                                    </div>
-                                                    <h6><a href="#">Dragon Express</a></h6>
-                                                    <div class="p-food-group">
-                                                        <a href="#">Beef Roast</a>
-                                                        <a href="#">Pizza</a>
-                                                        <a href="#">Stakes</a>
-                                                    </div>
-                                                    <ul class="del-time">
-                                                        <li>
-                                                            <i class="icofont-cycling-alt"></i>
-                                                            <div class="time-tooltip">
-                                                                <div class="time-tooltip-holder">
-                                                                    <span class="tooltip-label">Delivery time
-                                                                        <span class="tooltip-info">Your order will be delivered in 20 minutes.</span>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <i class="icofont-stopwatch"></i>
-                                                            <div class="time-tooltip">
-                                                                <div class="time-tooltip-holder">
-                                                                    <span class="tooltip-label">Pickup time</span>
-                                                                    <span class="tooltip-info">You can pickup order in 20 minutes.
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="p-food-footer">
-                                                        <div class="left">
-                                                            <div class="rating">
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                            </div>
+                                                        <h6><a href="<?= base_url('Pelanggan/tempat/') . $rekomendasi->id; ?>"><?= $rekomendasi->nama; ?></a></h6>
+                                                        <div class="p-food-group">
+                                                            <span><?= implode(' ', array_slice(explode(' ', $rekomendasi->deskripsi), 0, 5)); ?> ...</span>
                                                         </div>
-                                                        <div class="right"><i class="icofont-home"></i>6th New York</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-md-6 col-12">
-                                        <div class="p-food-item">
-                                            <div class="p-food-inner">
-                                                <div class="p-food-thumb">
-                                                    <img src="<?= base_url('assets_pelanggan/'); ?>images/popular-food/03.jpg" alt="p-food">
-                                                    <span>$30</span>
-                                                </div>
-                                                <div class="p-food-content">
-                                                    <div class="p-food-author">
-                                                        <a href="#"><img src="<?= base_url('assets_pelanggan/'); ?>images/chef/author/03.jpg" alt="food-author"></a>
-                                                    </div>
-                                                    <h6><a href="#">Dragon Express</a></h6>
-                                                    <div class="p-food-group">
-                                                        <a href="#">Beef Roast</a>
-                                                        <a href="#">Pizza</a>
-                                                        <a href="#">Stakes</a>
-                                                    </div>
-                                                    <ul class="del-time">
-                                                        <li>
-                                                            <i class="icofont-cycling-alt"></i>
-                                                            <div class="time-tooltip">
-                                                                <div class="time-tooltip-holder">
-                                                                    <span class="tooltip-label">Delivery time
+                                                        <ul class="del-time">
+                                                            <li>
+                                                                <i class="icofont-cycling-alt"></i>
+                                                                <div class="time-tooltip">
+                                                                    <div class="time-tooltip-holder">
+                                                                        <span class="tooltip-label">Delivery time</span>
                                                                         <span class="tooltip-info">Your order will be delivered in 20 minutes.</span>
-                                                                    </span>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <i class="icofont-stopwatch"></i>
+                                                                <div class="time-tooltip">
+                                                                    <div class="time-tooltip-holder">
+                                                                        <span class="tooltip-label">Pickup time</span>
+                                                                        <span class="tooltip-info">You can pickup order in 20 minutes.</span>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="p-food-footer">
+                                                            <div class="left">
+                                                                <div class="rating">
+                                                                    <i class="icofont-star"></i>
+                                                                    <i class="icofont-star"></i>
+                                                                    <i class="icofont-star"></i>
+                                                                    <i class="icofont-star"></i>
+                                                                    <i class="icofont-star"></i>
                                                                 </div>
                                                             </div>
-                                                        </li>
-                                                        <li>
-                                                            <i class="icofont-stopwatch"></i>
-                                                            <div class="time-tooltip">
-                                                                <div class="time-tooltip-holder">
-                                                                    <span class="tooltip-label">Pickup time</span>
-                                                                    <span class="tooltip-info">You can pickup order in 20 minutes.
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="p-food-footer">
-                                                        <div class="left">
-                                                            <div class="rating">
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                                <i class="icofont-star"></i>
-                                                            </div>
+                                                            <div class="right"><i class="icofont-home"></i><?= $rekomendasi->alamat; ?></div>
                                                         </div>
-                                                        <div class="right"><i class="icofont-home"></i>6th New York</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-xl-3 col-md-6 col-12">
-                                        <div class="p-food-item">
-                                            <div class="p-food-inner">
-                                                <div class="food-quyality">
-                                                    <div class="section-header">
-                                                        <p>Availability: <span>28 in Stock</span></p>
-                                                    </div>
-                                                    <div class="section-wrapper">
-                                                        <h5>$90.00</h5>
-                                                        <p>For 3 item(s)</p>
-                                                        <a href="#" class="food-btn"><span>Back to Home</span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
                         </div>
