@@ -1,25 +1,20 @@
 			<!-- Banner Section Start Here -->
 			<section class="banner" style="background-image: url(<?= base_url('assets_pelanggan/'); ?>css/bg-image/category-bg3.jpg); background-size: cover;">
-				<!-- <div class="shape-1">
-			        <img src="<?= base_url('assets_pelanggan/'); ?>images/banner/shape/01.png" alt="banner">
-			    </div>
-			    <div class="shape-2">
-			        <img src="<?= base_url('assets_pelanggan/'); ?>images/banner/shape/02.png" alt="banner">
-			    </div> -->
 				<div class="banner-area">
 					<div class="container">
 						<div class="row">
 							<div class="col-xl-8 col-12">
 								<div class="banner-content">
 									<h2>Pelayanan Cuci Kendaraan</h2>
-									<form action="/">
+									<form action="<?= base_url('Pelanggan/cari'); ?>">
 										<div class="codexcoder-selectoption">
-											<select name="text">
-												<option value="1">Cuci Mobil</option>
-												<option value="2">Cuci Motor</option>
+											<select id="kategori" name="kategori">
+												<option value="1" name="kategori">Cuci Mobil</option>
+												<option value="2" name="kategori">Cuci Motor</option>
+												<option value="3" name="kategori">Cuci Mobil dan Motor</option>
 											</select>
 										</div>
-										<input type="text" name="type" placeholder="Cari tempat pencucian">
+										<input type="text" name="nama" placeholder="Cari tempat pencucian">
 										<button type="submit"><i class="icofont-search-2"></i></button>
 									</form>
 									<ul>

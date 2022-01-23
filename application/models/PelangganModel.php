@@ -77,7 +77,7 @@ class PelangganModel extends CI_Model
         $this->db->from('tempat_cuci');
         $this->db->where('status', 1);
         $this->db->limit(6);
-        $this->db->order_by('date_created', 'DESC'); 
+        $this->db->order_by('date_created', 'DESC');
         $query = $this->db->get();
         return $query->result();
     }
@@ -86,7 +86,7 @@ class PelangganModel extends CI_Model
     {
         $this->db->from('tempat_cuci');
         $this->db->where('status', 1);
-        $this->db->order_by('date_created', 'DESC'); 
+        $this->db->order_by('date_created', 'DESC');
         $query = $this->db->get();
         return $query->result();
     }
@@ -98,8 +98,30 @@ class PelangganModel extends CI_Model
         $this->db->where('status', 1);
         $this->db->where('id !=', $id);
         $this->db->limit(6);
-        $this->db->order_by('id', 'RANDOM'); 
+        $this->db->order_by('id', 'RANDOM');
         //$this->db->join('pemilik', 'pemilik.id = tempat_cuci.id_pemilik');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function search_tempat_cuci($kategori, $nama)
+    {
+        $this->db->from('tempat_cuci');
+        $this->db->where('status', 1);
+
+        if ($kategori == 1) {
+            $this->db->where('kategori', 1);
+        } elseif ($kategori == 2) {
+            $this->db->where('kategori', 2);
+        } elseif ($kategori == 3) {
+            $this->db->where('kategori', 3);
+        }else{
+            $this->db->where('kategori', 3);
+        }
+
+        $this->db->like('nama', $nama);
+
+        $this->db->order_by('date_created', 'DESC');
         $query = $this->db->get();
         return $query->result();
     }

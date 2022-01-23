@@ -48,6 +48,23 @@ class Pelanggan extends CI_Controller
         $this->load->view('pelanggan/layout/footer', $data);
     }
 
+    public function cari()
+    {
+
+        $kategori = $this->input->get('kategori');
+        $kat = (int)$kategori;
+        $nama = $this->input->get('nama');
+
+        $data['title'] = 'Cari Tempat Cuci';
+        
+        $data['tempat_cuci'] = $this->PelangganModel->search_tempat_cuci($kat, $nama);
+
+        $this->load->view('pelanggan/layout/header', $data);
+        $this->load->view('pelanggan/layout/sidebar', $data);
+        $this->load->view('pelanggan/cari', $data);
+        $this->load->view('pelanggan/layout/footer', $data);
+    }
+
     //register
     public function register()
     {
