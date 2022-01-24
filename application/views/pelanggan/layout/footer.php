@@ -38,7 +38,7 @@
 
 
 
-		<script src="<?= base_url('assets_pelanggan/'); ?>js/jquery.js"></script>
+		<!-- <script src="<?= base_url('assets_pelanggan/'); ?>js/jquery.js"></script> -->
 		<script src="<?= base_url('assets_pelanggan/'); ?>js/waypoints.min.js"></script>
 
 		<!-- Datepicker -->
@@ -76,7 +76,6 @@
 				showDropdowns: true,
 				minDate:date2,
 				maxDate:date3,
-				//format:'yyyy-m-d',
 			});
 		</script>
 

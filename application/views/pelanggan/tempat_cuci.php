@@ -172,72 +172,117 @@
                                     <div class="section-header">
                                         <p><span>Pesan</span></p>
                                     </div>
-                                    <div class="section-wrapper">
-                                        <?php
-                                        switch ($tempat_cuci->kategori) {
-                                            case 1:
-                                                echo "
+                                    <?php
+                                    if ($this->session->userdata('is_login') == FALSE) {
+                                    ?>
+                                        <div class="section-wrapper">
+                                            <p>Sebelum melakukan pemesanan, silahkan login terlebih dahulu <a href="<?= base_url('Pelanggan/login'); ?>">disini</a>.</p>
+                                        </div>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <form id="payment-form" method="post" action="<?= site_url() ?>Pelanggan/finish">
+                                            <input type="hidden" name="result_type" id="result-type" value="">
+                                            <input type="hidden" name="result_data" id="result-data" value="">
+                                            <div class="section-wrapper">
+                                                <?php
+                                                switch ($tempat_cuci->kategori) {
+                                                    case 1:
+                                                        echo "
                                                     <p><span>Harga Cuci Mobil</span> : <h5>" . rupiah($tempat_cuci->harga_mobil) . "</h5></p>";
-                                                break;
-                                            case 2:
-                                                echo "
+                                                        break;
+                                                    case 2:
+                                                        echo "
                                                     <p><span>Harga Cuci Motor</span> : <h5>" . rupiah($tempat_cuci->harga_motor) . "</h5></p>";
-                                                break;
-                                            case 3:
-                                                echo "
+                                                        break;
+                                                    case 3:
+                                                        echo "
                                                     <p><span>Harga Cuci Mobil</span> : <h5>" . rupiah($tempat_cuci->harga_mobil) . "</h5></p>
                                                     <p><span>Harga Cuci Motor</span> : <h5>" . rupiah($tempat_cuci->harga_motor) . "</h5></p>";
-                                                break;
-                                        }
-                                        ?>
-                                        <?php
-                                        if ($tempat_cuci->kategori == 1) :
-                                        ?>
-                                            <p>Kendaraan :</p>
-                                            <label>
-                                                <select style="width: 220px;" name="kendaraan" class="select2">
-                                                    <option selected disabled>Pilih Kendaraan</option>
-                                                    <option value="1" name="kendaraan">Mobil</option>
-                                                </select>
-                                            </label>
-                                            <p>Tanggal :</p>
-                                            <label>
-                                                <input type="text" id="datepicker">
-                                            </label>
-                                        <?php
-                                        elseif ($tempat_cuci->kategori == 2) :
-                                        ?>
-                                            <p>Kendaraan :</p>
-                                            <label>
-                                                <select style="width: 220px;" name="kendaraan" class="select2">
-                                                    <option selected disabled>Pilih Kendaraan</option>
-                                                    <option value="2" name="kendaraan">Motor</option>
-                                                </select>
-                                            </label>
-                                            <p>Tanggal :</p>
-                                            <label>
-                                                <input type="text" id="datepicker">
-                                            </label>
-                                        <?php
-                                        elseif ($tempat_cuci->kategori == 3) :
-                                        ?>
-                                            <p>Kendaraan :</p>
-                                            <label>
-                                                <select style="width: 220px;" name="kendaraan" class="select2">
-                                                    <option selected disabled>Pilih Kendaraan</option>
-                                                    <option value="1" name="kendaraan">Mobil</option>
-                                                    <option value="2" name="kendaraan">Motor</option>
-                                                </select>
-                                            </label>
-                                            <p>Tanggal :</p>
-                                            <label>
-                                                <input type="text" id="datepicker">
-                                            </label>
-                                        <?php
-                                        endif;
-                                        ?>
-                                        <a href="index.html" style="margin-top: 3vh;" class="food-btn style-2"><span>Pesan</span></a>
-                                    </div>
+                                                        break;
+                                                }
+                                                ?>
+                                                <p>Nama :</p>
+                                                <label>
+                                                    <input type="hidden" id="id_pelanggan" name="id_pelanggan" value="<?php echo $this->session->userdata('id') ?>">
+                                                    <input type="hidden" id="harga_mobil" name="harga_mobil" value="<?= $tempat_cuci->harga_mobil; ?>">
+                                                    <input type="hidden" id="harga_motor" name="harga_motor" value="<?= $tempat_cuci->harga_motor; ?>">
+
+                                                    <input type="text" id="nama" name="nama" value="<?php echo $this->session->userdata('nama') ?>">
+                                                </label>
+
+                                                <p>Alamat :</p>
+                                                <label>
+                                                    <input type="text" id="alamat" name="alamat">
+                                                </label>
+
+                                                <p>Email :</p>
+                                                <label>
+                                                    <input type="email" id="email" name="email" value="<?php echo $this->session->userdata('email') ?>">
+                                                </label>
+
+                                                <p>No HP :</p>
+                                                <label>
+                                                    <input type="number" id="no_hp" name="no_hp">
+                                                </label>
+
+                                                <?php
+                                                if ($tempat_cuci->kategori == 1) :
+                                                ?>
+                                                    <p>Kendaraan :</p>
+                                                    <label>
+                                                        <input type="hidden" id="id_tempat_cuci" name="id_tempat_cuci" value="<?= $tempat_cuci->id; ?>">
+                                                        <input type="hidden" id="nama_tempat_cuci" name="nama_tempat_cuci" value="<?= $tempat_cuci->nama; ?>">
+                                                        <select style="width: 220px;" name="kendaraan" id="kendaraan" class="select2">
+                                                            <option selected disabled>Pilih Kendaraan</option>
+                                                            <option value="1" name="kendaraan" id="kendaraan">Mobil</option>
+                                                        </select>
+                                                    </label>
+                                                    <p>Tanggal :</p>
+                                                    <label>
+                                                        <input type="text" name="tanggal_pesan" class="tanggal_pesan" id="datepicker">
+                                                    </label>
+                                                <?php
+                                                elseif ($tempat_cuci->kategori == 2) :
+                                                ?>
+                                                    <p>Kendaraan :</p>
+                                                    <label>
+                                                        <input type="hidden" id="id_tempat_cuci" name="id_tempat_cuci" value="<?= $tempat_cuci->id; ?>">
+                                                        <input type="hidden" id="nama_tempat_cuci" name="nama_tempat_cuci" value="<?= $tempat_cuci->nama; ?>">
+                                                        <select style="width: 220px;" name="kendaraan" id="kendaraan" class="select2">
+                                                            <option selected disabled>Pilih Kendaraan</option>
+                                                            <option value="2" name="kendaraan" id="kendaraan">Motor</option>
+                                                        </select>
+                                                    </label>
+                                                    <p>Tanggal :</p>
+                                                    <label>
+                                                        <input type="text" name="tanggal_pesan" class="tanggal_pesan" id="datepicker">
+                                                    </label>
+                                                <?php
+                                                elseif ($tempat_cuci->kategori == 3) :
+                                                ?>
+                                                    <p>Kendaraan :</p>
+                                                    <label>
+                                                        <input type="hidden" id="id_tempat_cuci" name="id_tempat_cuci" value="<?= $tempat_cuci->id; ?>">
+                                                        <input type="hidden" id="nama_tempat_cuci" name="nama_tempat_cuci" value="<?= $tempat_cuci->nama; ?>">
+                                                        <select style="width: 220px;" name="kendaraan" id="kendaraan">
+                                                            <option selected disabled>Pilih Kendaraan</option>
+                                                            <option value="1" name="kendaraan" id="kendaraan">Mobil</option>
+                                                            <option value="2" name="kendaraan" id="kendaraan">Motor</option>
+                                                        </select>
+                                                    </label>
+                                                    <p>Tanggal :</p>
+                                                    <label>
+                                                        <input type="text" name="tanggal_pesan" class="tanggal_pesan" id="datepicker">
+                                                    </label>
+                                                <?php
+                                                endif;
+                                                ?>
+                                                <input type="submit" style="margin-top: 3vh;" id="pay-button" value="Pesan" class="food-btn style-2" />
+                                            </div>
+                                        </form>
+                                    <?php
+                                    } ?>
                                 </div>
                             </div>
                         </aside>
@@ -492,3 +537,77 @@
     </div>
 <?php endforeach; ?>
 <!-- Review Section Ending Here -->
+
+<script type="text/javascript">
+    $('#pay-button').click(function(event) {
+        event.preventDefault();
+        $(this).attr("disabled", "disabled");
+
+        var id_pelanggan = $("#id_pelanggan").val();
+        var nama = $("#nama").val();
+        var alamat = $("#alamat").val();
+        var email = $("#email").val();
+        var no_hp = $("#no_hp").val();
+        var id_tempat_cuci = $("#id_tempat_cuci").val();
+        var nama_tempat_cuci = $("#nama_tempat_cuci").val();
+        var harga_mobil = $("#harga_mobil").val();
+        var harga_motor = $("#harga_motor").val();
+        var kendaraan = $("#kendaraan").val();
+        var tanggal_pesan = $(".tanggal_pesan").val();
+
+        $.ajax({
+            type: 'POST',
+            url: '<?= site_url() ?>/Pelanggan/token',
+            data: {
+                id_pelanggan: id_pelanggan,
+                nama: nama,
+                alamat: alamat,
+                email: email,
+                no_hp: no_hp,
+                id_tempat_cuci: id_tempat_cuci,
+                nama_tempat_cuci: nama_tempat_cuci,
+                harga_mobil: harga_mobil,
+                harga_motor: harga_motor,
+                kendaraan: kendaraan,
+                tanggal_pesan: tanggal_pesan,
+            },
+            cache: false,
+
+            success: function(data) {
+                //location = data;
+
+                console.log('token = ' + data);
+
+                var resultType = document.getElementById('result-type');
+                var resultData = document.getElementById('result-data');
+
+                function changeResult(type, data) {
+                    $("#result-type").val(type);
+                    $("#result-data").val(JSON.stringify(data));
+                    //resultType.innerHTML = type;
+                    //resultData.innerHTML = JSON.stringify(data);
+                }
+
+                snap.pay(data, {
+
+                    onSuccess: function(result) {
+                        changeResult('success', result);
+                        console.log(result.status_message);
+                        console.log(result);
+                        $("#payment-form").submit();
+                    },
+                    onPending: function(result) {
+                        changeResult('pending', result);
+                        console.log(result.status_message);
+                        $("#payment-form").submit();
+                    },
+                    onError: function(result) {
+                        changeResult('error', result);
+                        console.log(result.status_message);
+                        $("#payment-form").submit();
+                    }
+                });
+            }
+        });
+    });
+</script>

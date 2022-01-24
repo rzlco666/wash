@@ -28,5 +28,8 @@
 	<!-- custom scss -->
 	<link rel="stylesheet" href="<?= base_url('assets_pelanggan/'); ?>css/style.css">
 
+	<script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-hiE74imCoyQ4KBEE"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
 	<title>Pelanggan &mdash; <?= $title; ?></title>
 </head>

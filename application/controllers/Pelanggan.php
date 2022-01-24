@@ -7,6 +7,12 @@ class Pelanggan extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+
+        $params = array('server_key' => 'SB-Mid-server-5Ruf9S0MygrZvbPtD30WXmKD', 'production' => false);
+        $this->load->library('midtrans');
+        $this->midtrans->config($params);
+        $this->load->helper('url');
+
         $this->load->model('PelangganModel');
     }
 
@@ -56,7 +62,7 @@ class Pelanggan extends CI_Controller
         $nama = $this->input->get('nama');
 
         $data['title'] = 'Cari Tempat Cuci';
-        
+
         $data['tempat_cuci'] = $this->PelangganModel->search_tempat_cuci($kat, $nama);
 
         $this->load->view('pelanggan/layout/header', $data);
@@ -269,6 +275,220 @@ class Pelanggan extends CI_Controller
         } else {
             $this->session->set_flashdata('error', 'Edit Password Gagal!');
             redirect('Pelanggan/profile', 'refresh');
+        }
+    }
+
+
+    //midtrans logic
+    public function token()
+    {
+        $id_pelanggan = $this->input->post('id_pelanggan');
+        $nama = $this->input->post('nama');
+        $alamat = $this->input->post('alamat');
+        $email = $this->input->post('email');
+        $no_hp = $this->input->post('no_hp');
+        $id_tempat_cuci = $this->input->post('id_tempat_cuci');
+        $nama_tempat_cuci = $this->input->post('nama_tempat_cuci');
+        $harga_mobil = $this->input->post('harga_mobil');
+        $harga_motor = $this->input->post('harga_motor');
+        $kendaraan = $this->input->post('kendaraan');
+        $tanggal_pesan = $this->input->post('tanggal_pesan');
+
+
+
+        if ($kendaraan == 1) {
+            $gross_convert = (int)$harga_mobil;
+            $jumlah_convert = 1;
+            $total = ($gross_convert * $jumlah_convert);
+        } elseif ($kendaraan == 2) {
+            $gross_convert = (int)$harga_motor;
+            $jumlah_convert = 1;
+            $total = ($gross_convert * $jumlah_convert);
+        }
+
+
+        // Required
+        $transaction_details = array(
+            'order_id' => rand(),
+            'gross_amount' => $total, // no decimal allowed for creditcard
+        );
+
+        $item1_details = array(
+            'id' => 'a1',
+            'price' => $gross_convert,
+            'quantity' => 1,
+            'name' => "Pembayaran " . $nama_tempat_cuci
+        );
+
+
+        // Optional
+        $item_details = array($item1_details);
+
+
+        // Optional
+        $customer_details = array(
+            'first_name'    => $nama,
+            //'last_name'     => "Litani",
+            'email'         => $email,
+            'phone'         => $no_hp,
+            'billing_address'  => $alamat,
+            'shipping_address' => $alamat
+        );
+
+        // Data yang akan dikirim untuk request redirect_url.
+        $credit_card['secure'] = true;
+        //ser save_card true to enable oneclick or 2click
+        //$credit_card['save_card'] = true;
+
+        $time = time();
+        $custom_expiry = array(
+            'start_time' => date("Y-m-d H:i:s O", $time),
+            'unit' => 'day',
+            'duration'  => 1
+        );
+
+        $transaction_data = array(
+            'transaction_details' => $transaction_details,
+            'item_details'       => $item_details,
+            'customer_details'   => $customer_details,
+            'credit_card'        => $credit_card,
+            'expiry'             => $custom_expiry
+        );
+
+        error_log(json_encode($transaction_data));
+        $snapToken = $this->midtrans->getSnapToken($transaction_data);
+        error_log($snapToken);
+        echo $snapToken;
+
+        /* // Required
+		$transaction_details = array(
+            'order_id' => rand(),
+            'gross_amount' => 94000, // no decimal allowed for creditcard
+          );
+  
+          // Optional
+          $item1_details = array(
+            'id' => 'a1',
+            'price' => 18000,
+            'quantity' => 3,
+            'name' => "Apple"
+          );
+  
+          // Optional
+          $item2_details = array(
+            'id' => 'a2',
+            'price' => 20000,
+            'quantity' => 2,
+            'name' => "Orange"
+          );
+  
+          // Optional
+          $item_details = array ($item1_details, $item2_details);
+  
+          // Optional
+          $billing_address = array(
+            'first_name'    => "Andri",
+            'last_name'     => "Litani",
+            'address'       => "Mangga 20",
+            'city'          => "Jakarta",
+            'postal_code'   => "16602",
+            'phone'         => "081122334455",
+            'country_code'  => 'IDN'
+          );
+  
+          // Optional
+          $shipping_address = array(
+            'first_name'    => "Obet",
+            'last_name'     => "Supriadi",
+            'address'       => "Manggis 90",
+            'city'          => "Jakarta",
+            'postal_code'   => "16601",
+            'phone'         => "08113366345",
+            'country_code'  => 'IDN'
+          );
+  
+          // Optional
+          $customer_details = array(
+            'first_name'    => "Andri",
+            'last_name'     => "Litani",
+            'email'         => "andri@litani.com",
+            'phone'         => "081122334455",
+            'billing_address'  => $billing_address,
+            'shipping_address' => $shipping_address
+          );
+  
+          // Data yang akan dikirim untuk request redirect_url.
+          $credit_card['secure'] = true;
+          //ser save_card true to enable oneclick or 2click
+          //$credit_card['save_card'] = true;
+  
+          $time = time();
+          $custom_expiry = array(
+              'start_time' => date("Y-m-d H:i:s O",$time),
+              'unit' => 'minute', 
+              'duration'  => 2
+          );
+          
+          $transaction_data = array(
+              'transaction_details'=> $transaction_details,
+              'item_details'       => $item_details,
+              'customer_details'   => $customer_details,
+              'credit_card'        => $credit_card,
+              'expiry'             => $custom_expiry
+          );
+  
+          error_log(json_encode($transaction_data));
+          $snapToken = $this->midtrans->getSnapToken($transaction_data);
+          error_log($snapToken);
+          echo $snapToken; */
+    }
+
+    public function finish()
+    {
+        $result = json_decode($this->input->post('result_data'), true);
+
+        $id_pelanggan = $this->input->post('id_pelanggan');
+        $nama = $this->input->post('nama');
+        $alamat = $this->input->post('alamat');
+        $email = $this->input->post('email');
+        $no_hp = $this->input->post('no_hp');
+        $id_tempat_cuci = $this->input->post('id_tempat_cuci');
+        $kendaraan = $this->input->post('kendaraan');
+
+        $tanggal_pesan = $this->input->post('tanggal_pesan');
+        $fixdate = date("Y-m-d", strtotime($tanggal_pesan)); 
+
+        $data = [
+            'order_id' => $result['order_id'],
+            'gross_amount' => $result['gross_amount'],
+            'payment_type' => $result['payment_type'],
+            'transaction_time' => $result['transaction_time'],
+            'bank' => $result['va_numbers'][0]['bank'],
+            'va_number' => $result['va_numbers'][0]['va_number'],
+            'pdf_url' => $result['pdf_url'],
+            'status_code' => $result['status_code'],
+            'kendaraan' => $kendaraan,
+            'tanggal_pesan' => $fixdate,
+            'id_pelanggan' => $id_pelanggan,
+            'nama' => $nama,
+            'alamat' => $alamat,
+            'email' => $email,
+            'no_hp' => $no_hp,
+            'id_tempat_cuci' => $id_tempat_cuci,
+        ];
+
+        /* $result = json_decode($this->input->post('result_data'));
+        echo 'RESULT <br><pre>';
+        var_dump($result);
+        echo '</pre>'; */
+
+        $simpan = $this->db->insert('transaksi', $data);
+        if ($simpan) {
+            $this->session->set_flashdata('transaksi', 'Transaksi berhasil!');
+            redirect('Pelanggan/transaksi', 'refresh');
+        } else {
+            $this->session->set_flashdata('transaksi', 'Transaksi gagal!');
+            redirect('Pelanggan/transaksi', 'refresh');
         }
     }
 }
