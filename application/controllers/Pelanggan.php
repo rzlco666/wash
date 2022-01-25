@@ -278,6 +278,34 @@ class Pelanggan extends CI_Controller
         }
     }
 
+    //transaksi
+    public function transaksi()
+    {
+        $data['title'] = 'Transaksi';
+
+        if ($this->session->userdata('is_login') == FALSE) {
+            redirect('/Pelanggan/login/', 'refresh');
+        } else {
+            $id = $this->session->userdata('id');
+
+            $data['transaksi'] = $this->db->query("SELECT tw.order_id, tw.gross_amount, tw.payment_type, tw.transaction_time, tw.bank, tw.va_number,
+                tw.pdf_url, tw.status_code, tw.kendaraan, tw.tanggal_pesan, tw.id_pelanggan, tw.nama, tw.alamat, tw.email, tw.no_hp,
+                tw.id_tempat_cuci, w.nama nama_usaha, w.foto1 foto1
+                FROM transaksi tw 
+                JOIN tempat_cuci w 
+                ON tw.id_tempat_cuci = w.id 
+                WHERE tw.id_pelanggan = $id 
+                ORDER BY transaction_time DESC")->result();
+            //$data['profile'] = $this->templates->view_where('wisatawan', ['id_wisatawan' => $id])->result_array();
+
+            $this->load->view('pelanggan/layout/header', $data);
+            $this->load->view('pelanggan/layout/sidebar', $data);
+            $this->load->view('pelanggan/transaksi', $data);
+            $this->load->view('pelanggan/layout/footer', $data);
+            //$this->load->view('pelanggan/profile/script', $data);
+        }
+    }
+
 
     //midtrans logic
     public function token()
@@ -359,88 +387,6 @@ class Pelanggan extends CI_Controller
         $snapToken = $this->midtrans->getSnapToken($transaction_data);
         error_log($snapToken);
         echo $snapToken;
-
-        /* // Required
-		$transaction_details = array(
-            'order_id' => rand(),
-            'gross_amount' => 94000, // no decimal allowed for creditcard
-          );
-  
-          // Optional
-          $item1_details = array(
-            'id' => 'a1',
-            'price' => 18000,
-            'quantity' => 3,
-            'name' => "Apple"
-          );
-  
-          // Optional
-          $item2_details = array(
-            'id' => 'a2',
-            'price' => 20000,
-            'quantity' => 2,
-            'name' => "Orange"
-          );
-  
-          // Optional
-          $item_details = array ($item1_details, $item2_details);
-  
-          // Optional
-          $billing_address = array(
-            'first_name'    => "Andri",
-            'last_name'     => "Litani",
-            'address'       => "Mangga 20",
-            'city'          => "Jakarta",
-            'postal_code'   => "16602",
-            'phone'         => "081122334455",
-            'country_code'  => 'IDN'
-          );
-  
-          // Optional
-          $shipping_address = array(
-            'first_name'    => "Obet",
-            'last_name'     => "Supriadi",
-            'address'       => "Manggis 90",
-            'city'          => "Jakarta",
-            'postal_code'   => "16601",
-            'phone'         => "08113366345",
-            'country_code'  => 'IDN'
-          );
-  
-          // Optional
-          $customer_details = array(
-            'first_name'    => "Andri",
-            'last_name'     => "Litani",
-            'email'         => "andri@litani.com",
-            'phone'         => "081122334455",
-            'billing_address'  => $billing_address,
-            'shipping_address' => $shipping_address
-          );
-  
-          // Data yang akan dikirim untuk request redirect_url.
-          $credit_card['secure'] = true;
-          //ser save_card true to enable oneclick or 2click
-          //$credit_card['save_card'] = true;
-  
-          $time = time();
-          $custom_expiry = array(
-              'start_time' => date("Y-m-d H:i:s O",$time),
-              'unit' => 'minute', 
-              'duration'  => 2
-          );
-          
-          $transaction_data = array(
-              'transaction_details'=> $transaction_details,
-              'item_details'       => $item_details,
-              'customer_details'   => $customer_details,
-              'credit_card'        => $credit_card,
-              'expiry'             => $custom_expiry
-          );
-  
-          error_log(json_encode($transaction_data));
-          $snapToken = $this->midtrans->getSnapToken($transaction_data);
-          error_log($snapToken);
-          echo $snapToken; */
     }
 
     public function finish()
@@ -456,7 +402,7 @@ class Pelanggan extends CI_Controller
         $kendaraan = $this->input->post('kendaraan');
 
         $tanggal_pesan = $this->input->post('tanggal_pesan');
-        $fixdate = date("Y-m-d", strtotime($tanggal_pesan)); 
+        $fixdate = date("Y-m-d", strtotime($tanggal_pesan));
 
         $data = [
             'order_id' => $result['order_id'],
@@ -477,17 +423,12 @@ class Pelanggan extends CI_Controller
             'id_tempat_cuci' => $id_tempat_cuci,
         ];
 
-        /* $result = json_decode($this->input->post('result_data'));
-        echo 'RESULT <br><pre>';
-        var_dump($result);
-        echo '</pre>'; */
-
         $simpan = $this->db->insert('transaksi', $data);
         if ($simpan) {
-            $this->session->set_flashdata('transaksi', 'Transaksi berhasil!');
+            $this->session->set_flashdata('message', 'Transaksi berhasil!');
             redirect('Pelanggan/transaksi', 'refresh');
         } else {
-            $this->session->set_flashdata('transaksi', 'Transaksi gagal!');
+            $this->session->set_flashdata('error', 'Transaksi gagal!');
             redirect('Pelanggan/transaksi', 'refresh');
         }
     }

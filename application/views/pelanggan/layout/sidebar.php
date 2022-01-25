@@ -53,6 +53,29 @@
                                 <li><a href="<?= base_url('Pelanggan/tempat_cuci'); ?>">Tempat Cuci</a></li>
                             </ul>
                         </li>
+                        <?php if ($this->session->userdata('is_login') == TRUE) : ?>
+                            <li>
+                                <a class="<?php if ($title == 'Transaksi') {
+                                                echo 'active';
+                                            } ?>" href="#0">Transaksi</a>
+                                <ul>
+                                    <li><a class="<?php if ($title == 'Transaksi') {
+                                                        echo 'active';
+                                                    } ?>" href="<?= base_url('Pelanggan/transaksi'); ?>">Transaksi</a></li>
+                                </ul>
+                            </li>
+                        <?php else : ?>
+                        <?php endif; ?>
+                        <li>
+                            <a class="<?php if ($title == 'F.A.Q.') {
+                                            echo 'active';
+                                        } ?>" href="#0">Contact</a>
+                            <ul>
+                                <li><a class="<?php if ($title == 'F.A.Q.') {
+                                                    echo 'active';
+                                                } ?>" href="<?= base_url('Pelanggan/faq'); ?>">F.A.Q.</a></li>
+                            </ul>
+                        </li>
                         <li>
                             <?php if ($this->session->userdata('is_login') == FALSE) : ?>
                                 <a class="<?php if ($title == 'Login' || $title == 'Register') {
@@ -103,6 +126,19 @@
                                 <li><a href="<?= base_url('Pelanggan/tempat_cuci'); ?>">Tempat Cuci</a></li>
                             </ul>
                         </li>
+                        <?php if ($this->session->userdata('is_login') == TRUE) : ?>
+                            <li>
+                                <a class="<?php if ($title == 'Transaksi') {
+                                                echo 'active';
+                                            } ?>" href="#0">Transaksi</a>
+                                <ul>
+                                    <li><a class="<?php if ($title == 'Transaksi') {
+                                                        echo 'active';
+                                                    } ?>" href="<?= base_url('Pelanggan/transaksi'); ?>">Transaksi</a></li>
+                                </ul>
+                            </li>
+                        <?php else : ?>
+                        <?php endif; ?>
                         <li>
                             <a class="<?php if ($title == 'F.A.Q.') {
                                             echo 'active';

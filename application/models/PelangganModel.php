@@ -115,7 +115,7 @@ class PelangganModel extends CI_Model
             $this->db->where('kategori', 2);
         } elseif ($kategori == 3) {
             $this->db->where('kategori', 3);
-        }else{
+        } else {
             $this->db->where('kategori', 3);
         }
 
