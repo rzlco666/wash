@@ -483,7 +483,7 @@ class Pemilik extends CI_Controller
         $data['title'] = 'Data Transaksi';
         $data['pemilik'] = $this->PemilikModel->data_pemilik();
         $data['transaksi'] = $this->db->query("SELECT tw.order_id, tw.gross_amount, tw.payment_type, tw.transaction_time, tw.bank, tw.va_number,
-                tw.pdf_url, tw.status_code, tw.kendaraan, tw.tanggal_pesan, tw.id_pelanggan, tw.nama, tw.alamat, tw.email, tw.no_hp,
+                tw.pdf_url, tw.status_code, tw.status, tw.kendaraan, tw.tanggal_pesan, tw.id_pelanggan, tw.nama, tw.alamat, tw.email, tw.no_hp,
                 tw.id_tempat_cuci, w.nama nama_usaha, w.foto1 foto1, w.id_pemilik id_pemilik
                 FROM transaksi tw 
                 JOIN tempat_cuci w 
@@ -496,5 +496,23 @@ class Pemilik extends CI_Controller
         $this->load->view('pemilik/transaksi/index', $data);
         $this->load->view('pemilik/layout/footer', $data);
         $this->load->view('pemilik/transaksi/script', $data);
+    }
+
+    function proses_transaksi($order_id)
+    {
+        $data = $this->PemilikModel->proses_transaksi($order_id);
+        redirect('Pemilik/transaksi', 'refresh');
+    }
+
+    function batal_transaksi($order_id)
+    {
+        $data = $this->PemilikModel->batal_transaksi($order_id);
+        redirect('Pemilik/transaksi', 'refresh');
+    }
+
+    function selesai_transaksi($order_id)
+    {
+        $data = $this->PemilikModel->selesai_transaksi($order_id);
+        redirect('Pemilik/transaksi', 'refresh');
     }
 }

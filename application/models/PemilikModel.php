@@ -101,4 +101,41 @@ class PemilikModel extends CI_Model
         $query = $this->db->get();
         return $query->row();
     }
+
+    //transaksi
+    function proses_transaksi($order_id)
+    {
+        $id_pemilik = $this->session->userdata('id');
+        $status = 2;
+
+        $this->db->set('status', $status);
+        $this->db->where('order_id', $order_id);
+
+        $result = $this->db->update('transaksi');
+        return $result;
+    }
+
+    function batal_transaksi($order_id)
+    {
+        $id_pemilik = $this->session->userdata('id');
+        $status = 4;
+
+        $this->db->set('status', $status);
+        $this->db->where('order_id', $order_id);
+
+        $result = $this->db->update('transaksi');
+        return $result;
+    }
+
+    function selesai_transaksi($order_id)
+    {
+        $id_pemilik = $this->session->userdata('id');
+        $status = 3;
+
+        $this->db->set('status', $status);
+        $this->db->where('order_id', $order_id);
+
+        $result = $this->db->update('transaksi');
+        return $result;
+    }
 }
