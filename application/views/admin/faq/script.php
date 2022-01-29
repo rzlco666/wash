@@ -9,10 +9,10 @@
         //function show all faq
         function show_faq() {
             $.ajax({
-                type: 'ajax',
-                url: '<?php echo site_url('Admin/faq_data') ?>',
+                type: "AJAX",
+                url: '<?= base_url('Admin/faq_data') ?>',
                 async: false,
-                dataType: 'json',
+                dataType: "JSON",
                 success: function(data) {
                     var html = '';
                     var i;

@@ -21,14 +21,24 @@
                             </a>
                         </li>
                         <li>
-                            <a <?php if ($title == 'Data Pemilik') {
-                                    echo 'class="active"';
-                                } ?> href="<?= base_url('Admin/pemilik'); ?>">
+                            <a href="#">
                                 <span class="nav-link-icon">
                                     <i data-feather="briefcase"></i>
                                 </span>
-                                <span>Data Pemilik</span>
+                                <span>Tempat Cuci</span>
                             </a>
+                            <ul>
+                                <li>
+                                    <a <?php if ($title == 'Data Tempat Cuci') {
+                                            echo 'class="active"';
+                                        } ?> href="<?= base_url('Admin/tempat_cuci'); ?>">Data Tempat Cuci</a>
+                                </li>
+                                <li>
+                                    <a <?php if ($title == 'Data Pemilik') {
+                                            echo 'class="active"';
+                                        } ?> href="<?= base_url('Admin/pemilik'); ?>">Data Pemilik</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a <?php if ($title == 'Data Pelanggan') {

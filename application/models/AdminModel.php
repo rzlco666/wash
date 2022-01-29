@@ -95,6 +95,15 @@ class AdminModel extends CI_Model
         return $result;
     }
 
+    //tempat_cuci
+    function tempat_cuci_list()
+    {
+        $this->db->select('tempat_cuci.id, id_pemilik, tempat_cuci.nama, pemilik.nama nama_pemilik, alamat, tempat_cuci.hp, tempat_cuci.email, maps, deskripsi, kategori, harga_mobil, harga_motor, foto1, foto2, foto3, tempat_cuci.status, tempat_cuci.date_created');
+        $this->db->from('tempat_cuci');
+        $this->db->join('pemilik', 'pemilik.id = tempat_cuci.id_pemilik');
+        $query = $this->db->get();
+        return $query->result();
+    }
 
     //faq
     function faq_list()
@@ -193,5 +202,4 @@ class AdminModel extends CI_Model
         $result = $this->db->update('admin', $data);
         return $result;
     }
-
 }
