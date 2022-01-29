@@ -306,6 +306,26 @@ class Pelanggan extends CI_Controller
         }
     }
 
+    public function invoice($order_id)
+    {
+        $data['title'] = 'Invoice';
+
+        if ($this->session->userdata('is_login') == FALSE) {
+            redirect('/Pelanggan/login/', 'refresh');
+        } else {
+
+            $data['transaksi'] = $this->db->query("SELECT tw.order_id, tw.gross_amount, tw.payment_type, tw.transaction_time, tw.bank, tw.va_number,
+                tw.pdf_url, tw.status_code, tw.kendaraan, tw.tanggal_pesan, tw.id_pelanggan, tw.nama, tw.alamat, tw.email, tw.no_hp,
+                tw.id_tempat_cuci, w.nama nama_usaha, w.foto1 foto1
+                FROM transaksi tw 
+                JOIN tempat_cuci w 
+                ON tw.id_tempat_cuci = w.id 
+                WHERE tw.order_id = $order_id 
+                ORDER BY transaction_time DESC")->result();
+
+            $this->load->view('pelanggan/invoice', $data);
+        }
+    }
 
     //midtrans logic
     public function token()
