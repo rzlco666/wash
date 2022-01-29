@@ -147,19 +147,19 @@ class Admin extends CI_Controller
     function pelanggan_data()
     {
         $data = $this->AdminModel->pelanggan_list();
-        echo json_encode($data);
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
     function banned_pelanggan()
     {
         $data = $this->AdminModel->banned_pelanggan();
-        echo json_encode($data);
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
     function aktif_pelanggan()
     {
         $data = $this->AdminModel->aktif_pelanggan();
-        echo json_encode($data);
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
     //pemilik
@@ -182,22 +182,43 @@ class Admin extends CI_Controller
     function pemilik_data()
     {
         $data = $this->AdminModel->pemilik_list();
-        echo json_encode($data);
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
     function banned_pemilik()
     {
         $data = $this->AdminModel->banned_pemilik();
-        echo json_encode($data);
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
     function aktif_pemilik()
     {
         $data = $this->AdminModel->aktif_pemilik();
-        echo json_encode($data);
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
+    //tempat cuci
+    function tempat_cuci()
+    {
+        if ($this->session->userdata('is_admin') == FALSE) {
+            redirect('Admin/', 'refresh');
+        }
 
+        $data['title'] = 'Data Tempat Cuci';
+        $data['admin'] = $this->AdminModel->data_admin();
+
+        $this->load->view('admin/layout/header', $data);
+        $this->load->view('admin/layout/sidebar', $data);
+        $this->load->view('admin/tempat_cuci/index', $data);
+        $this->load->view('admin/layout/footer', $data);
+        $this->load->view('admin/tempat_cuci/script', $data);
+    }
+
+    function tempat_cuci_data()
+    {
+        $data = $this->AdminModel->tempat_cuci_list();
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+    }
 
     //faq
     function faq()
@@ -219,25 +240,25 @@ class Admin extends CI_Controller
     function faq_data()
     {
         $data = $this->AdminModel->faq_list();
-        echo json_encode($data);
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
     function save_faq()
     {
         $data = $this->AdminModel->save_faq();
-        echo json_encode($data);
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
     function update_faq()
     {
         $data = $this->AdminModel->update_faq();
-        echo json_encode($data);
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
     function delete_faq()
     {
         $data = $this->AdminModel->delete_faq();
-        echo json_encode($data);
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
 
