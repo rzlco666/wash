@@ -41,6 +41,16 @@
                             </ul>
                         </li>
                         <li>
+                            <a <?php if ($title == 'Data Transaksi') {
+                                    echo 'class="active"';
+                                } ?> href="<?= base_url('Admin/transaksi'); ?>">
+                                <span class="nav-link-icon">
+                                    <i data-feather="dollar-sign"></i>
+                                </span>
+                                <span>Data Transaksi</span>
+                            </a>
+                        </li>
+                        <li>
                             <a <?php if ($title == 'Data Pelanggan') {
                                     echo 'class="active"';
                                 } ?> href="<?= base_url('Admin/pelanggan'); ?>">

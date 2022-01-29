@@ -105,6 +105,20 @@ class AdminModel extends CI_Model
         return $query->result();
     }
 
+    //transaksi
+    function transaksi_list()
+    {
+        $this->db->query("SELECT tw.order_id, tw.gross_amount, tw.payment_type, tw.transaction_time, tw.bank, tw.va_number,
+            tw.pdf_url, tw.status_code, tw.kendaraan, tw.tanggal_pesan, tw.id_pelanggan, tw.nama, tw.alamat, tw.email, tw.no_hp,
+            tw.id_tempat_cuci, w.nama nama_usaha, w.foto1 foto1
+            FROM transaksi tw 
+            JOIN tempat_cuci w 
+            ON tw.id_tempat_cuci = w.id
+            ORDER BY transaction_time DESC");
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     //faq
     function faq_list()
     {

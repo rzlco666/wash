@@ -58,7 +58,6 @@
                                     '<td><span class="badge badge-success">Aktif</span></td>' +
                                     '</tr>';
                             }
-                            break;
                         } else if (data[i].kategori == 2) {
                             if (data[i].status == 0) {
                                 html += '<tr>' +
