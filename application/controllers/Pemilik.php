@@ -471,4 +471,30 @@ class Pemilik extends CI_Controller
         return $this->upload->data('file_name');
     }
 
+    //transaksi
+    function transaksi()
+    {
+        if ($this->session->userdata('is_pemilik') == FALSE) {
+            redirect('Pemilik/', 'refresh');
+        }
+
+        $id = $this->session->userdata('id');
+
+        $data['title'] = 'Data Transaksi';
+        $data['pemilik'] = $this->PemilikModel->data_pemilik();
+        $data['transaksi'] = $this->db->query("SELECT tw.order_id, tw.gross_amount, tw.payment_type, tw.transaction_time, tw.bank, tw.va_number,
+                tw.pdf_url, tw.status_code, tw.kendaraan, tw.tanggal_pesan, tw.id_pelanggan, tw.nama, tw.alamat, tw.email, tw.no_hp,
+                tw.id_tempat_cuci, w.nama nama_usaha, w.foto1 foto1, w.id_pemilik id_pemilik
+                FROM transaksi tw 
+                JOIN tempat_cuci w 
+                ON tw.id_tempat_cuci = w.id
+                WHERE w.id_pemilik = $id
+                ORDER BY transaction_time DESC")->result();
+
+        $this->load->view('pemilik/layout/header', $data);
+        $this->load->view('pemilik/layout/sidebar', $data);
+        $this->load->view('pemilik/transaksi/index', $data);
+        $this->load->view('pemilik/layout/footer', $data);
+        $this->load->view('pemilik/transaksi/script', $data);
+    }
 }

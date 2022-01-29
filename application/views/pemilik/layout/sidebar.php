@@ -20,34 +20,24 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <!-- <li>
-                            <a <?php if ($title == 'Data Pelanggan') {
-                                    echo 'class="active"';
-                                } ?> href="<?= base_url('Pemilik/pelanggan'); ?>">
-                                <span class="nav-link-icon">
-                                    <i data-feather="users"></i>
-                                </span>
-                                <span>Data Pelanggan</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a <?php if ($title == 'F.A.Q.') {
-                                    echo 'class="active"';
-                                } ?> href="<?= base_url('Pemilik/faq'); ?>">
-                                <span class="nav-link-icon">
-                                    <i data-feather="help-circle"></i>
-                                </span>
-                                <span>F.A.Q.</span>
-                            </a>
-                        </li> -->
                         <li>
                             <a <?php if ($title == 'Tempat Cuci') {
-                                    echo 'class="active"';
-                                } ?> href="<?= base_url('Pemilik/tempat_cuci'); ?>">
+                                echo 'class="active"';
+                            } ?> href="<?= base_url('Pemilik/tempat_cuci'); ?>">
                                 <span class="nav-link-icon">
                                     <i data-feather="briefcase"></i>
                                 </span>
                                 <span>Data Tempat Cuci</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a <?php if ($title == 'Data Transaksi') {
+                                    echo 'class="active"';
+                                } ?> href="<?= base_url('Pemilik/transaksi'); ?>">
+                                <span class="nav-link-icon">
+                                    <i data-feather="dollar-sign"></i>
+                                </span>
+                                <span>Data Transaksi</span>
                             </a>
                         </li>
                         <li>

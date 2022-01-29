@@ -9,7 +9,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="<?= base_url('Admin/'); ?>">Admin</a>
+                            <a href="<?= base_url('Pemilik/'); ?>">Pemilik</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Data Transaksi</li>
                     </ol>
@@ -48,7 +48,6 @@
                                                 <td><?= $tempat_cuci->nama; ?></td>
 
                                                 <td>
-                                                    <p><b><?= $tempat_cuci->nama_usaha; ?></b></p>
                                                     <p>Waktu Transaksi : </br> <?= format_indo($tempat_cuci->transaction_time); ?></p>
                                                     <?php
                                                     switch ($tempat_cuci->kendaraan) {
@@ -65,13 +64,12 @@
                                                 <td><?= format_indo($tempat_cuci->tanggal_pesan); ?></td>
 
                                                 <td>
-                                                    <?= rupiah($tempat_cuci->gross_amount); ?>
+                                                    <b><?= rupiah($tempat_cuci->gross_amount); ?></b>
                                                     <p>
                                                         <?php $text = $tempat_cuci->payment_type;
                                                         $string = str_replace('_', ' ', $text);
                                                         echo ucwords($string);
-                                                        echo ' ' . strtoupper($tempat_cuci->bank) ?></br>
-                                                        No. VA : <?= $tempat_cuci->va_number; ?>
+                                                        echo ' ' . strtoupper($tempat_cuci->bank) ?>
                                                     </p>
                                                 </td>
                                                 <td>
