@@ -26,7 +26,7 @@
 					</div>
 				</div>
 				<div class="footer-bottom text-center">
-					<p>&copy; 2019 <a href="#"><span>Mezban</span></a> Design by <a href="#"><span>FoxCoders</span></a>.</p>
+					<p>Copyright &copy; <?= date('Y'); ?> <a href="#"><span>Wash</span></a> Design by <a href="#"><span>Wash</span></a>.</p>
 				</div>
 			</div>
 		</footer>
