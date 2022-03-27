@@ -30,16 +30,26 @@
                                 <span>Data Tempat Cuci</span>
                             </a>
                         </li>
-                        <li>
-                            <a <?php if ($title == 'Data Transaksi') {
-                                    echo 'class="active"';
-                                } ?> href="<?= base_url('Pemilik/transaksi'); ?>">
+						<li>
+							<a href="#">
                                 <span class="nav-link-icon">
                                     <i data-feather="dollar-sign"></i>
                                 </span>
-                                <span>Data Transaksi</span>
-                            </a>
-                        </li>
+								<span>Data Transaksi</span>
+							</a>
+							<ul>
+								<li>
+									<a <?php if ($title == 'Data Transaksi Aktif') {
+										echo 'class="active"';
+									} ?> href="<?= base_url('Pemilik/transaksi_aktif'); ?>">Transaksi Aktif</a>
+								</li>
+								<li>
+									<a <?php if ($title == 'Data Transaksi') {
+										echo 'class="active"';
+									} ?> href="<?= base_url('Pemilik/transaksi'); ?>">Histori Transaksi</a>
+								</li>
+							</ul>
+						</li>
                         <li>
                             <a <?php if ($title == 'Profile') {
                                     echo 'class="active"';

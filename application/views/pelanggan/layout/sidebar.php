@@ -61,7 +61,7 @@
                                 <ul>
                                     <li><a class="<?php if ($title == 'Transaksi') {
                                                         echo 'active';
-                                                    } ?>" href="<?= base_url('Pelanggan/transaksi'); ?>">Transaksi</a></li>
+                                                    } ?>" href="<?= base_url('Pelanggan/transaksi'); ?>">Riwayat Transaksi</a></li>
                                 </ul>
                             </li>
                         <?php else : ?>
@@ -121,20 +121,21 @@
                                             echo 'active';
                                         } ?>" href="<?= base_url('Pelanggan/index'); ?>">Home</a></li>
                         <li>
-                            <a href="#0">Tempat Cuci</a>
-                            <ul>
-                                <li><a href="<?= base_url('Pelanggan/tempat_cuci'); ?>">Tempat Cuci</a></li>
-                            </ul>
-                        </li>
+						<li><a class="<?php if ($title == 'Tempat Cuci') {
+								echo 'active';
+							} ?>" href="<?= base_url('Pelanggan/tempat_cuci'); ?>">Tempat Cuci</a></li>
                         <?php if ($this->session->userdata('is_login') == TRUE) : ?>
                             <li>
-                                <a class="<?php if ($title == 'Transaksi') {
+                                <a class="<?php if ($title == 'Transaksi' || $title == 'Transaksi Aktif') {
                                                 echo 'active';
                                             } ?>" href="#0">Transaksi</a>
                                 <ul>
+									<li><a class="<?php if ($title == 'Transaksi Aktif') {
+											echo 'active';
+										} ?>" href="<?= base_url('Pelanggan/transaksi_aktif'); ?>">Transaksi Aktif</a></li>
                                     <li><a class="<?php if ($title == 'Transaksi') {
                                                         echo 'active';
-                                                    } ?>" href="<?= base_url('Pelanggan/transaksi'); ?>">Transaksi</a></li>
+                                                    } ?>" href="<?= base_url('Pelanggan/transaksi'); ?>">Riwayat Transaksi</a></li>
                                 </ul>
                             </li>
                         <?php else : ?>

@@ -5,13 +5,13 @@
 
         <div class="page-header">
             <div>
-                <h3>Data Transaksi</h3>
+                <h3>Data Transaksi Aktif</h3>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="<?= base_url('Pemilik/'); ?>">Pemilik</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Data Transaksi</li>
+                        <li class="breadcrumb-item active" aria-current="page">Data Transaksi Aktif</li>
                     </ol>
                 </nav>
             </div>
@@ -39,7 +39,7 @@
                                             <th>Total</th>
                                             <th>Pembayaran</th>
                                             <th>Status</th>
-                                            <!--<th>Aksi</th>-->
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -108,12 +108,12 @@
                                                     }
                                                     ?>
                                                 </td>
-                                                <!--<td>
+                                                <td>
                                                     <?php
-/*                                                    if ($tempat_cuci->status_code == 200) {
+                                                    if ($tempat_cuci->status_code == 200) {
                                                         switch ($tempat_cuci->status) {
                                                             case 1:
-                                                    */?>
+                                                    ?>
                                                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Modal_Proses">
                                                                     Diproses
                                                                 </button>
@@ -121,38 +121,38 @@
                                                                     Batalkan
                                                                 </button>
                                                             <?php
-/*                                                                break;
+                                                                break;
                                                             case 2:
-                                                            */?>
+                                                            ?>
                                                                 <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#Modal_Selesai">
                                                                     Selesai
                                                                 </button>
                                                             <?php
-/*                                                                break;
+                                                                break;
                                                             case 3:
-                                                            */?>
+                                                            ?>
                                                                 <span class='badge badge-success'>Selesai</span>
                                                             <?php
-/*                                                                break;
+                                                                break;
                                                             default:
-                                                            */?>
+                                                            ?>
                                                                 <span class='badge badge-danger'>Dibatalkan</span>
                                                         <?php
-/*                                                                break;
+                                                                break;
                                                         }
                                                     } elseif ($tempat_cuci->status_code == 201) {
-                                                        */?>
+                                                        ?>
                                                         <span class='badge badge-warning'>Menunggu Lunas</span>
                                                     <?php
-/*                                                    } else {
-                                                    */?>
+                                                    } else {
+                                                    ?>
                                                         <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#Modal_Batal">
                                                             Batalkan
                                                         </button>
                                                     <?php
-/*                                                    }
-                                                    */?>
-                                                </td>-->
+                                                    }
+                                                    ?>
+                                                </td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -164,7 +164,7 @@
                                             <th>Total</th>
                                             <th>Pembayaran</th>
                                             <th>Status</th>
-                                            <!--<th>Aksi</th>-->
+                                            <th>Aksi</th>
                                         </tr>
                                     </tfoot>
                                 </table>

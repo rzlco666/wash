@@ -38,7 +38,7 @@
                                             <th>#</th>
                                             <th>Jadwal</th>
                                             <th>Total</th>
-                                            <th>Status</th>
+                                            <th>Status Transaksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>

@@ -306,6 +306,33 @@ class Pelanggan extends CI_Controller
         }
     }
 
+	public function transaksi_aktif()
+	{
+		$data['title'] = 'Transaksi Aktif';
+
+		if ($this->session->userdata('is_login') == FALSE) {
+			redirect('/Pelanggan/login/', 'refresh');
+		} else {
+			$id = $this->session->userdata('id');
+
+			$data['transaksi'] = $this->db->query("SELECT tw.order_id, tw.gross_amount, tw.payment_type, tw.transaction_time, tw.bank, tw.va_number,
+                tw.pdf_url, tw.status_code, tw.status ,tw.kendaraan, tw.tanggal_pesan, tw.id_pelanggan, tw.nama, tw.alamat, tw.email, tw.no_hp,
+                tw.id_tempat_cuci, w.nama nama_usaha, w.foto1 foto1
+                FROM transaksi tw 
+                JOIN tempat_cuci w 
+                ON tw.id_tempat_cuci = w.id 
+                WHERE tw.id_pelanggan = $id AND tw.status_code != 202 AND tw.status != 3
+                ORDER BY transaction_time DESC")->result();
+			//$data['profile'] = $this->templates->view_where('wisatawan', ['id_wisatawan' => $id])->result_array();
+
+			$this->load->view('pelanggan/layout/header', $data);
+			$this->load->view('pelanggan/layout/sidebar', $data);
+			$this->load->view('pelanggan/transaksi_aktif', $data);
+			$this->load->view('pelanggan/layout/footer', $data);
+			//$this->load->view('pelanggan/profile/script', $data);
+		}
+	}
+
     public function invoice($order_id)
     {
         $data['title'] = 'Invoice';

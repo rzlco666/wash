@@ -498,21 +498,47 @@ class Pemilik extends CI_Controller
         $this->load->view('pemilik/transaksi/script', $data);
     }
 
+	function transaksi_aktif()
+	{
+		if ($this->session->userdata('is_pemilik') == FALSE) {
+			redirect('Pemilik/', 'refresh');
+		}
+
+		$id = $this->session->userdata('id');
+
+		$data['title'] = 'Data Transaksi Aktif';
+		$data['pemilik'] = $this->PemilikModel->data_pemilik();
+		$data['transaksi'] = $this->db->query("SELECT tw.order_id, tw.gross_amount, tw.payment_type, tw.transaction_time, tw.bank, tw.va_number,
+                tw.pdf_url, tw.status_code, tw.status, tw.kendaraan, tw.tanggal_pesan, tw.id_pelanggan, tw.nama, tw.alamat, tw.email, tw.no_hp,
+                tw.id_tempat_cuci, w.nama nama_usaha, w.foto1 foto1, w.id_pemilik id_pemilik
+                FROM transaksi tw 
+                JOIN tempat_cuci w 
+                ON tw.id_tempat_cuci = w.id
+                WHERE w.id_pemilik = $id AND tw.status_code != 202 AND tw.status != 3
+                ORDER BY transaction_time DESC")->result();
+
+		$this->load->view('pemilik/layout/header', $data);
+		$this->load->view('pemilik/layout/sidebar', $data);
+		$this->load->view('pemilik/transaksi/index_aktif', $data);
+		$this->load->view('pemilik/layout/footer', $data);
+		$this->load->view('pemilik/transaksi/script', $data);
+	}
+
     function proses_transaksi($order_id)
     {
         $data = $this->PemilikModel->proses_transaksi($order_id);
-        redirect('Pemilik/transaksi', 'refresh');
+        redirect('Pemilik/transaksi_aktif', 'refresh');
     }
 
     function batal_transaksi($order_id)
     {
         $data = $this->PemilikModel->batal_transaksi($order_id);
-        redirect('Pemilik/transaksi', 'refresh');
+        redirect('Pemilik/transaksi_aktif', 'refresh');
     }
 
     function selesai_transaksi($order_id)
     {
         $data = $this->PemilikModel->selesai_transaksi($order_id);
-        redirect('Pemilik/transaksi', 'refresh');
+        redirect('Pemilik/transaksi_aktif', 'refresh');
     }
 }
