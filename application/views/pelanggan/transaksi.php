@@ -49,7 +49,8 @@
                             <th>#</th>
                             <th>Jadwal</th>
                             <th>Total</th>
-                            <th>Status</th>
+                            <th>Status Transaksi</th>
+                            <th>Status Pencucian</th>
                             <th colspan="2">Aksi</th>
                         </tr>
                     </thead>
@@ -118,27 +119,34 @@
                                     }
                                     ?>
                                 </td>
+								<td>
+									<?php
+									if ($d->status == 1) {
+										?>
+										<font color="yellow">Menunggu</font>
+										<?php
+									} elseif ($d->status == 2) {
+										?>
+										<font color="blue">Diproses</font>
+										<?php
+									} elseif ($d->status == 3) {
+										?>
+										<font color="green">Selesai</font>
+										<?php
+									} else {
+										?>
+										<font color="red">Dibatalkan</font>
+										<?php
+									}
+									?>
+								</td>
                                 <td>
                                     <?php
                                     if ($d->status_code == "200") {
                                     ?>
-                                        <!-- <?php
-                                                $check = $this->templates->query("SELECT * FROM rating_wisata WHERE order_id = $d->order_id");
-                                                if ($check->num_rows() > 0) {
-                                                ?>
-
-                                            <a href="<?php echo base_url(); ?>home/edit_ulasan/<?php echo $d->order_id; ?>" class="button small left" style="background-color:#cb5f54 !important;color:#ffffff !important;border:1px solid #cb5f54 !important;margin-right:10px;margin-bottom:10px;">Edit Ulasan</a>
-
-                                        <?php
-                                                } else {
-                                        ?>
-
-                                            <button type="button" class="button small left" style="background-color:#cb5f54 !important;color:#ffffff !important;border:1px solid #cb5f54 !important;margin-right:10px;margin-bottom:10px;" data-toggle="modal" data-target="#beriUlasan<?= $d->order_id; ?>">Beri Ulasan</button>
-
-                                        <?php
-                                                }
-                                        ?> -->
-                                        <button type="button" class="button small left" style="background-color:#cb5f54 !important;color:#ffffff !important;border:1px solid #cb5f54 !important;margin-right:10px;margin-bottom:10px;" data-toggle="modal" data-target="#beriUlasan<?= $d->order_id; ?>">Beri Ulasan</button>
+										<a style="color: white;" type="button" data-toggle="modal" data-target="#detailTransaksi<?= $d->order_id; ?>" class="button btn btn-secondary">
+											<i class="icofont-info"></i>Detail Transaksi
+										</a>
                                     <?php
                                     } elseif ($d->status_code == "201") {
                                     ?>
@@ -156,9 +164,9 @@
                                             <i class="icofont-close"></i>Dibatalkan
                                         </a>
                                         &nbsp;</br>
-                                        <a href="<?= $d->pdf_url; ?>" class="button btn btn-secondary">
-                                            <i class="icofont-info"></i>Detail Transaksi
-                                        </a>
+										<a style="color: white;" type="button" data-toggle="modal" data-target="#detailTransaksi<?= $d->order_id; ?>" class="button btn btn-secondary">
+											<i class="icofont-info"></i>Detail Transaksi
+										</a>
                                     <?php
                                     }
                                     ?>
@@ -266,9 +274,16 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <a target="_blank" href="<?= base_url('Pelanggan/invoice/') . $d->order_id; ?>" class="button btn btn-primary">
-                        <i class="icofont-print"></i>Cetak Invoice
-                    </a>
+					<?php
+					if ($d->status_code == "200") {
+						?>
+						<a target="_blank" href="<?= base_url('Pelanggan/invoice/') . $d->order_id; ?>" class="button btn btn-primary">
+							<i class="icofont-print"></i>Cetak Invoice
+						</a>
+						<?php
+					} else {
+					}
+					?>
                     <a style="color: white;" type="button" class="button btn btn-secondary" data-dismiss="modal">
                         <i class="icofont-close"></i>Close
                     </a>
