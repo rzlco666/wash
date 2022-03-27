@@ -5,7 +5,7 @@ class Notification extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-        $params = array('server_key' => 'SB-Mid-server-5Ruf9S0MygrZvbPtD30WXmKD', 'production' => false);
+        $params = array('server_key' => 'SB-Mid-server-YRDPfLt2nLPhmaom1OdYGkWf', 'production' => false);
 		$this->load->library('veritrans');
 		$this->veritrans->config($params);
 		$this->load->helper('url');

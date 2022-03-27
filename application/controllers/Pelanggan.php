@@ -8,7 +8,7 @@ class Pelanggan extends CI_Controller
     {
         parent::__construct();
 
-        $params = array('server_key' => 'SB-Mid-server-5Ruf9S0MygrZvbPtD30WXmKD', 'production' => false);
+        $params = array('server_key' => 'SB-Mid-server-YRDPfLt2nLPhmaom1OdYGkWf', 'production' => false);
         $this->load->library('midtrans');
         $this->midtrans->config($params);
         $this->load->helper('url');
@@ -289,7 +289,7 @@ class Pelanggan extends CI_Controller
             $id = $this->session->userdata('id');
 
             $data['transaksi'] = $this->db->query("SELECT tw.order_id, tw.gross_amount, tw.payment_type, tw.transaction_time, tw.bank, tw.va_number,
-                tw.pdf_url, tw.status_code, tw.kendaraan, tw.tanggal_pesan, tw.id_pelanggan, tw.nama, tw.alamat, tw.email, tw.no_hp,
+                tw.pdf_url, tw.status_code, tw.status ,tw.kendaraan, tw.tanggal_pesan, tw.id_pelanggan, tw.nama, tw.alamat, tw.email, tw.no_hp,
                 tw.id_tempat_cuci, w.nama nama_usaha, w.foto1 foto1
                 FROM transaksi tw 
                 JOIN tempat_cuci w 
