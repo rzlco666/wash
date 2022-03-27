@@ -244,6 +244,30 @@ class Admin extends CI_Controller
         $this->load->view('admin/transaksi/script', $data);
     }
 
+	function transaksi_aktif()
+	{
+		if ($this->session->userdata('is_admin') == FALSE) {
+			redirect('Admin/', 'refresh');
+		}
+
+		$data['title'] = 'Data Transaksi Aktif';
+		$data['admin'] = $this->AdminModel->data_admin();
+		$data['transaksi'] = $this->db->query("SELECT tw.order_id, tw.gross_amount, tw.payment_type, tw.transaction_time, tw.bank, tw.va_number,
+                tw.pdf_url, tw.status_code, tw.kendaraan, tw.tanggal_pesan, tw.id_pelanggan, tw.nama, tw.alamat, tw.email, tw.no_hp,
+                tw.id_tempat_cuci, w.nama nama_usaha, w.foto1 foto1
+                FROM transaksi tw 
+                JOIN tempat_cuci w 
+                ON tw.id_tempat_cuci = w.id
+				WHERE tw.status_code != 202 
+                ORDER BY transaction_time DESC")->result();
+
+		$this->load->view('admin/layout/header', $data);
+		$this->load->view('admin/layout/sidebar', $data);
+		$this->load->view('admin/transaksi/index_aktif', $data);
+		$this->load->view('admin/layout/footer', $data);
+		$this->load->view('admin/transaksi/script', $data);
+	}
+
     function transaksi_data()
     {
         $data = $this->AdminModel->transaksi_list();
