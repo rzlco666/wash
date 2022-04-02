@@ -60,6 +60,16 @@
 								</li>
 							</ul>
 						</li>
+						<li>
+							<a <?php if ($title == 'Data Rating') {
+								echo 'class="active"';
+							} ?> href="<?= base_url('Admin/rating'); ?>">
+                                <span class="nav-link-icon">
+                                    <i data-feather="coffee"></i>
+                                </span>
+								<span>Data Rating</span>
+							</a>
+						</li>
                         <li>
                             <a <?php if ($title == 'Data Pelanggan') {
                                     echo 'class="active"';

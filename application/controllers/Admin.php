@@ -465,4 +465,28 @@ class Admin extends CI_Controller
             redirect('Admin/profile', 'refresh');
         }
     }
+
+	//rating
+	public function rating()
+	{
+		if ($this->session->userdata('is_admin') == FALSE) {
+			redirect('Admin/', 'refresh');
+		}
+
+		$data['title'] = 'Data Rating';
+		$data['admin'] = $this->AdminModel->data_admin();
+
+		$this->db->select('r.id_rating, r.rating, r.feedback, r.order_id, k.id_pelanggan id_pelanggan, k.nama nama_pelanggan, k.id_tempat_cuci, d.id id_tempat, d.nama nama_tempat');
+		$this->db->from('rating r');
+		$this->db->join('transaksi k', 'r.order_id = k.order_id');
+		$this->db->join('tempat_cuci d', 'k.id_tempat_cuci = d.id');
+		$query = $this->db->get();
+		$data['rating'] = $query->result();
+
+		$this->load->view('admin/layout/header', $data);
+		$this->load->view('admin/layout/sidebar', $data);
+		$this->load->view('admin/rating/index', $data);
+		$this->load->view('admin/layout/footer', $data);
+		$this->load->view('admin/rating/script', $data);
+	}
 }

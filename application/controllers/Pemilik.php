@@ -541,4 +541,30 @@ class Pemilik extends CI_Controller
         $data = $this->PemilikModel->selesai_transaksi($order_id);
         redirect('Pemilik/transaksi_aktif', 'refresh');
     }
+
+	//rating
+	public function rating()
+	{
+		if ($this->session->userdata('is_pemilik') == FALSE) {
+			redirect('Pemilik/', 'refresh');
+		}
+
+		$data['title'] = 'Data Rating';
+		$data['pemilik'] = $this->PemilikModel->data_pemilik();
+
+		$this->db->select('r.id_rating, r.rating, r.feedback, r.order_id, k.id_pelanggan id_pelanggan, k.nama nama_pelanggan, k.id_tempat_cuci, d.id id_tempat, d.nama nama_tempat, z.id id_pemilik');
+		$this->db->from('rating r');
+		$this->db->join('transaksi k', 'r.order_id = k.order_id');
+		$this->db->join('tempat_cuci d', 'k.id_tempat_cuci = d.id');
+		$this->db->join('pemilik z', 'd.id_pemilik = z.id');
+		$this->db->where('z.id', $this->session->userdata('id'));
+		$query = $this->db->get();
+		$data['rating'] = $query->result();
+
+		$this->load->view('pemilik/layout/header', $data);
+		$this->load->view('pemilik/layout/sidebar', $data);
+		$this->load->view('pemilik/rating/index', $data);
+		$this->load->view('pemilik/layout/footer', $data);
+		$this->load->view('pemilik/rating/script', $data);
+	}
 }

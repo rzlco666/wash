@@ -294,7 +294,7 @@ class Pelanggan extends CI_Controller
                 FROM transaksi tw 
                 JOIN tempat_cuci w 
                 ON tw.id_tempat_cuci = w.id 
-                WHERE tw.id_pelanggan = $id 
+                WHERE tw.id_pelanggan = $id AND tw.status = 3
                 ORDER BY transaction_time DESC")->result();
             //$data['profile'] = $this->templates->view_where('wisatawan', ['id_wisatawan' => $id])->result_array();
 
@@ -331,6 +331,34 @@ class Pelanggan extends CI_Controller
 			$this->load->view('pelanggan/layout/footer', $data);
 			//$this->load->view('pelanggan/profile/script', $data);
 		}
+	}
+
+	public function tambah_rating()
+	{
+		$order_id	= $this->input->post('order_id');
+		$rating      	= $this->input->post('rating');
+		$feedback 	  	= $this->input->post('feedback');
+
+		$data = [
+			'order_id' 			=> $order_id,
+			'rating' 			=> $rating,
+			'feedback' 			=> $feedback,
+		];
+		$this->db->insert('rating', $data);
+		$this->session->set_flashdata('message', 'Ulasan berhasil!');
+		redirect(base_url('Pelanggan/transaksi'));
+	}
+
+	public function update_rating($id)
+	{
+		$data = [
+			'rating' => $this->input->post('rating'),
+			'feedback' => $this->input->post('feedback'),
+		];
+		$this->db->where('id_rating', $id);
+		$this->db->update('rating', $data);
+		$this->session->set_flashdata('message', 'Update Ulasan berhasil!');
+		redirect(base_url('Pelanggan/transaksi'));
 	}
 
     public function invoice($order_id)
@@ -473,10 +501,10 @@ class Pelanggan extends CI_Controller
         $simpan = $this->db->insert('transaksi', $data);
         if ($simpan) {
             $this->session->set_flashdata('message', 'Transaksi berhasil!');
-            redirect('Pelanggan/transaksi', 'refresh');
+            redirect('Pelanggan/transaksi_aktif', 'refresh');
         } else {
             $this->session->set_flashdata('error', 'Transaksi gagal!');
-            redirect('Pelanggan/transaksi', 'refresh');
+            redirect('Pelanggan/transaksi_aktif', 'refresh');
         }
     }
 }

@@ -50,6 +50,16 @@
 								</li>
 							</ul>
 						</li>
+						<li>
+							<a <?php if ($title == 'Data Rating') {
+								echo 'class="active"';
+							} ?> href="<?= base_url('Pemilik/rating'); ?>">
+                                <span class="nav-link-icon">
+                                    <i data-feather="coffee"></i>
+                                </span>
+								<span>Rating</span>
+							</a>
+						</li>
                         <li>
                             <a <?php if ($title == 'Profile') {
                                     echo 'class="active"';
