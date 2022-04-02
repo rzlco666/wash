@@ -21,6 +21,7 @@ class Pelanggan extends CI_Controller
 
         $data['title'] = 'Landing';
         $data['tempat_cuci'] = $this->PelangganModel->get_by_tempat_cuci6();
+        $data['tempat_cuci_popular'] = $this->PelangganModel->get_by_tempat_cuci_popular();
 
         $this->load->view('pelanggan/layout/header', $data);
         $this->load->view('pelanggan/layout/sidebar', $data);
@@ -35,6 +36,7 @@ class Pelanggan extends CI_Controller
         $data['title'] = 'Tempat Cuci';
         $data['tempat_cuci'] = $this->PelangganModel->get_id_tempat_cuci($id);
         $data['rekomendasi'] = $this->PelangganModel->get_rekomendasi_tempat_cuci($id);
+        $data['review'] = $this->PelangganModel->get_rating($id);
 
         $this->load->view('pelanggan/layout/header', $data);
         $this->load->view('pelanggan/layout/sidebar', $data);

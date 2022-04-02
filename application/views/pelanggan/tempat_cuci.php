@@ -121,12 +121,44 @@
                                                     </ul>
                                                 </div>
                                                 <div class="rating">
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <span>(2 Customer Reviews)</span>
+													<?php if ($tempat_cuci->rating == 1) { ?>
+														<i class="icofont-star"></i>
+														<i class="icofont-star text-light"></i>
+														<i class="icofont-star text-light"></i>
+														<i class="icofont-star text-light"></i>
+														<i class="icofont-star text-light"></i>
+													<?php } elseif ($tempat_cuci->rating == 2) { ?>
+														<i class="icofont-star"></i>
+														<i class="icofont-star"></i>
+														<i class="icofont-star text-light"></i>
+														<i class="icofont-star text-light"></i>
+														<i class="icofont-star text-light"></i>
+													<?php } elseif ($tempat_cuci->rating == 3) { ?>
+														<i class="icofont-star"></i>
+														<i class="icofont-star"></i>
+														<i class="icofont-star"></i>
+														<i class="icofont-star text-light"></i>
+														<i class="icofont-star text-light"></i>
+													<?php } elseif ($tempat_cuci->rating == 4) { ?>
+														<i class="icofont-star"></i>
+														<i class="icofont-star"></i>
+														<i class="icofont-star"></i>
+														<i class="icofont-star"></i>
+														<i class="icofont-star text-light"></i>
+													<?php } elseif ($tempat_cuci->rating == 5) { ?>
+														<i class="icofont-star"></i>
+														<i class="icofont-star"></i>
+														<i class="icofont-star"></i>
+														<i class="icofont-star"></i>
+														<i class="icofont-star"></i>
+													<?php } else { ?>
+														<i class="icofont-star text-light"></i>
+														<i class="icofont-star text-light"></i>
+														<i class="icofont-star text-light"></i>
+														<i class="icofont-star text-light"></i>
+														<i class="icofont-star text-light"></i>
+													<?php } ?>
+                                                    <span>(<?= $tempat_cuci->jumlah ?> Ulasan Pelanggan)</span>
                                                 </div>
                                             </div>
                                             <div class="desc">
@@ -337,134 +369,62 @@
                         <div class="section-wrapper">
                             <div class="review">
                                 <ul class="content">
+									<?php foreach ($review as $review) : ?>
                                     <li>
-                                        <div class="post-thumb">
-                                            <img src="<?= base_url('assets_pelanggan/'); ?>images/chef/author/07.jpg" alt="shop">
-                                        </div>
                                         <div class="post-content">
                                             <div class="content-area">
                                                 <div class="entry-meta">
                                                     <div class="posted-on">
-                                                        <a href="#">Britney Doe</a>
-                                                        <p>Posted on December 25, 2017 at 6:57 am</p>
+                                                        <a href="#"><?= $review->nama_pelanggan ?></a>
                                                     </div>
                                                     <div class="rating">
-                                                        <i class="icofont-star"></i>
-                                                        <i class="icofont-star"></i>
-                                                        <i class="icofont-star"></i>
-                                                        <i class="icofont-star"></i>
-                                                        <i class="icofont-star"></i>
+														<?php if ($review->rating == 1) { ?>
+															<i class="icofont-star"></i>
+															<i class="icofont-star text-light"></i>
+															<i class="icofont-star text-light"></i>
+															<i class="icofont-star text-light"></i>
+															<i class="icofont-star text-light"></i>
+														<?php } elseif ($review->rating == 2) { ?>
+															<i class="icofont-star"></i>
+															<i class="icofont-star"></i>
+															<i class="icofont-star text-light"></i>
+															<i class="icofont-star text-light"></i>
+															<i class="icofont-star text-light"></i>
+														<?php } elseif ($review->rating == 3) { ?>
+															<i class="icofont-star"></i>
+															<i class="icofont-star"></i>
+															<i class="icofont-star"></i>
+															<i class="icofont-star text-light"></i>
+															<i class="icofont-star text-light"></i>
+														<?php } elseif ($review->rating == 4) { ?>
+															<i class="icofont-star"></i>
+															<i class="icofont-star"></i>
+															<i class="icofont-star"></i>
+															<i class="icofont-star"></i>
+															<i class="icofont-star text-light"></i>
+														<?php } elseif ($review->rating == 5) { ?>
+															<i class="icofont-star"></i>
+															<i class="icofont-star"></i>
+															<i class="icofont-star"></i>
+															<i class="icofont-star"></i>
+															<i class="icofont-star"></i>
+														<?php } else { ?>
+															<i class="icofont-star text-light"></i>
+															<i class="icofont-star text-light"></i>
+															<i class="icofont-star text-light"></i>
+															<i class="icofont-star text-light"></i>
+															<i class="icofont-star text-light"></i>
+														<?php } ?>
                                                     </div>
                                                 </div>
                                                 <div class="entry-content">
-                                                    <p>Enthusiast build innovativ initiatives before lonterm high-impact awesome theme seo psd porta monetize covalent leadership after without resource.</p>
+                                                    <p><?= $review->feedback ?></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="post-thumb">
-                                            <img src="<?= base_url('assets_pelanggan/'); ?>images/chef/author/08.jpg" alt="shop">
-                                        </div>
-                                        <div class="post-content">
-                                            <div class="entry-meta">
-                                                <div class="posted-on">
-                                                    <a href="#">Jonathan Doe</a>
-                                                    <p>Posted on December 25, 2017 at 6:57 am</p>
-                                                </div>
-                                                <div class="rating">
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                </div>
-                                            </div>
-                                            <div class="entry-content">
-                                                <p>Enthusiast build innovativ initiatives before lonterm high-impact awesome theme seo psd porta monetize covalent leadership after without resource.</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="post-thumb">
-                                            <img src="<?= base_url('assets_pelanggan/'); ?>images/chef/author/09.jpg" alt="shop">
-                                        </div>
-                                        <div class="post-content">
-                                            <div class="entry-meta">
-                                                <div class="posted-on">
-                                                    <a href="#">Mack Zucky</a>
-                                                    <p>Posted on December 25, 2017 at 6:57 am</p>
-                                                </div>
-                                                <div class="rating">
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                </div>
-                                            </div>
-                                            <div class="entry-content">
-                                                <p>Enthusiast build innovativ initiatives before lonterm high-impact awesome theme seo psd porta monetize covalent leadership after without resource.</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="post-thumb">
-                                            <img src="<?= base_url('assets_pelanggan/'); ?>images/chef/author/08.jpg" alt="shop">
-                                        </div>
-                                        <div class="post-content">
-                                            <div class="entry-meta">
-                                                <div class="posted-on">
-                                                    <a href="#">Jordi Albae</a>
-                                                    <p>Posted on December 25, 2017 at 6:57 am</p>
-                                                </div>
-                                                <div class="rating">
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                </div>
-                                            </div>
-                                            <div class="entry-content">
-                                                <p>Enthusiast build innovativ initiatives before lonterm high-impact awesome theme seo psd porta monetize covalent leadership after without resource.</p>
-                                            </div>
-                                        </div>
-                                    </li>
+									<?php endforeach; ?>
                                 </ul>
-                                <div class="client-review">
-                                    <div class="review-form">
-                                        <div class="review-title">
-                                            <h5>Add A Review</h5>
-                                        </div>
-                                        <form action="action" class="row">
-                                            <div class="col-md-4 col-12">
-                                                <input type="text" name="name" placeholder="Full Name">
-                                            </div>
-                                            <div class="col-md-4 col-12">
-                                                <input type="text" name="email" placeholder="Email Adress">
-                                            </div>
-                                            <div class="col-md-4 col-12">
-                                                <div class="ratings">
-                                                    <span class="rating-title">Your Rating : </span>
-                                                    <div class="rating">
-                                                        <i class="icofont-star"></i>
-                                                        <i class="icofont-star"></i>
-                                                        <i class="icofont-star"></i>
-                                                        <i class="icofont-star"></i>
-                                                        <i class="icofont-star"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 col-12">
-                                                <textarea rows="8" placeholder="Type Here Message"></textarea>
-                                            </div>
-                                            <div class="col-12">
-                                                <button type="submit" class="food-btn style-2"><span>Submit Review</span></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
