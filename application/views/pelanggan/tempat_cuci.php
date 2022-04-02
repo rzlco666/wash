@@ -208,22 +208,22 @@
                                                     <input type="hidden" id="harga_mobil" name="harga_mobil" value="<?= $tempat_cuci->harga_mobil; ?>">
                                                     <input type="hidden" id="harga_motor" name="harga_motor" value="<?= $tempat_cuci->harga_motor; ?>">
 
-                                                    <input type="text" id="nama" name="nama" value="<?php echo $this->session->userdata('nama') ?>">
+                                                    <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $this->session->userdata('nama') ?>">
                                                 </label>
 
                                                 <p>Alamat :</p>
                                                 <label>
-                                                    <input type="text" id="alamat" name="alamat">
+                                                    <input type="text" class="form-control" id="alamat" name="alamat">
                                                 </label>
 
                                                 <p>Email :</p>
                                                 <label>
-                                                    <input type="email" id="email" name="email" value="<?php echo $this->session->userdata('email') ?>">
+                                                    <input type="email" class="form-control" id="email" name="email" value="<?php echo $this->session->userdata('email') ?>">
                                                 </label>
 
                                                 <p>No HP :</p>
                                                 <label>
-                                                    <input type="number" id="no_hp" name="no_hp">
+                                                    <input type="number" class="form-control" id="no_hp" name="no_hp">
                                                 </label>
 
                                                 <?php
@@ -233,14 +233,14 @@
                                                     <label>
                                                         <input type="hidden" id="id_tempat_cuci" name="id_tempat_cuci" value="<?= $tempat_cuci->id; ?>">
                                                         <input type="hidden" id="nama_tempat_cuci" name="nama_tempat_cuci" value="<?= $tempat_cuci->nama; ?>">
-                                                        <select style="width: 220px;" name="kendaraan" id="kendaraan" class="select2">
+                                                        <select name="kendaraan" id="kendaraan" class="form-control">
                                                             <option selected disabled>Pilih Kendaraan</option>
                                                             <option value="1" name="kendaraan" id="kendaraan">Mobil</option>
                                                         </select>
                                                     </label>
                                                     <p>Tanggal :</p>
                                                     <label>
-                                                        <input type="text" name="tanggal_pesan" class="tanggal_pesan" id="datepicker">
+                                                        <input type="text" name="tanggal_pesan" class="tanggal_pesan form-control" id="datepicker">
                                                     </label>
                                                 <?php
                                                 elseif ($tempat_cuci->kategori == 2) :
@@ -249,14 +249,14 @@
                                                     <label>
                                                         <input type="hidden" id="id_tempat_cuci" name="id_tempat_cuci" value="<?= $tempat_cuci->id; ?>">
                                                         <input type="hidden" id="nama_tempat_cuci" name="nama_tempat_cuci" value="<?= $tempat_cuci->nama; ?>">
-                                                        <select style="width: 220px;" name="kendaraan" id="kendaraan" class="select2">
+                                                        <select name="kendaraan" id="kendaraan" class="form-control">
                                                             <option selected disabled>Pilih Kendaraan</option>
                                                             <option value="2" name="kendaraan" id="kendaraan">Motor</option>
                                                         </select>
                                                     </label>
                                                     <p>Tanggal :</p>
                                                     <label>
-                                                        <input type="text" name="tanggal_pesan" class="tanggal_pesan" id="datepicker">
+                                                        <input type="text" name="tanggal_pesan" class="tanggal_pesan form-control" id="datepicker">
                                                     </label>
                                                 <?php
                                                 elseif ($tempat_cuci->kategori == 3) :
@@ -265,7 +265,7 @@
                                                     <label>
                                                         <input type="hidden" id="id_tempat_cuci" name="id_tempat_cuci" value="<?= $tempat_cuci->id; ?>">
                                                         <input type="hidden" id="nama_tempat_cuci" name="nama_tempat_cuci" value="<?= $tempat_cuci->nama; ?>">
-                                                        <select style="width: 220px;" name="kendaraan" id="kendaraan">
+                                                        <select name="kendaraan" class="form-control" id="kendaraan">
                                                             <option selected disabled>Pilih Kendaraan</option>
                                                             <option value="1" name="kendaraan" id="kendaraan">Mobil</option>
                                                             <option value="2" name="kendaraan" id="kendaraan">Motor</option>
@@ -273,7 +273,7 @@
                                                     </label>
                                                     <p>Tanggal :</p>
                                                     <label>
-                                                        <input type="text" name="tanggal_pesan" class="tanggal_pesan" id="datepicker">
+                                                        <input type="text" name="tanggal_pesan" class="tanggal_pesan form-control" id="datepicker">
                                                     </label>
                                                 <?php
                                                 endif;
