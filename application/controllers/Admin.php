@@ -147,19 +147,22 @@ class Admin extends CI_Controller
     function pelanggan_data()
     {
         $data = $this->AdminModel->pelanggan_list();
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+		echo json_encode($data);
+        //$this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
     function banned_pelanggan()
     {
         $data = $this->AdminModel->banned_pelanggan();
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+		echo json_encode($data);
+        //$this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
     function aktif_pelanggan()
     {
         $data = $this->AdminModel->aktif_pelanggan();
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+		echo json_encode($data);
+        //$this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
     //pemilik
