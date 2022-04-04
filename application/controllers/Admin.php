@@ -136,6 +136,7 @@ class Admin extends CI_Controller
 
         $data['title'] = 'Data Pelanggan';
         $data['admin'] = $this->AdminModel->data_admin();
+		$data['pelanggan'] = $this->AdminModel->pelanggan_list();
 
         $this->load->view('admin/layout/header', $data);
         $this->load->view('admin/layout/sidebar', $data);
@@ -154,14 +155,16 @@ class Admin extends CI_Controller
     function banned_pelanggan()
     {
         $data = $this->AdminModel->banned_pelanggan();
-		echo json_encode($data);
+		//echo json_encode($data);
+		redirect('Admin/pelanggan');
         //$this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
     function aktif_pelanggan()
     {
         $data = $this->AdminModel->aktif_pelanggan();
-		echo json_encode($data);
+		//echo json_encode($data);
+		redirect('Admin/pelanggan');
         //$this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
