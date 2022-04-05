@@ -177,6 +177,7 @@ class Admin extends CI_Controller
 
         $data['title'] = 'Data Pemilik';
         $data['admin'] = $this->AdminModel->data_admin();
+		$data['pemilik'] = $this->AdminModel->pemilik_list();
 
         $this->load->view('admin/layout/header', $data);
         $this->load->view('admin/layout/sidebar', $data);
@@ -194,13 +195,13 @@ class Admin extends CI_Controller
     function banned_pemilik()
     {
         $data = $this->AdminModel->banned_pemilik();
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+        redirect('Admin/pemilik', 'refresh');
     }
 
     function aktif_pemilik()
     {
         $data = $this->AdminModel->aktif_pemilik();
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+        redirect('Admin/pemilik', 'refresh');
     }
 
     //tempat cuci
