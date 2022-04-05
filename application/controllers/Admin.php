@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-header('Content-Type: application/json');
 
 class Admin extends CI_Controller
 {
@@ -301,25 +300,29 @@ class Admin extends CI_Controller
     function faq_data()
     {
         $data = $this->AdminModel->faq_list();
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+		echo json_encode($data);
+        //$this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
     function save_faq()
     {
         $data = $this->AdminModel->save_faq();
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+		echo json_encode($data);
+        //$this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
     function update_faq()
     {
         $data = $this->AdminModel->update_faq();
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+		echo json_encode($data);
+        //$this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
     function delete_faq()
     {
         $data = $this->AdminModel->delete_faq();
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+		echo json_encode($data);
+        //$this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
 
