@@ -300,7 +300,8 @@ class Admin extends CI_Controller
     function faq_data()
     {
         $data = $this->AdminModel->faq_list();
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+		echo json_encode($data , JSON_FORCE_OBJECT);
+        //$this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
     function save_faq()
