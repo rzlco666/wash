@@ -45,7 +45,44 @@
                                         </tr>
                                     </thead>
                                     <tbody id="show_data">
-
+									<?php foreach ($tempat_cuci as $data) : ?>
+										<tr>
+											<td><?= $data->id; ?></td>
+											<td><?= $data->nama; ?></td>
+											<td><?= $data->nama_pemilik; ?></td>
+											<td><?= $data->alamat; ?></td>
+											<td><?= $data->email; ?></td>
+											<td><?= $data->hp; ?></td>
+											<td><?= $data->date_created; ?></td>
+											<td>
+												<?php
+												switch ($data->kategori) {
+													case '1':
+														echo "Mobil";
+														break;
+													case '2':
+														echo "Motor";
+														break;
+													case '3':
+														echo "Mobil dan Motor";
+														break;
+												}
+												?>
+											</td>
+											<td>
+												<?php
+												switch ($data->status) {
+													case '0':
+														echo '<span class="badge badge-danger">Dibanned</span>';
+														break;
+													case '1':
+														echo '<span class="badge badge-success">Aktif</span>';
+														break;
+												}
+												?>
+											</td>
+										</tr>
+									<?php endforeach; ?>
                                     </tbody>
                                     <tfoot>
                                         <tr>

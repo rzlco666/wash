@@ -212,6 +212,7 @@ class Admin extends CI_Controller
 
         $data['title'] = 'Data Tempat Cuci';
         $data['admin'] = $this->AdminModel->data_admin();
+		$data['tempat_cuci'] = $this->AdminModel->tempat_cuci_list();
 
         $this->load->view('admin/layout/header', $data);
         $this->load->view('admin/layout/sidebar', $data);
@@ -295,7 +296,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/layout/sidebar', $data);
         $this->load->view('admin/faq/index', $data);
         $this->load->view('admin/layout/footer', $data);
-        //$this->load->view('admin/faq/script', $data);
+        $this->load->view('admin/faq/script', $data);
     }
 
     function faq_data()
