@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+header('Content-Type: application/json');
 
 class Admin extends CI_Controller
 {
