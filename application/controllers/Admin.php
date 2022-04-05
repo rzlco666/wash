@@ -289,38 +289,37 @@ class Admin extends CI_Controller
 
         $data['title'] = 'F.A.Q.';
         $data['admin'] = $this->AdminModel->data_admin();
+		$data['faq'] = $this->AdminModel->faq_list();
 
         $this->load->view('admin/layout/header', $data);
         $this->load->view('admin/layout/sidebar', $data);
         $this->load->view('admin/faq/index', $data);
         $this->load->view('admin/layout/footer', $data);
-        $this->load->view('admin/faq/script', $data);
+        //$this->load->view('admin/faq/script', $data);
     }
 
     function faq_data()
     {
         $data = $this->AdminModel->faq_list();
-		$newString = mb_convert_encoding($data, "UTF-8", "auto");
-		return response()->json($newString);
-        //$this->output->set_content_type('application/json')->set_output(json_encode($data));
+        $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
     function save_faq()
     {
         $data = $this->AdminModel->save_faq();
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+        redirect('Admin/faq', 'refresh');
     }
 
     function update_faq()
     {
         $data = $this->AdminModel->update_faq();
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+		redirect('Admin/faq', 'refresh');
     }
 
     function delete_faq()
     {
         $data = $this->AdminModel->delete_faq();
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+		redirect('Admin/faq', 'refresh');
     }
 
 

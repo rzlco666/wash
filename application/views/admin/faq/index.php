@@ -40,7 +40,17 @@
                                         </tr>
                                     </thead>
                                     <tbody id="show_data">
-
+									<?php foreach ($faq as $data) : ?>
+										<tr>
+											<td><?= $data->id; ?></td>
+											<td><?= $data->question; ?></td>
+											<td><?= $data->answer; ?></td>
+											<td>
+												<button class="btn btn-primary btn-sm item_aktif" data-toggle="modal" data-target="#Modal_Edit<?= $data->id; ?>">Edit</button>
+												<button class="btn btn-danger btn-sm item_nonaktif" data-toggle="modal" data-target="#Modal_Hapus<?= $data->id; ?>">Hapus</button>
+											</td>
+										</tr>
+									<?php endforeach; ?>
                                     </tbody>
                                     <tfoot>
                                         <tr>
@@ -63,8 +73,8 @@
     <!-- ./ Content -->
 
     <!-- MODAL ADD -->
-    <form>
         <div class="modal fade" id="Modal_Add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<form action="<?php echo site_url('Admin/save_faq') ?>" method="post">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -89,17 +99,22 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" type="submit" id="btn_save" class="btn btn-primary">Save</button>
+                        <button type="submit" id="btn_save" class="btn btn-primary">Save</button>
                     </div>
                 </div>
             </div>
+			</form>
         </div>
-    </form>
     <!--END MODAL ADD-->
 
+	<?php foreach ($faq as $dataa) :
+		$temp = "'$dataa->id'";
+		$check2 = $this->db->query("SELECT * FROM faq WHERE id = $temp")->result();
+		?>
+
     <!-- MODAL EDIT -->
-    <form>
-        <div class="modal fade" id="Modal_Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form action="<?php echo site_url('Admin/update_faq') ?>" method="post">
+        <div class="modal fade" id="Modal_Edit<?= $dataa->id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -112,25 +127,25 @@
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label">ID</label>
                             <div class="col-md-10">
-                                <input type="text" name="id_edit" id="id_edit" class="form-control" placeholder="ID" readonly>
+                                <input type="text" name="id" id="id" value="<?= $check2[0]->id ?>" class="form-control" placeholder="ID" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label">Question</label>
                             <div class="col-md-10">
-                                <input type="text" name="question_edit" id="question_edit" class="form-control" placeholder="Question">
+                                <input type="text" name="question" id="question" value="<?= $check2[0]->question ?>" class="form-control" placeholder="Question">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label">Answer</label>
                             <div class="col-md-10">
-                                <input type="text" name="answer_edit" id="answer_edit" class="form-control" placeholder="Answer">
+                                <input type="text" name="answer" id="answer" value="<?= $check2[0]->answer ?>" class="form-control" placeholder="Answer">
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" type="submit" id="btn_update" class="btn btn-primary">Update</button>
+                        <button type="submit" id="btn_update" class="btn btn-primary">Update</button>
                     </div>
                 </div>
             </div>
@@ -139,8 +154,8 @@
     <!--END MODAL EDIT-->
 
     <!--MODAL DELETE-->
-    <form>
-        <div class="modal fade" id="Modal_Delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form action="<?php echo site_url('Admin/delete_faq') ?>" method="post">
+        <div class="modal fade" id="Modal_Hapus<?= $dataa->id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -153,12 +168,14 @@
                         <strong>Are you sure to delete this record?</strong>
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" name="id_delete" id="id_delete" class="form-control">
+                        <input type="hidden" name="id" id="id" value="<?= $dataa->id; ?>" class="form-control">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                        <button type="button" type="submit" id="btn_delete" class="btn btn-primary">Yes</button>
+                        <button type="submit" id="btn_delete" class="btn btn-primary">Yes</button>
                     </div>
                 </div>
             </div>
         </div>
     </form>
     <!--END MODAL DELETE-->
+
+	<?php endforeach; ?>
