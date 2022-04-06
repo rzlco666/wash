@@ -109,6 +109,7 @@ class Admin extends CI_Controller
         $data['saldo_bulan'] = $this->AdminModel->saldo_bulan();
         $data['saldo_total'] = $this->AdminModel->saldo_total();
         $data['perbandingan'] = $this->AdminModel->perbandingan();
+        $data['perbandingan_pendapatan'] = $this->AdminModel->perbandingan_pendapatan();
         $data['pendapatan_mobil'] = $this->AdminModel->pendapatan_mobil();
         $data['pendapatan_motor'] = $this->AdminModel->pendapatan_motor();
         $data['pendapatan_bulan_ini'] = $this->AdminModel->pendapatan_bulan_ini();

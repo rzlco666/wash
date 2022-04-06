@@ -247,8 +247,7 @@
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between mb-4">
                                         <div>
-                                            <h6 class="card-title mb-1">Monthly Sales</h6>
-                                            <p class="small text-muted">Avarage total sales +25,5%</p>
+                                            <h6 class="card-title mb-1">Perbandingan pendapatan bulan ini</h6>
                                         </div>
                                         <div>
                                             <a href="#" class="btn btn-floating">
@@ -266,7 +265,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="monthly-sales"></div>
+                                    <div id="monthly-saless"></div>
                                     <ul class="list-inline text-center">
                                         <li class="list-inline-item">
                                             <i class="fa fa-circle mr-1 text-success"></i> Mobil <br>

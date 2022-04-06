@@ -253,6 +253,21 @@ class AdminModel extends CI_Model
 		return $result;
 	}
 
+	function perbandingan_pendapatan(){
+		$result = $this->db->query("SELECT
+									IFNULL((SELECT sum(gross_amount) as jumlah_motor FROM transaksi WHERE kendaraan = 2 AND status_code=200 AND DATE_FORMAT(transaction_time,'%M-%y') = DATE_FORMAT(tw.transaction_time,'%M-%y') GROUP BY DATE_FORMAT(transaction_time,'%M-%y')), 0) AS jumlah_motor,
+									IFNULL((SELECT sum(gross_amount) as jumlah_mobil FROM transaksi WHERE kendaraan = 1 AND status_code=200 AND DATE_FORMAT(transaction_time,'%M-%y') = DATE_FORMAT(tw.transaction_time,'%M-%y') GROUP BY DATE_FORMAT(transaction_time,'%M-%y')), 0) AS jumlah_mobil,
+									DATE_FORMAT(tw.transaction_time,'%M-%y') as bulan
+									FROM
+									transaksi tw
+									WHERE tw.status_code = 200 AND MONTH(transaction_time) = MONTH(CURRENT_DATE())
+									GROUP BY DATE_FORMAT(tw.transaction_time,'%M')
+									ORDER BY tw.transaction_time ASC")
+			->result();
+
+		return $result;
+	}
+
 	function pendapatan_mobil(){
 		$result = $this->db->query("SELECT SUM(gross_amount) as jumlah, COUNT(order_id) as pencucian, DATE_FORMAT(transaction_time,'%M %Y') as bulan
 									FROM transaksi

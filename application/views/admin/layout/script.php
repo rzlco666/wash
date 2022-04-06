@@ -133,3 +133,71 @@ foreach ($perbandingan as $item) {
 	chart.render();
 
 </script>
+
+<?php
+//Inisialisasi nilai variabel awal
+$jumlah = null;
+$jml = null;
+$bln_laporan = "";
+foreach ($perbandingan_pendapatan as $item) {
+	$mob = $item->jumlah_mobil;
+	$jumlah .= "$mob";
+
+	$mot = $item->jumlah_motor;
+	$jml .= "$mot" . ", ";
+
+	$jur = $item->bulan;
+	$bln_laporan .= "'$jur'";
+}
+?>
+<script>
+	var options = {
+		chart: {
+			type: 'donut',
+			// fontFamily: chartFontStyle,
+		},
+		series: [<?= $jumlah; ?>,<?= $jml; ?>],
+		labels: ['Mobil', 'Motor'],
+		colors: ['#5066E1', '#FF657A'],
+		track: {
+			background: "#cccccc"
+		},
+		dataLabels: {
+			enabled: false
+		},
+		stroke: {
+			colors: ['#5066E1', '#FF657A'],
+		},
+		plotOptions: {
+			pie: {
+				expandOnClick: true,
+				donut: {
+					labels: {
+						show: true,
+						value: {
+							formatter: function (val) {
+								return '$' + val;
+							}
+						}
+					}
+				}
+			}
+		},
+		tooltip: {
+			shared: false,
+			y: {
+				formatter: function (val) {
+					return '$' + val;
+				}
+			}
+		},
+		legend: {
+			show: false
+		}
+	}
+
+	var chart = new ApexCharts(document.querySelector("#monthly-saless"), options);
+
+	chart.render();
+
+</script>
