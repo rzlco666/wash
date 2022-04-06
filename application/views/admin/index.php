@@ -268,7 +268,7 @@
                                     <div id="monthly-saless"></div>
                                     <ul class="list-inline text-center">
                                         <li class="list-inline-item">
-                                            <i class="fa fa-circle mr-1 text-success"></i> Mobil <br>
+                                            <i class="fa fa-circle mr-1" style="color:#FF657A;"></i> Mobil <br>
                                         </li>
                                         <li class="list-inline-item">
                                             <i class="fa fa-circle mr-1 text-primary"></i> Motor <br>
