@@ -76,7 +76,7 @@
                                                     <h5>Pendapatan</h5>
                                                     <div>Jumlah pendapatan bulan ini</div>
                                                 </div>
-                                                <h3 class="text-success mb-0">Rp <?= $pendapatan_mobil->jumlah; ?></h3>
+                                                <h3 class="text-success mb-0">Rp. <?= number_format($pendapatan_mobil->jumlah, 0, ',', '.') ?></h3>
                                             </div>
                                             <div class="list-group-item d-flex justify-content-between align-items-center px-0">
                                                 <div>
@@ -121,7 +121,7 @@
 														<h5>Pendapatan</h5>
 														<div>Jumlah pendapatan bulan ini</div>
 													</div>
-													<h3 class="text-success mb-0">Rp <?= $pendapatan_motor->jumlah; ?></h3>
+													<h3 class="text-success mb-0">Rp. <?= number_format($pendapatan_motor->jumlah, 0, ',', '.') ?></h3>
 												</div>
 												<div class="list-group-item d-flex justify-content-between align-items-center px-0">
 													<div>
@@ -224,7 +224,7 @@
                                     <div class="text-center">
                                         <h6 class="card-title mb-4 text-center">Total pendapatan bulan ini</h6>
 										<?php foreach ($pendapatan_bulan_ini as $pendapatan_bulan_ini) : ?>
-                                        <h2 class="font-size-35 font-weight-bold text-center">Rp <?= $pendapatan_bulan_ini->jumlah ?></h2>
+                                        <h2 class="font-size-35 font-weight-bold text-center">Rp. <?= number_format($pendapatan_bulan_ini->jumlah, 0, ',', '.') ?></h2>
 										<?php endforeach; ?>
                                         <p>Bagan ini menunjukkan total pendapatan bulan ini.</p>
                                     </div>
@@ -235,7 +235,7 @@
                                     <div class="text-center">
                                         <h6 class="card-title mb-4 text-center">Total pendapatan bulan lalu</h6>
 										<?php foreach ($pendapatan_bulan_lalu as $pendapatan_bulan_lalu) : ?>
-                                        <h2 class="font-size-35 font-weight-bold text-center">Rp <?= $pendapatan_bulan_lalu->jumlah ?></h2>
+                                        <h2 class="font-size-35 font-weight-bold text-center">Rp. <?= number_format($pendapatan_bulan_lalu->jumlah, 0, ',', '.') ?></h2>
 										<?php endforeach; ?>
                                         <p>Bagan ini menunjukkan total pendapatan bulan lalu.</p>
                                     </div>
