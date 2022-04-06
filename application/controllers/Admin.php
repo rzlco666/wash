@@ -109,6 +109,28 @@ class Admin extends CI_Controller
         $data['saldo_bulan'] = $this->AdminModel->saldo_bulan();
         $data['saldo_total'] = $this->AdminModel->saldo_total();
         $data['perbandingan'] = $this->AdminModel->perbandingan();
+        $data['pendapatan_mobil'] = $this->AdminModel->pendapatan_mobil();
+        $data['pendapatan_motor'] = $this->AdminModel->pendapatan_motor();
+        $data['pendapatan_bulan_ini'] = $this->AdminModel->pendapatan_bulan_ini();
+        $data['pendapatan_bulan_lalu'] = $this->AdminModel->pendapatan_bulan_lalu();
+
+		$this->db->select('r.id_rating, r.rating, r.feedback, r.order_id, k.id_pelanggan id_pelanggan, k.nama nama_pelanggan, k.id_tempat_cuci, d.id id_tempat, d.nama nama_tempat');
+		$this->db->from('rating r');
+		$this->db->join('transaksi k', 'r.order_id = k.order_id');
+		$this->db->join('tempat_cuci d', 'k.id_tempat_cuci = d.id');
+		$this->db->order_by('r.id_rating', 'desc');
+		$this->db->limit(5);
+		$query = $this->db->get();
+		$data['rating'] = $query->result();
+
+		$data['transaksi'] = $this->db->query("SELECT tw.order_id, tw.gross_amount, tw.payment_type, tw.transaction_time, tw.bank, tw.va_number,
+                tw.pdf_url, tw.status_code, tw.kendaraan, tw.tanggal_pesan, tw.id_pelanggan, tw.nama, tw.alamat, tw.email, tw.no_hp,
+                tw.id_tempat_cuci, w.nama nama_usaha, w.foto1 foto1
+                FROM transaksi tw 
+                JOIN tempat_cuci w 
+                ON tw.id_tempat_cuci = w.id
+				WHERE tw.status_code != 202 
+                ORDER BY transaction_time DESC LIMIT 5")->result();
 
         $this->load->view('admin/layout/header', $data);
         $this->load->view('admin/layout/sidebar', $data);

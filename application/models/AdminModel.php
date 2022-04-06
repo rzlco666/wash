@@ -252,4 +252,44 @@ class AdminModel extends CI_Model
 
 		return $result;
 	}
+
+	function pendapatan_mobil(){
+		$result = $this->db->query("SELECT SUM(gross_amount) as jumlah, COUNT(order_id) as pencucian, DATE_FORMAT(transaction_time,'%M %Y') as bulan
+									FROM transaksi
+									WHERE status_code = 200 AND MONTH(transaction_time) = MONTH(CURRENT_DATE()) AND status = 3 AND kendaraan = 1
+									GROUP BY DATE_FORMAT(transaction_time,'%M')
+									ORDER BY transaction_time ASC")
+			->result();
+		return $result;
+	}
+
+	function pendapatan_motor(){
+		$result = $this->db->query("SELECT SUM(gross_amount) as jumlah, COUNT(order_id) as pencucian, DATE_FORMAT(transaction_time,'%M %Y') as bulan
+									FROM transaksi
+									WHERE status_code = 200 AND MONTH(transaction_time) = MONTH(CURRENT_DATE()) AND status = 3 AND kendaraan = 2
+									GROUP BY DATE_FORMAT(transaction_time,'%M')
+									ORDER BY transaction_time ASC")
+			->result();
+		return $result;
+	}
+
+	function pendapatan_bulan_ini(){
+		$result = $this->db->query("SELECT SUM(gross_amount) as jumlah, DATE_FORMAT(transaction_time,'%M %Y') as bulan
+									FROM transaksi
+									WHERE status_code = 200 AND MONTH(transaction_time) = MONTH(CURRENT_DATE()) AND status = 3
+									GROUP BY DATE_FORMAT(transaction_time,'%M')
+									ORDER BY transaction_time ASC")
+			->result();
+		return $result;
+	}
+
+	function pendapatan_bulan_lalu(){
+		$result = $this->db->query("SELECT SUM(gross_amount) as jumlah, COUNT(order_id) as pencucian, DATE_FORMAT(transaction_time,'%M %Y') as bulan
+									FROM transaksi
+									WHERE status_code = 200 AND MONTH(transaction_time) = MONTH(CURRENT_DATE())-1 AND status = 3
+									GROUP BY DATE_FORMAT(transaction_time,'%M')
+									ORDER BY transaction_time ASC")
+			->result();
+		return $result;
+	}
 }
