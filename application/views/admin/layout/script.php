@@ -28,7 +28,7 @@ foreach ($saldo_bulan as $item) {
 		},
 		series: [{
 			name: 'Pendapatan',
-			data: [<?= $jumlah; ?>100,1000,2000,3000,4000,5000]
+			data: [<?= $jumlah; ?>]
 		}],
 		plotOptions: {
 			bar: {
@@ -39,7 +39,7 @@ foreach ($saldo_bulan as $item) {
 		},
 		colors: ['#5066E1'],
 		xaxis: {
-			categories: [<?= $bln_laporan; ?>'Test1', 'Test2', 'Test3', 'Test4', 'Test5', 'Test6'],
+			categories: [<?= $bln_laporan; ?>],
 		},
 		tooltip: {
 			y: {
@@ -83,10 +83,10 @@ foreach ($perbandingan as $item) {
 		},
 		series: [{
 			name: 'Mobil',
-			data: [<?= $jumlah; ?>2,3,4,5,6,7]
+			data: [<?= $jumlah; ?>]
 		}, {
 			name: 'Motor',
-			data: [<?= $jml; ?>9,8,7,6,5,4]
+			data: [<?= $jml; ?>]
 		}],
 		plotOptions: {
 			bar: {
@@ -115,7 +115,7 @@ foreach ($perbandingan as $item) {
 			axisBorder: {
 				show: false,
 			},
-			categories: [<?= $bln_laporan; ?>'Test1', 'Test2', 'Test3', 'Test4', 'Test5', 'Test6'],
+			categories: [<?= $bln_laporan; ?>],
 		},
 		yaxis: {
 			show: false,
@@ -176,7 +176,7 @@ foreach ($perbandingan_pendapatan as $item) {
 						show: true,
 						value: {
 							formatter: function (val) {
-								return '$' + val;
+								return 'Rp' + val;
 							}
 						}
 					}
