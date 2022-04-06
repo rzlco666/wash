@@ -255,13 +255,10 @@ $(function () {
                     }
                 },
                 xaxis: {
-                    labels: {
-                        show: false,
-                    },
                     axisBorder: {
                         show: false,
-                    }
-                    // categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+                    },
+                    categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
                 },
                 yaxis: {
                     show: false,

@@ -216,4 +216,40 @@ class AdminModel extends CI_Model
         $result = $this->db->update('admin', $data);
         return $result;
     }
+
+	//chart
+	function saldo_bulan()
+	{
+		$result = $this->db->query("SELECT SUM(gross_amount) as jumlah, DATE_FORMAT(transaction_time,'%M-%Y') as bulan
+									FROM transaksi
+									WHERE status_code = 200
+									GROUP BY DATE_FORMAT(transaction_time,'%M-%Y')
+									ORDER BY transaction_time ASC")
+					->result();
+		
+		return $result;
+	}
+
+	function saldo_total()
+	{
+		$result = $this->db->query("SELECT SUM(gross_amount) saldo from transaksi WHERE status_code = 200 AND status = 3")
+			->result();
+
+		return $result;
+	}
+
+	function perbandingan(){
+		$result = $this->db->query("SELECT
+									IFNULL((SELECT count(gross_amount) as jumlah_motor FROM transaksi WHERE kendaraan = 2 AND status_code=200 AND DATE_FORMAT(transaction_time,'%M-%y') = DATE_FORMAT(tw.transaction_time,'%M-%y') GROUP BY DATE_FORMAT(transaction_time,'%M-%y')), 0) AS jumlah_motor,
+									IFNULL((SELECT count(gross_amount) as jumlah_mobil FROM transaksi WHERE kendaraan = 1 AND status_code=200 AND DATE_FORMAT(transaction_time,'%M-%y') = DATE_FORMAT(tw.transaction_time,'%M-%y') GROUP BY DATE_FORMAT(transaction_time,'%M-%y')), 0) AS jumlah_mobil,
+									DATE_FORMAT(tw.transaction_time,'%M-%y') as bulan
+									FROM
+									transaksi tw
+									WHERE tw.status_code = 200
+									GROUP BY DATE_FORMAT(tw.transaction_time,'%M-%y')
+									ORDER BY tw.transaction_time ASC")
+					->result();
+
+		return $result;
+	}
 }

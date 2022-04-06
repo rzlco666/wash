@@ -106,11 +106,15 @@ class Admin extends CI_Controller
 
         $data['title'] = 'Dashboard';
         $data['admin'] = $this->AdminModel->data_admin();
+        $data['saldo_bulan'] = $this->AdminModel->saldo_bulan();
+        $data['saldo_total'] = $this->AdminModel->saldo_total();
+        $data['perbandingan'] = $this->AdminModel->perbandingan();
 
         $this->load->view('admin/layout/header', $data);
         $this->load->view('admin/layout/sidebar', $data);
         $this->load->view('admin/index', $data);
         $this->load->view('admin/layout/footer', $data);
+        $this->load->view('admin/layout/script', $data);
     }
 
     public function logout()

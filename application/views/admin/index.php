@@ -3,28 +3,20 @@
                 <!-- Content -->
                 <div class="content ">
                     <div class="page-header d-md-flex justify-content-between">
+						<?php foreach ($admin as $admin) : ?>
                         <div>
-                            <h3>Welcome back, Bony</h3>
-                            <p class="text-muted">This page shows an overview for your account summary.</p>
+                            <h3>Selamat datang, <?= $admin->nama; ?></h3>
+                            <p class="text-muted">Halaman ini menunjukkan ikhtisar untuk ringkasan akun Anda.</p>
                         </div>
-                        <div class="mt-3 mt-md-0">
-                            <div id="dashboard-daterangepicker" class="btn btn-outline-light">
-                                <span></span>
-                            </div>
-                            <a href="#" class="btn btn-primary ml-0 ml-md-2 mt-2 mt-md-0 dropdown-toggle" data-toggle="dropdown">Actions</a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a href="#" class="dropdown-item">Download</a>
-                                <a href="#" class="dropdown-item">Print</a>
-                            </div>
-                        </div>
+						<?php endforeach; ?>
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
-                                        <h6 class="card-title mb-2">Monthly Financial Status</h6>
+                                        <h6 class="card-title mb-2">Pendapatan bulanan</h6>
                                         <div class="d-flex justify-content-between">
                                             <a href="#" class="btn btn-floating">
                                                 <i class="ti-reload"></i>
@@ -41,97 +33,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p class="text-muted mb-4">Check how you're doing financially for current month</p>
-                                    <div id="sales"></div>
-                                    <div class="text-center mt-3">
-                                        <a href="#" class="btn btn-primary">
-                                            <i class="ti-download mr-2"></i> Create Report
-                                        </a>
-                                    </div>
+                                    <p class="text-muted mb-4">Periksa bagaimana kinerja keuangan Anda untuk bulan ini</p>
+                                    <div id="saless"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h6 class="card-title">Positive Reviews</h6>
-                                            <div class="d-flex align-items-center mb-3">
-                                                <div>
-                                                    <div class="avatar">
-                                                        <span class="avatar-title bg-primary-bright text-primary rounded-pill">
-                                                            <i class="ti-cloud"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="font-weight-bold ml-1 font-size-30 ml-3">0.16%</div>
-                                            </div>
-                                            <p class="mb-0"><a href="#" class="link-1">See comments</a> and respond to
-                                                customers' comments.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h6 class="card-title">Bounce Rate</h6>
-                                            <div class="d-flex align-items-center mb-3">
-                                                <div>
-                                                    <div class="avatar">
-                                                        <span class="avatar-title bg-info-bright text-info rounded-pill">
-                                                            <i class="ti-map"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="font-weight-bold ml-1 font-size-30 ml-3">12.87%</div>
-                                            </div>
-                                            <p class="mb-0"><a class="link-1" href="#">See visits</a> that had a higher
-                                                than expected
-                                                bounce rate.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h6 class="card-title">Active Referrals</h6>
-                                            <div class="d-flex align-items-center mb-3">
-                                                <div>
-                                                    <div class="avatar">
-                                                        <span class="avatar-title bg-secondary-bright text-secondary rounded-pill">
-                                                            <i class="ti-email"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="font-weight-bold ml-1 font-size-30 ml-3">12.87%</div>
-                                            </div>
-                                            <p class="mb-0"><a class="link-1" href="#">See referring</a> domains that
-                                                sent most visits
-                                                last month.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h6 class="card-title">Opened Invites</h6>
-                                            <div class="d-flex align-items-center mb-3">
-                                                <div>
-                                                    <div class="avatar">
-                                                        <span class="avatar-title bg-warning-bright text-warning rounded-pill">
-                                                            <i class="ti-dashboard"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="font-weight-bold ml-1 font-size-30 ml-3">12.87%</div>
-                                            </div>
-                                            <p class="mb-0"><a class="link-1" href="#">See clients</a> that accepted
-                                                your invitation to
-                                                connect.</p>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -182,9 +91,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="mt-3">
-                                        <a href="#" class="btn btn-info">Report Detail</a>
-                                    </div>
                                 </div>
                             </div>
                             <div class="card">
@@ -231,38 +137,23 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="mt-3">
-                                        <a href="#" class="btn btn-warning">Statistics Detail</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <h6 class="card-title mb-2 text-center">Financial year</h6>
-                                    <p class="mb-0 text-muted">Expenses statistics to date</p>
+                                    <h6 class="card-title mb-2 text-center">Total Saldo</h6>
+                                    <p class="mb-0 text-muted">Total pendapatan transaksi lunas dan telah selesai dicuci</p>
                                     <hr>
-                                    <div class="font-size-40 font-weight-bold">$502,680</div>
-                                    <hr>
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <p class="text-muted mb-1">Current month</p>
-                                            <div>
-                                                <span class="font-weight-bold">$46,362</span>
-                                                <span class="badge bg-danger-bright text-danger ml-1">-8%</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p class="text-muted mb-1">Last year</p>
-                                            <div>
-                                                <span class="font-weight-bold">$34,546</span>
-                                                <span class="badge bg-success-bright text-success ml-1">-13%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="font-weight-bold">Monthly report</p>
-                                    <div id="ecommerce-activity-chart"></div>
+									<?php
+									foreach ($saldo_total as $saldo) {
+									?>
+                                    <div class="font-size-40 font-weight-bold">Rp. <?= number_format($saldo->saldo, 0, ',', '.') ?></div>
+                                    <?php } ?>
+									<hr>
+                                    <p class="font-weight-bold">Pencucian Bulanan</p>
+                                    <div id="ecommerce-activity-chartt"></div>
                                 </div>
                             </div>
                         </div>
