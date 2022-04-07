@@ -2,12 +2,17 @@
 //Inisialisasi nilai variabel awal
 $jumlah = null;
 $bln_laporan = "";
-foreach ($saldo_bulan as $item) {
-	$jum = $item->jumlah;
-	$jumlah .= "$jum" . ", ";
+if ($saldo_bulan != null) {
+	foreach ($saldo_bulan as $item) {
+		$jum = $item->jumlah;
+		$jumlah .= "$jum" . ", ";
 
-	$jur = $item->bulan;
-	$bln_laporan .= "'$jur'" . ", ";
+		$jur = $item->bulan;
+		$bln_laporan .= "'$jur'" . ", ";
+	}
+}else{
+	$jumlah = "0, ";
+	$bln_laporan = "'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'";
 }
 ?>
 <script>
@@ -61,15 +66,21 @@ foreach ($saldo_bulan as $item) {
 $jumlah = null;
 $jml = null;
 $bln_laporan = "";
-foreach ($perbandingan as $item) {
-	$mob = $item->jumlah_mobil;
-	$jumlah .= "$mob" . ", ";
+if ($perbandingan != null) {
+	foreach ($perbandingan as $item) {
+		$mob = $item->jumlah_mobil;
+		$jumlah .= "$mob" . ", ";
 
-	$mot = $item->jumlah_motor;
-	$jml .= "$mot" . ", ";
+		$mot = $item->jumlah_motor;
+		$jml .= "$mot" . ", ";
 
-	$jur = $item->bulan;
-	$bln_laporan .= "'$jur'" . ", ";
+		$jur = $item->bulan;
+		$bln_laporan .= "'$jur'" . ", ";
+	}
+}else{
+	$jumlah = "0, ";
+	$jml = "0, ";
+	$bln_laporan = "'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'";
 }
 ?>
 <script>
@@ -139,15 +150,21 @@ foreach ($perbandingan as $item) {
 $jumlah = null;
 $jml = null;
 $bln_laporan = "";
-foreach ($perbandingan_pendapatan as $item) {
-	$mob = $item->jumlah_mobil;
-	$jumlah .= "$mob";
+if ($perbandingan_pendapatan != null){
+	foreach ($perbandingan_pendapatan as $item) {
+		$mob = $item->jumlah_mobil;
+		$jumlah .= "$mob";
 
-	$mot = $item->jumlah_motor;
-	$jml .= "$mot" . ", ";
+		$mot = $item->jumlah_motor;
+		$jml .= "$mot" . ", ";
 
-	$jur = $item->bulan;
-	$bln_laporan .= "'$jur'";
+		$jur = $item->bulan;
+		$bln_laporan .= "'$jur'";
+	}
+}else{
+	$jumlah = 0;
+	$jml = 0;
+	$bln_laporan = "'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'";
 }
 ?>
 <script>
@@ -187,7 +204,7 @@ foreach ($perbandingan_pendapatan as $item) {
 			shared: false,
 			y: {
 				formatter: function (val) {
-					return '$' + val;
+					return 'Rp' + val;
 				}
 			}
 		},
