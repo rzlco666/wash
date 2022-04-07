@@ -145,10 +145,39 @@ class Pemilik extends CI_Controller
         $data['title'] = 'Dashboard';
         $data['pemilik'] = $this->PemilikModel->data_pemilik();
 
+		$data['saldo_bulan'] = $this->PemilikModel->saldo_bulan();
+		$data['saldo_total'] = $this->PemilikModel->saldo_total();
+		$data['perbandingan'] = $this->PemilikModel->perbandingan();
+		$data['perbandingan_pendapatan'] = $this->PemilikModel->perbandingan_pendapatan();
+		$data['pendapatan_mobil'] = $this->PemilikModel->pendapatan_mobil();
+		$data['pendapatan_motor'] = $this->PemilikModel->pendapatan_motor();
+		$data['pendapatan_bulan_ini'] = $this->PemilikModel->pendapatan_bulan_ini();
+		$data['pendapatan_bulan_lalu'] = $this->PemilikModel->pendapatan_bulan_lalu();
+
+		$this->db->select('r.id_rating, r.rating, r.feedback, r.order_id, k.id_pelanggan id_pelanggan, k.nama nama_pelanggan, k.id_tempat_cuci, d.id id_tempat, d.nama nama_tempat');
+		$this->db->from('rating r');
+		$this->db->join('transaksi k', 'r.order_id = k.order_id');
+		$this->db->join('tempat_cuci d', 'k.id_tempat_cuci = d.id');
+		$this->db->where('d.id_pemilik', $this->session->userdata('id'));
+		$this->db->order_by('r.id_rating', 'desc');
+		$this->db->limit(5);
+		$query = $this->db->get();
+		$data['rating'] = $query->result();
+
+		$data['transaksi'] = $this->db->query("SELECT tw.order_id, tw.gross_amount, tw.payment_type, tw.transaction_time, tw.bank, tw.va_number,
+                tw.pdf_url, tw.status_code, tw.kendaraan, tw.tanggal_pesan, tw.id_pelanggan, tw.nama, tw.alamat, tw.email, tw.no_hp,
+                tw.id_tempat_cuci, w.nama nama_usaha, w.foto1 foto1
+                FROM transaksi tw 
+                JOIN tempat_cuci w 
+                ON tw.id_tempat_cuci = w.id
+				WHERE tw.status_code != 202 AND w.id_pemilik = ".$this->session->userdata('id')."
+                ORDER BY transaction_time DESC LIMIT 5")->result();
+
         $this->load->view('pemilik/layout/header', $data);
         $this->load->view('pemilik/layout/sidebar', $data);
         $this->load->view('pemilik/index', $data);
         $this->load->view('pemilik/layout/footer', $data);
+		$this->load->view('pemilik/layout/script', $data);
     }
 
     public function logout()

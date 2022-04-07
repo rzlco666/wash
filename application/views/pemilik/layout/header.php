@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="header-logo">
-                        <a href=index.html>
+                        <a href="<?= base_url('Pemilik/') ?>">
                             <img class="logo" src="<?= base_url('assets_admin/'); ?>media/image/logo.png" alt="logo">
                         </a>
                     </div>
