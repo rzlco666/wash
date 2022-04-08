@@ -24,17 +24,33 @@
                     <div class="col-md-12">
 
                         <div class="card">
-                            <!-- <div class="card-body">
-                                <button type="button" class="btn btn-primary btn-uppercase" data-toggle="modal" data-target="#Modal_Add">
-                                    <i class="ti-plus mr-2"></i> Tambah Data
-                                </button>
-                            </div> -->
+                             <div class="card-body">
+								 <div class="col-md-12">
+									 <div class="row">
+										 <div class="col-md-4">
+											 <span>Pilih dari tanggal</span>
+											 <div class="input-group">
+												 <input type="text" class="form-control pickdate date_range_filter" name="" >
+												 <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-calendar"></span></span>
+											 </div>
+										 </div>
+										 <div class="col-md-4">
+											 <span>Sampai tanggal</span>
+											 <div class="input-group">
+												 <input type="text" class="form-control pickdate date_range_filter2" name="">
+												 <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-calendar"></span></span>
+											 </div>
+										 </div>
+									 </div>
+								 </div>
+                            </div>
                             <div class="card-body">
-                                <table id="mydata" class="table table-striped table-bordered">
+                                <table id="tabelData" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Order ID</th>
                                             <th>Pemesan</th>
+                                            <th>Transaksi</th>
                                             <th>#</th>
                                             <th>Total</th>
                                             <th>Pembayaran</th>
@@ -47,7 +63,7 @@
                                             <tr>
                                                 <td><?= $tempat_cuci->order_id; ?></td>
                                                 <td><?= $tempat_cuci->nama; ?></td>
-
+                                                <td><?= $tempat_cuci->transaction_time; ?></td>
                                                 <td>
                                                     <p><b>Waktu Transaksi : </b></br>
                                                         <?= format_indo2($tempat_cuci->transaction_time); ?></br>

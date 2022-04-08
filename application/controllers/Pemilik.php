@@ -523,8 +523,8 @@ class Pemilik extends CI_Controller
         $this->load->view('pemilik/layout/header', $data);
         $this->load->view('pemilik/layout/sidebar', $data);
         $this->load->view('pemilik/transaksi/index', $data);
+		$this->load->view('pemilik/transaksi/script', $data);
         $this->load->view('pemilik/layout/footer', $data);
-        $this->load->view('pemilik/transaksi/script', $data);
     }
 
 	function transaksi_aktif()
