@@ -512,7 +512,7 @@ class Admin extends CI_Controller
 		$data['title'] = 'Data Rating';
 		$data['admin'] = $this->AdminModel->data_admin();
 
-		$this->db->select('r.id_rating, r.rating, r.feedback, r.order_id, k.id_pelanggan id_pelanggan, k.nama nama_pelanggan, k.id_tempat_cuci, d.id id_tempat, d.nama nama_tempat');
+		$this->db->select('r.id_rating, r.rating, r.feedback, r.order_id, k.id_pelanggan id_pelanggan, k.nama nama_pelanggan, k.id_tempat_cuci, d.id id_tempat, d.nama nama_tempat, r.status');
 		$this->db->from('rating r');
 		$this->db->join('transaksi k', 'r.order_id = k.order_id');
 		$this->db->join('tempat_cuci d', 'k.id_tempat_cuci = d.id');
@@ -524,5 +524,21 @@ class Admin extends CI_Controller
 		$this->load->view('admin/rating/index', $data);
 		$this->load->view('admin/layout/footer', $data);
 		$this->load->view('admin/rating/script', $data);
+	}
+
+	function banned_rating()
+	{
+		$data = $this->AdminModel->banned_rating();
+		//echo json_encode($data);
+		redirect('Admin/rating', 'refresh');
+		//$this->output->set_content_type('application/json')->set_output(json_encode($data));
+	}
+
+	function aktif_rating()
+	{
+		$data = $this->AdminModel->aktif_rating();
+		//echo json_encode($data);
+		redirect('Admin/rating', 'refresh');
+		//$this->output->set_content_type('application/json')->set_output(json_encode($data));
 	}
 }

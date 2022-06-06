@@ -245,7 +245,7 @@
 
                                                 <p>Alamat :</p>
                                                 <label>
-                                                    <input type="text" class="form-control" id="alamat" name="alamat">
+                                                    <input type="text" class="form-control" id="alamat" name="alamat" value="<?php echo $this->session->userdata('alamat') ?>">
                                                 </label>
 
                                                 <p>Email :</p>
@@ -255,7 +255,7 @@
 
                                                 <p>No HP :</p>
                                                 <label>
-                                                    <input type="number" class="form-control" id="no_hp" name="no_hp">
+                                                    <input type="number" class="form-control" id="no_hp" name="no_hp" value="<?php echo $this->session->userdata('no_hp') ?>">
                                                 </label>
 
                                                 <?php

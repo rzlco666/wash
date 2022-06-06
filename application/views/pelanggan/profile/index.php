@@ -50,6 +50,10 @@
                                                 <ul>
                                                     <li><span>Nama</span>: <?= $pelanggan->nama; ?></li>
                                                     <li><span>Email</span>: <?= $pelanggan->email; ?></li>
+                                                    <li><span>Alamat</span>: <?= $pelanggan->alamat; ?></li>
+                                                    <li><span>No HP</span>: <?= $pelanggan->no_hp; ?></li>
+                                                    <li><span>Umur</span>: <?= $pelanggan->umur; ?></li>
+                                                    <li><span>Jenis Kelamin</span>: <?= $pelanggan->jenis_kelamin; ?></li>
                                                     <li><span>Username</span>: @<?= (str_replace(' ', '', strtolower($pelanggan->nama))); ?></li>
                                                     <li><span>Bergabung</span>: <?= $pelanggan->date_created; ?></li>
                                                     <li><span>Status</span>: <span class="badge badge-success">Aktif</span></li>
@@ -95,6 +99,30 @@
                                 <label for="image" class="col-form-label">Foto:</label>
                                 <input type="file" id="image" name="image">
                             </div>
+							<div class="form-group">
+								<label for="nama" class="col-form-label">Email:</label>
+								<input type="email" name="email" id="email" value="<?= $pelanggan->email ?>">
+							</div>
+							<div class="form-group">
+								<label for="nama" class="col-form-label">Alamat:</label>
+								<input type="text" name="alamat" id="alamat" value="<?= $pelanggan->alamat ?>">
+							</div>
+							<div class="form-group">
+								<label for="nama" class="col-form-label">No HP:</label>
+								<input type="number" name="no_hp" id="no_hp" value="<?= $pelanggan->no_hp ?>">
+							</div>
+							<div class="form-group">
+								<label for="nama" class="col-form-label">Umur:</label>
+								<input type="number" name="umur" id="umur" value="<?= $pelanggan->umur ?>">
+							</div>
+							<div class="form-group">
+								<label for="nama" class="col-form-label">Jenis Kelamin:</label>
+								<select name="jenis_kelamin">
+									<option value="" disabled selected>Pilih Jenis Kelamin</option>
+									<option <?php if ( $pelanggan->jenis_kelamin === 'Laki-laki'){echo 'selected';}?> value="Laki-laki" name="jenis_kelamin">Laki-laki</option>
+									<option <?php if ( $pelanggan->jenis_kelamin === 'Perempuan'){echo 'selected';}?> value="Perempuan" name="jenis_kelamin">Perempuan</option>
+								</select>
+							</div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

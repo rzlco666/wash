@@ -106,15 +106,15 @@
                                     <?php
                                     if ($d->status_code == "200") {
                                     ?>
-                                        <font color="green">Lunas</font>
+										<span class='badge badge-success'>Lunas</span>
                                     <?php
                                     } elseif ($d->status_code == "201") {
                                     ?>
-                                        <font color="yellow">Pending</font>
+										<span class='badge badge-warning text-white'>Pending</span>
                                     <?php
                                     } else {
                                     ?>
-                                        <font color="red">Dibatalkan</font>
+										<span class='badge badge-danger'>Dibatalkan</span>
                                     <?php
                                     }
                                     ?>
@@ -123,19 +123,19 @@
 									<?php
 									if ($d->status == 1) {
 										?>
-										<font color="yellow">Menunggu</font>
+										<span class='badge badge-warning text-white'>Menunggu</span>
 										<?php
 									} elseif ($d->status == 2) {
 										?>
-										<font color="blue">Diproses</font>
+										<span class='badge badge-primary'>Diproses</span>
 										<?php
 									} elseif ($d->status == 3) {
 										?>
-										<font color="green">Selesai</font>
+										<span class='badge badge-success'>Selesai</span>
 										<?php
 									} else {
 										?>
-										<font color="red">Dibatalkan</font>
+										<span class='badge badge-danger'>Dibatalkan</span>
 										<?php
 									}
 									?>
@@ -154,9 +154,12 @@
                                             <i class="icofont-pay"></i>Cara Bayar
                                         </a>
                                         &nbsp;</br>
-                                        <a style="color: white;" type="button" data-toggle="modal" data-target="#detailTransaksi<?= $d->order_id; ?>" class="button btn btn-secondary">
+                                        <a style="color: white;" type="button" data-toggle="modal" data-target="#detailTransaksi<?= $d->order_id; ?>" class="button btn btn-secondary mt-2">
                                             <i class="icofont-info"></i>Detail Transaksi
                                         </a>
+										<a style="color: white;" type="button" data-toggle="modal" data-target="#batalkan<?= $d->order_id; ?>" class="button btn btn-danger mt-2">
+											<i class="icofont-close"></i>Batalkan Transaksi
+										</a>
                                     <?php
                                     } else {
                                     ?>
@@ -164,7 +167,7 @@
                                             <i class="icofont-close"></i>Dibatalkan
                                         </a>
                                         &nbsp;</br>
-										<a style="color: white;" type="button" data-toggle="modal" data-target="#detailTransaksi<?= $d->order_id; ?>" class="button btn btn-secondary">
+										<a style="color: white;" type="button" data-toggle="modal" data-target="#detailTransaksi<?= $d->order_id; ?>" class="button btn btn-secondary mt-2">
 											<i class="icofont-info"></i>Detail Transaksi
 										</a>
                                     <?php
@@ -257,15 +260,15 @@
                             <td><?php
                                 if ($d->status_code == "200") {
                                 ?>
-                                    <font color="green"><b>Lunas</b></font>
+									<span class='badge badge-success'>Lunas</span>
                                 <?php
                                 } elseif ($d->status_code == "201") {
                                 ?>
-                                    <font color="yellow"><b>Pending</b></font>
+									<span class='badge badge-warning text-white'>Pending</span>
                                 <?php
                                 } else {
                                 ?>
-                                    <font color="red"><b>Dibatalkan</b></font>
+									<span class='badge badge-danger'>Dibatalkan</span>
                                 <?php
                                 }
                                 ?>
@@ -291,4 +294,29 @@
             </div>
         </div>
     </div>
+
+	<!-- Modal Batal -->
+	<div class="modal fade" id="batalkan<?= $d->order_id; ?>" tabindex="-1" role="dialog" aria-labelledby="batalkan<?= $d->order_id; ?>" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="batalkan<?= $d->order_id; ?>">Batalkan Transaksi &mdash; <?= $d->order_id; ?></h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Apakah anda yakin ingin membatalkan transaksi ini?</p>
+				</div>
+				<div class="modal-footer">
+					<a href="<?= base_url('Pelanggan/batalkan/') . $d->order_id; ?>" class="button btn btn-primary">
+						Ya
+					</a>
+					<a style="color: white;" type="button" class="button btn btn-secondary" data-dismiss="modal">
+						Tutup
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 <?php } ?>

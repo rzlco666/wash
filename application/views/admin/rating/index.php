@@ -38,6 +38,8 @@
 										<th>Feedback</th>
 										<th>Pelanggan</th>
 										<th>Tempat Cuci</th>
+										<th>Status</th>
+										<th>Aksi</th>
 									</tr>
 									</thead>
 									<tbody>
@@ -70,6 +72,25 @@
 											<td><?= $data->feedback ?></td>
 											<td><?= $data->nama_pelanggan ?></td>
 											<td><?= $data->nama_tempat ?></td>
+											<td>
+												<?php
+												switch ($data->status) {
+													case 1:
+														echo "<span class='badge badge-success'>Aktif</span>";
+														break;
+													case 0:
+														echo "<span class='badge badge-danger'>Nonaktif</span>";
+														break;
+												}
+												?>
+											</td>
+											<td>
+												<?php if ($data->status == 0) : ?>
+													<button class="btn btn-primary btn-sm item_aktif" data-toggle="modal" data-target="#Modal_Aktif<?= $data->id_rating; ?>">Aktifkan</button>
+												<?php else : ?>
+													<button class="btn btn-danger btn-sm item_nonaktif" data-toggle="modal" data-target="#Modal_Banned<?= $data->id_rating; ?>">Banned</button>
+												<?php endif; ?>
+											</td>
 										</tr>
 									<?php endforeach; ?>
 									</tbody>
@@ -80,6 +101,8 @@
 										<th>Feedback</th>
 										<th>Pelanggan</th>
 										<th>Tempat Cuci</th>
+										<th>Status</th>
+										<th>Aksi</th>
 									</tr>
 									</tfoot>
 								</table>
@@ -93,3 +116,57 @@
 
 	</div>
 	<!-- ./ Content -->
+
+	<?php foreach ($rating as $dataa) : ?>
+		<!--MODAL Banned-->
+		<div class="modal fade" id="Modal_Banned<?= $dataa->id_rating; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<form action="<?php echo site_url('Admin/banned_rating') ?>" method="post">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Banned Akun</h5>
+							<input type="hidden" value="<?= $dataa->id_rating; ?>" name="id">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<strong>Apakah kamu yakin untuk nonaktif ulasan ini?</strong>
+						</div>
+						<div class="modal-footer">
+							<input type="hidden" name="id_banned" id="id_banned" class="form-control">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+							<button type="submit" id="btn_banned" class="btn btn-primary">Yes</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!--END MODAL Banned-->
+
+		<!--MODAL Aktif-->
+		<form action="<?php echo site_url('Admin/aktif_rating') ?>" method="post">
+			<div class="modal fade" id="Modal_Aktif<?= $dataa->id_rating; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Aktifkan Akun</h5>
+							<input type="hidden" value="<?= $dataa->id_rating; ?>" name="id">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<strong>Apakah kamu yakin untuk aktifkan ulasan ini?</strong>
+						</div>
+						<div class="modal-footer">
+							<input type="hidden" name="id_aktif" id="id_aktif" class="form-control">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+							<button type="submit" id="btn_aktif" class="btn btn-primary">Yes</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<!--END MODAL Aktif-->
+	<?php endforeach; ?>

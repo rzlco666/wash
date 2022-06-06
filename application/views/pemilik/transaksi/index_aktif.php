@@ -24,13 +24,8 @@
                     <div class="col-md-12">
 
                         <div class="card">
-                            <!-- <div class="card-body">
-                                <button type="button" class="btn btn-primary btn-uppercase" data-toggle="modal" data-target="#Modal_Add">
-                                    <i class="ti-plus mr-2"></i> Tambah Data
-                                </button>
-                            </div> -->
                             <div class="card-body">
-                                <table id="mydata" class="table table-striped table-bordered">
+                                <table id="tabelData" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Order ID</th>

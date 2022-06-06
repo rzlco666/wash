@@ -108,15 +108,15 @@
 								<?php
 								if ($d->status_code == "200") {
 									?>
-									<font color="green">Lunas</font>
+									<span class='badge badge-success'>Lunas</span>
 									<?php
 								} elseif ($d->status_code == "201") {
 									?>
-									<font color="yellow">Pending</font>
+									<span class='badge badge-warning text-white'>Pending</span>
 									<?php
 								} else {
 									?>
-									<font color="red">Dibatalkan</font>
+									<span class='badge badge-danger'>Dibatalkan</span>
 									<?php
 								}
 								?>
@@ -125,19 +125,19 @@
 								<?php
 								if ($d->status == 1) {
 									?>
-									<font color="yellow">Menunggu</font>
+									<span class='badge badge-warning text-white'>Menunggu</span>
 									<?php
 								} elseif ($d->status == 2) {
 									?>
-									<font color="blue">Diproses</font>
+									<span class='badge badge-primary'>Diproses</span>
 									<?php
 								} elseif ($d->status == 3) {
 									?>
-									<font color="green">Selesai</font>
+									<span class='badge badge-success'>Selesai</span>
 									<?php
 								} else {
 									?>
-									<font color="red">Dibatalkan</font>
+									<span class='badge badge-danger'>Dibatalkan</span>
 									<?php
 								}
 								?>
@@ -303,15 +303,15 @@
 							<td><?php
 								if ($d->status_code == "200") {
 									?>
-									<font color="green"><b>Lunas</b></font>
+									<span class='badge badge-success'>Lunas</span>
 									<?php
 								} elseif ($d->status_code == "201") {
 									?>
-									<font color="yellow"><b>Pending</b></font>
+									<span class='badge badge-warning text-white'>Pending</span>
 									<?php
 								} else {
 									?>
-									<font color="red"><b>Dibatalkan</b></font>
+									<span class='badge badge-danger'>Dibatalkan</span>
 									<?php
 								}
 								?>
@@ -443,6 +443,19 @@
 								<textarea class="form-control" name="feedback"
 										  id="feedback" cols="20"
 										  rows="5"><?= $check2[0]->feedback ?></textarea>
+							</div>
+							<div class="form-group">
+								<label for="nama" class="col-form-label">Status Rating:</label>
+								<?php
+									switch ($check2[0]->status){
+										case 1:
+											echo "<span class='badge badge-success'>Aktif</span>";
+											break;
+										case 0:
+											echo "<span class='badge badge-danger'>Nonaktif</span>";
+											break;
+									}
+								?>
 							</div>
 					</div>
 					<div class="modal-footer">

@@ -373,6 +373,7 @@ class Pemilik extends CI_Controller
         $data['title'] = 'Tempat Cuci';
         $data['tempat_cuci'] = $this->PemilikModel->data_tempat_cuci();
         $data['cuci'] = $this->PemilikModel->data_tempat_cuci();
+        $data['cucii'] = $this->PemilikModel->data_tempat_cuci();
         $data['pemilik'] = $this->PemilikModel->data_pemilik();
 
         $this->load->view('pemilik/layout/header', $data);
@@ -500,6 +501,32 @@ class Pemilik extends CI_Controller
         return $this->upload->data('file_name');
     }
 
+	public function tutup_sementara()
+	{
+		$id_pemilik = $this->session->userdata('id');
+
+		$data = array(
+			'status' => 0,
+		);
+
+		$this->PemilikModel->update_tempat_cuci($data, $id_pemilik);
+		$this->session->set_flashdata('success', 'Tutup Sementara Berhasil!');
+		redirect('Pemilik/tempat_cuci', 'refresh');
+	}
+
+	public function buka_lagi()
+	{
+		$id_pemilik = $this->session->userdata('id');
+
+		$data = array(
+			'status' => 1,
+		);
+
+		$this->PemilikModel->update_tempat_cuci($data, $id_pemilik);
+		$this->session->set_flashdata('success', 'Buka Lagi Tempat Cuci Berhasil!');
+		redirect('Pemilik/tempat_cuci', 'refresh');
+	}
+
     //transaksi
     function transaksi()
     {
@@ -549,8 +576,8 @@ class Pemilik extends CI_Controller
 		$this->load->view('pemilik/layout/header', $data);
 		$this->load->view('pemilik/layout/sidebar', $data);
 		$this->load->view('pemilik/transaksi/index_aktif', $data);
-		$this->load->view('pemilik/layout/footer', $data);
 		$this->load->view('pemilik/transaksi/script', $data);
+		$this->load->view('pemilik/layout/footer', $data);
 	}
 
     function proses_transaksi($order_id)
@@ -587,6 +614,7 @@ class Pemilik extends CI_Controller
 		$this->db->join('tempat_cuci d', 'k.id_tempat_cuci = d.id');
 		$this->db->join('pemilik z', 'd.id_pemilik = z.id');
 		$this->db->where('z.id', $this->session->userdata('id'));
+		$this->db->where('r.status', '1');
 		$query = $this->db->get();
 		$data['rating'] = $query->result();
 

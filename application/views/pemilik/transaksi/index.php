@@ -174,12 +174,13 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>Order ID</th>
-                                            <th>Pemesan</th>
-                                            <th>#</th>
-                                            <th>Total</th>
-                                            <th>Pembayaran</th>
-                                            <th>Status</th>
+											<th>Order ID</th>
+											<th>Pemesan</th>
+											<th>Transaksi</th>
+											<th>#</th>
+											<th>Total</th>
+											<th>Pembayaran</th>
+											<th>Status</th>
                                             <!--<th>Aksi</th>-->
                                         </tr>
                                     </tfoot>

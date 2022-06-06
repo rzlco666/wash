@@ -204,6 +204,31 @@ class AdminModel extends CI_Model
         return $result;
     }
 
+	//rating
+	function banned_rating()
+	{
+		$id = $this->input->post('id');
+		$status = '0';
+
+		$this->db->set('status', $status);
+		$this->db->where('id_rating', $id);
+
+		$result = $this->db->update('rating');
+		return $result;
+	}
+
+	function aktif_rating()
+	{
+		$id = $this->input->post('id');
+		$status = '1';
+
+		$this->db->set('status', $status);
+		$this->db->where('id_rating', $id);
+
+		$result = $this->db->update('rating');
+		return $result;
+	}
+
     //password
 
     function updatePassword($id, $password)

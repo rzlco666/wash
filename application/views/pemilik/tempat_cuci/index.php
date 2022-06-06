@@ -136,6 +136,21 @@
                                                     <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-uppercase">
                                                         <i class="ti-settings mr-2"></i> Edit Tempat Cuci
                                                     </button>
+													<?php
+													if ($tempat_cuci->status == 1) {
+														?>
+														<button type="button" data-toggle="modal" data-target="#tutup<?= $tempat_cuci->id; ?>" class="btn btn-secondary btn-uppercase">
+															<i class="ti-eye mr-2"></i> Tutup Sementara
+														</button>
+													<?php
+													} else {
+														?>
+														<button type="button" data-toggle="modal" data-target="#buka<?= $tempat_cuci->id; ?>" class="btn btn-success btn-uppercase">
+															<i class="ti-eye mr-2"></i> Buka Kembali
+														</button>
+													<?php
+													}
+													?>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -261,3 +276,56 @@
             </div>
         </div>
     </div>
+
+	<?php foreach ($cucii as $tempat_cucii) : ?>
+	<!--MODAL Tutup-->
+	<form action="<?php echo site_url('Pemilik/tutup_sementara') ?>" method="post">
+		<div class="modal fade" id="tutup<?= $tempat_cucii->id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Tutup Tempat Cuci Sementara</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<strong>Apakah kamu yakin untuk tutup tempat cuci sementara?</strong>
+					</div>
+					<div class="modal-footer">
+						<input type="hidden" name="id" id="id" value="<?= $tempat_cucii->id; ?>" class="form-control">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+						<button type="submit" id="btn_banned" class="btn btn-primary">Yes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<!--END MODAL Tutup-->
+
+	<!--MODAL Tutup-->
+		<form action="<?php echo site_url('Pemilik/buka_lagi') ?>" method="post">
+			<div class="modal fade" id="buka<?= $tempat_cucii->id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Buka Kembali Tempat Cuci</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<strong>Apakah kamu yakin untuk buka kembali tempat cuci?</strong>
+						</div>
+						<div class="modal-footer">
+							<input type="hidden" name="id" id="id" value="<?= $tempat_cucii->id; ?>" class="form-control">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+							<button type="submit" id="btn_banned" class="btn btn-primary">Yes</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<!--END MODAL Tutup-->
+	<?php endforeach; ?>
+

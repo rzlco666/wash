@@ -92,9 +92,9 @@ class Pelanggan extends CI_Controller
     public function register_proses()
     {
 
-        $this->form_validation->set_rules('nama', 'Nama', 'trim|required|min_length[3]|max_length[22]');
-        $this->form_validation->set_rules('email', 'E-mail', 'trim|required|min_length[3]|max_length[45]|is_unique[pelanggan.email]');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]');
+        $this->form_validation->set_rules('nama', 'Nama', 'trim|required');
+        $this->form_validation->set_rules('email', 'E-mail', 'trim|required|is_unique[pelanggan.email]');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         if ($this->form_validation->run() == TRUE) {
 
@@ -133,6 +133,10 @@ class Pelanggan extends CI_Controller
                             'email'  => $db->email,
                             'nama'   => $db->nama,
                             'id'   => $db->id,
+                            'alamat'   => $db->alamat,
+                            'no_hp'   => $db->no_hp,
+                            'umur'   => $db->umur,
+                            'jenis_kelamin'   => $db->jenis_kelamin,
                         );
 
                         $this->session->set_userdata($data_login);
@@ -181,6 +185,10 @@ class Pelanggan extends CI_Controller
         $this->session->unset_userdata('nama');
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('id');
+        $this->session->unset_userdata('alamat');
+        $this->session->unset_userdata('no_hp');
+        $this->session->unset_userdata('umur');
+        $this->session->unset_userdata('jenis_kelamin');
 
         session_destroy();
         $this->session->set_flashdata('success', 'Sign Out Berhasil!');
@@ -218,10 +226,18 @@ class Pelanggan extends CI_Controller
         $id = $this->session->userdata('id');
         $nama = $this->input->post('nama');
         $email = $this->input->post('email');
+        $alamat = $this->input->post('alamat');
+        $no_hp = $this->input->post('no_hp');
+        $umur = $this->input->post('umur');
+        $jenis_kelamin = $this->input->post('jenis_kelamin');
 
         $data = array(
             'nama' => $nama,
             'email' => $email,
+            'alamat' => $alamat,
+            'no_hp' => $no_hp,
+            'umur' => $umur,
+            'jenis_kelamin' => $jenis_kelamin,
         );
 
         if (!empty($_FILES['image']['name'])) {
@@ -296,7 +312,7 @@ class Pelanggan extends CI_Controller
                 FROM transaksi tw 
                 JOIN tempat_cuci w 
                 ON tw.id_tempat_cuci = w.id 
-                WHERE tw.id_pelanggan = $id AND tw.status = 3
+                WHERE tw.id_pelanggan = $id
                 ORDER BY transaction_time DESC")->result();
             //$data['profile'] = $this->templates->view_where('wisatawan', ['id_wisatawan' => $id])->result_array();
 
@@ -333,6 +349,18 @@ class Pelanggan extends CI_Controller
 			$this->load->view('pelanggan/layout/footer', $data);
 			//$this->load->view('pelanggan/profile/script', $data);
 		}
+	}
+
+	public function batalkan($id)
+	{
+		$data = [
+			'status_code' => 202,
+			'status' => 4,
+		];
+		$this->db->where('order_id', $id);
+		$this->db->update('transaksi', $data);
+		$this->session->set_flashdata('message', 'Pembatalan transaksi berhasil!');
+		redirect(base_url('Pelanggan/transaksi'));
 	}
 
 	public function tambah_rating()
